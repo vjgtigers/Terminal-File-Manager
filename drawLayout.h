@@ -12,6 +12,11 @@ struct fd_display_data {
 };
 
 extern struct fd_display_data nameView;
+extern struct fd_display_data extentionView;
+extern struct fd_display_data sizeView;
+extern struct fd_display_data typeView;
+extern struct fd_display_data modifiedView;
+extern struct fd_display_data createdView;
 
 //used to draw the base outline of the main file view screen
 void drawBaseLayout();

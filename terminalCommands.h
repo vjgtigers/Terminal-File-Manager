@@ -16,7 +16,9 @@ bool EnableVTMode();
 //toggle between virtule terminal and regular terminal
 void toggleVT(bool toggle);
 
+
 //clear terminal screen TODO: make better
+//[[deprecated("needs to be redone with a better clear method but still functional")]]
 void clearScreen();
 
 #endif //TERMINALCOMMANDS_H

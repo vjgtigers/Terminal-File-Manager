@@ -20,5 +20,12 @@ struct xy {
     int y;
 };
 
+//detect the amout of "rows/coulums" that are avalible
+//doeset work if you scroll in/out to make text larger or smaller
 xy detectSize();
+
+//debugging output for the time being
+void debugOutput(const std::string& s);
+
+
 #endif //MISCFUNCTIONS_H

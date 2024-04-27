@@ -4,6 +4,7 @@
 #include <thread>
 #include <string>
 
+#include "drawLayout.h"
 #include "keyTracker.h"
 #include "terminalCommands.h"
 #include "miscFunctions.h"
@@ -14,14 +15,32 @@
 //escape sequence
 #define ESC "\x1b"
 //commonly used escape sequence for commands
+
 #define CSI "\x1b["
 
+
+// 00-00-00 00-00
 
 
 using namespace std;
 
-xy available = detectSize();
 
+
+fd_display_data nameView {true, 20}; //no particularly recommended size
+fd_display_data extentionView {true, 5};
+fd_display_data sizeView {true, 6}; //recommended size is 6
+fd_display_data typeView {true, 4}; //TODO: is this nessessary?
+fd_display_data modifiedView {true, 14}; //recommended size is 14
+fd_display_data createdView {true, 14}; //recommended size is 14
+
+struct fdInfo {
+    string name;
+    int type;
+    long long size;
+    string extention;
+};
+
+//TODO: xy-avalible should probably be in the draw functions to update teh window on resize
 
 
 int main()
@@ -36,17 +55,15 @@ int main()
     toggleVT(true);
     ShowScrollBar(GetConsoleWindow(), SB_VERT, 0);
 
+
+    drawBaseLayout();
     while(true) {
         const int key = key_press(); // blocks until a key is pressed
-        println("Input is: "+to_string(key)+", \""+(char)key+"\"");
-
-        CONSOLE_SCREEN_BUFFER_INFO sbInfo;
-        GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &sbInfo);
-        int availableColumns = sbInfo.dwSize.X;
-        int availableRows = sbInfo.dwSize.Y;
+        //println("Input is: "+to_string(key)+", \""+(char)key+"\"");
+        xy available = detectSize();
+        debugOutput(to_string(key) +" "+(char)key +" " + to_string(available.x) + " " + to_string(available.y));
 
 
-        cout << available.x << " " << available.y << endl;
         if(key == 'q') {toggleVT(false);return 0;}
         if(key == 'c') {clearScreen();}
     }

@@ -8,6 +8,8 @@
 #include <thread>
 #include <Windows.h>
 
+#include "terminalCommands.h"
+
 
 void println(const std::string& s) {
     std::cout << s << std::endl;
@@ -22,4 +24,12 @@ xy detectSize() {
     GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &sbInfo);
     return {sbInfo.dwSize.X, sbInfo.dwSize.Y};
 
+}
+
+void debugOutput(const std::string& s) {
+    xy wd = detectSize();
+    setCursorPosition(wd.x-30,wd.y-(wd.y-20));
+    std::cout << std::string(30, ' ');
+    setCursorPosition(wd.x-30,wd.y-(wd.y-20));
+    std::cout << s;
 }

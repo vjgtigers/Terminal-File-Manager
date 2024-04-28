@@ -51,13 +51,12 @@ int main()
         name.push_back("this is a file" +  to_string(i));
     }
 
-    if (!EnableVTMode()) {
-        printf("Unable to enter VT processing mode. Quitting.\n");
-        return -1;
-    }
+    //initilization settings
+    if (!EnableVTMode()) {printf("Unable to enter VT processing mode. Quitting.\n");return -1;}
     toggleVT(true);
     ShowScrollBar(GetConsoleWindow(), SB_VERT, 0);
-
+    cursorToggle(false);
+    //end init settings
 
     drawBaseLayout();
 
@@ -74,6 +73,10 @@ int main()
 
         if(key == 'q') {toggleVT(false);return 0;}
         if(key == 'c') {clearScreen();}
+
+        if(key == 'r') {
+            refreshScreen(name);
+        }
 
         if(key == -40) {drawSelectionPointer({currentPointerLocation.x, currentPointerLocation.y+1});}
         if(key == -38) {drawSelectionPointer({currentPointerLocation.x, currentPointerLocation.y-1});}

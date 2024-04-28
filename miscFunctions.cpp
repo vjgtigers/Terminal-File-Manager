@@ -10,6 +10,8 @@
 
 #include "terminalCommands.h"
 
+#define CSI "\x1b["
+
 
 void println(const std::string& s) {
     std::cout << s << std::endl;
@@ -33,3 +35,14 @@ void debugOutput(const std::string& s) {
     setCursorPosition(wd.x-30,wd.y-(wd.y-20));
     std::cout << s;
 }
+
+
+void cursorToggle(bool enable) {
+    if(enable == true) {
+        printf(CSI "?25h");
+    }
+    else {
+        printf(CSI "?25l");
+    }
+}
+

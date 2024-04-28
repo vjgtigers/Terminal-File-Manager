@@ -15,6 +15,7 @@ int key_press() { // not working: F11 (-122, toggles fullscreen)
             const int ca = (int)keyevent.uChar.AsciiChar;
             const int cv = (int)keyevent.wVirtualKeyCode;
             const int key = ca==0 ? -cv : ca+(ca>0?0:256);
+            //TODO: disable doesnt work
             switch(key) {
                 //case VK_CANCEL: continue;
                 case  -16: continue; // disable Shift

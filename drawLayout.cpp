@@ -21,7 +21,11 @@ void drawBaseLayout() {
     setCursorPosition(5,5);
 
     int slots[6];
-    slots[0] = 1+nameView.size;
+    if (nameView.active == true){slots[0] = 1+nameView.size;}
+    else {slots[0] = 1;}
+    //TODO: this is the basic framework for cheking if activation
+        //however we need to check for activation on line draw too
+        // i need to work on this
     slots[1] = 1+slots[0]+extentionView.size;
     slots[2] = 1+slots[1]+sizeView.size;
     slots[3] = 1+slots[2]+typeView.size;
@@ -74,6 +78,7 @@ void drawSelectionPointer(xy xy_cursor) {
 
 //TODO: will have to be redone to be able to scroll down in the files
 //BUG: cant view other files
+//TODO: one struct with vectors of info in it then pass that to the function
 //display the filename/size/type/mod/creat/exten
 void displayFileInfo(const std::vector<std::string>& fileNames) {
     xy wd = detectSize();
@@ -85,3 +90,11 @@ void displayFileInfo(const std::vector<std::string>& fileNames) {
 }
 
 
+
+
+void refreshScreen(const std::vector<std::string>& fileNames) {
+    clearScreen();
+    drawBaseLayout();
+    displayFileInfo(fileNames);
+    drawSelectionPointer(currentPointerLocation);
+}

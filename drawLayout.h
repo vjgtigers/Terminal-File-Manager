@@ -34,6 +34,11 @@ void drawBaseLayout();
 void drawSelectionPointer(xy xy_cursor);
 
 
+//can be used to clear the entire screen and redraw
+//helpful if viewing window gets messed up on resize
+void refreshScreen(const std::vector<std::string>& fileNames);
+
+
 
 
 

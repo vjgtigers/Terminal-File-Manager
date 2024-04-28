@@ -28,4 +28,9 @@ xy detectSize();
 void debugOutput(const std::string& s);
 
 
+//used to disable/enable cursor
+//shouldnt really need to be re enabled
+void cursorToggle(bool enable);
+
+
 #endif //MISCFUNCTIONS_H

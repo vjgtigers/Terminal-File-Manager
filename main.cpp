@@ -19,34 +19,37 @@
 #define CSI "\x1b["
 
 
-// 00-00-00 00-00
-
-
 using namespace std;
-
 
 
 fd_display_data nameView {true, 20}; //no particularly recommended size
 fd_display_data extentionView {true, 5};
-fd_display_data sizeView {true, 6}; //recommended size is 6
+fd_display_data sizeView {true, 6}; //recommended size is 6 or 7
 fd_display_data typeView {true, 4}; //TODO: is this nessessary?
 fd_display_data modifiedView {true, 14}; //recommended size is 14
 fd_display_data createdView {true, 14}; //recommended size is 14
 
-struct fdInfo {
-    string name;
-    int type;
-    long long size;
-    string extention;
-};
+
+
 
 //TODO: xy-avalible should probably be in the draw functions to update teh window on resize
 
+vector<string> name;
+
+xy currentPointerLocation {0,2};
 
 int main()
 {
     std::cout << "Hello, World!" << std::endl;
 
+    name.push_back("this is my folder");
+    name.push_back("this is my folder2");
+    name.push_back("this is my folder3");
+    name.push_back("this is my folder4");
+
+    for(int i = 0;i < 100; ++i) {
+        name.push_back("this is a file" +  to_string(i));
+    }
 
     if (!EnableVTMode()) {
         printf("Unable to enter VT processing mode. Quitting.\n");
@@ -57,6 +60,11 @@ int main()
 
 
     drawBaseLayout();
+
+
+    debugOutput("test");
+    displayFileInfo(name);
+    drawSelectionPointer({0,2});
     while(true) {
         const int key = key_press(); // blocks until a key is pressed
         //println("Input is: "+to_string(key)+", \""+(char)key+"\"");
@@ -66,6 +74,9 @@ int main()
 
         if(key == 'q') {toggleVT(false);return 0;}
         if(key == 'c') {clearScreen();}
+
+        if(key == -40) {drawSelectionPointer({currentPointerLocation.x, currentPointerLocation.y+1});}
+        if(key == -38) {drawSelectionPointer({currentPointerLocation.x, currentPointerLocation.y-1});}
     }
 
     return 0;

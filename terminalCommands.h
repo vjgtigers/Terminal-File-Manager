@@ -5,7 +5,7 @@
 #ifndef TERMINALCOMMANDS_H
 #define TERMINALCOMMANDS_H
 
-//sets cursor position, top left being 0,0
+//sets cursor position, top left being (0,0)
 void setCursorPosition(int x, int y);
 
 //used to enable virtule terminal process

@@ -22,7 +22,7 @@ extern struct fd_display_data typeView;
 extern struct fd_display_data modifiedView;
 extern struct fd_display_data createdView;
 
-
+extern int fileSelectionPointer;
 
 
 void displayFileInfo(const std::vector<std::string>& fileNames);

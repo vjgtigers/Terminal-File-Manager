@@ -8,6 +8,7 @@
 #include <thread>
 #include <Windows.h>
 
+#include "drawLayout.h"
 #include "terminalCommands.h"
 
 #define CSI "\x1b["
@@ -28,11 +29,11 @@ xy detectSize() {
 
 }
 
-void debugOutput(const std::string& s) {
+void debugOutput(const std::string& s, const int offset) {
     xy wd = detectSize();
-    setCursorPosition(wd.x-30,wd.y-(wd.y-20));
+    setCursorPosition(wd.x-30,wd.y-(wd.y-20)+offset);
     std::cout << std::string(30, ' ');
-    setCursorPosition(wd.x-30,wd.y-(wd.y-20));
+    setCursorPosition(wd.x-30,wd.y-(wd.y-20)+offset);
     std::cout << s;
 }
 
@@ -57,4 +58,47 @@ tmb_tem tmbDeterminator() {
     else {
         return {(usableY-1)/2, (usableY-1)/2+2, (usableY-1)/2};
     }
+}
+
+
+int globalState;
+
+
+
+
+void updateCursorandPointerSync(const std::vector<std::string>& fileNames) {
+    xy wd = detectSize();
+    tmb_tem tmb = tmbDeterminator();
+    debugOutput(std::to_string(fileSelectionPointer), 1);
+    if (fileSelectionPointer < tmb.top_length) {
+        debugOutput("file:" + fileNames[fileSelectionPointer], 4);
+        drawSelectionPointer({0, fileSelectionPointer+2});
+        if (globalState != 0) {
+            globalState = 0;
+            displayFileInfo(fileNames);
+        }
+    }
+    else if (fileSelectionPointer >= fileNames.size()-tmb.bottom_length) {
+        debugOutput("file:" + fileNames[fileSelectionPointer], 4);
+        int y = wd.y-3 - (fileNames.size()-fileSelectionPointer);
+        drawSelectionPointer({0,y});
+        if (globalState != 2) {
+            globalState = 2;
+            displayFileInfo(fileNames);
+        }
+
+    }
+    else {
+        debugOutput("iN Zone", 5);
+        if (globalState != 1) {
+            globalState = 1;
+            drawSelectionPointer({0, tmb.middle_pos});
+        }
+        displayFileInfo(fileNames);
+
+
+
+
+    }
+
 }

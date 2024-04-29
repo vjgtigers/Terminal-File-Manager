@@ -5,6 +5,7 @@
 #ifndef MISCFUNCTIONS_H
 #define MISCFUNCTIONS_H
 #include <string>
+#include <vector>
 
 
 //can be used for debugging //most likely wont be used in accutall product
@@ -27,6 +28,10 @@ struct tmb_tem {
     int bottom_length;
 };
 
+extern int fileSelectionPointer;
+
+
+void updateCursorandPointerSync(const std::vector<std::string>& fileNames);
 
 tmb_tem tmbDeterminator();
 
@@ -35,12 +40,18 @@ tmb_tem tmbDeterminator();
 xy detectSize();
 
 //debugging output for the time being
-void debugOutput(const std::string& s);
+void debugOutput(const std::string& s, const int offset);
 
 
 //used to disable/enable cursor
 //shouldnt really need to be re enabled
 void cursorToggle(bool enable);
 
+
+//determin where in the file list should be drawn
+//0 - begining till cant anymore
+//2 - working from bottom up, last files to beginning till cant anymore
+//1 - the middle section of files TODO: this
+extern int globalState;
 
 #endif //MISCFUNCTIONS_H

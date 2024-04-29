@@ -52,6 +52,7 @@ void cursorToggle(bool enable);
 //0 - begining till cant anymore
 //2 - working from bottom up, last files to beginning till cant anymore
 //1 - the middle section of files TODO: this
+//3 - special case for if there is less needed slots than is provided
 extern int globalState;
 
 #endif //MISCFUNCTIONS_H

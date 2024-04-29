@@ -69,9 +69,14 @@ int globalState;
 void updateCursorandPointerSync(const std::vector<std::string>& fileNames) {
     xy wd = detectSize();
     tmb_tem tmb = tmbDeterminator();
+    debugOutput("file:" + fileNames[fileSelectionPointer], 4);
     debugOutput(std::to_string(fileSelectionPointer), 1);
-    if (fileSelectionPointer < tmb.top_length) {
-        debugOutput("file:" + fileNames[fileSelectionPointer], 4);
+
+    if (globalState == 3) {
+        drawSelectionPointer({0, fileSelectionPointer+2});
+    }
+
+    else if (fileSelectionPointer < tmb.top_length) {
         drawSelectionPointer({0, fileSelectionPointer+2});
         if (globalState != 0) {
             globalState = 0;
@@ -79,7 +84,6 @@ void updateCursorandPointerSync(const std::vector<std::string>& fileNames) {
         }
     }
     else if (fileSelectionPointer >= fileNames.size()-tmb.bottom_length) {
-        debugOutput("file:" + fileNames[fileSelectionPointer], 4);
         int y = wd.y-3 - (fileNames.size()-fileSelectionPointer);
         drawSelectionPointer({0,y});
         if (globalState != 2) {

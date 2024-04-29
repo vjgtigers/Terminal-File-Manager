@@ -50,14 +50,19 @@ int main()
     name.push_back("this is my folder3");
     name.push_back("this is my folder4");
 
-    for(int i = 0;i < 100; ++i) {
-        name.push_back("this is a file" +  to_string(i));
+    // for(int i = 0;i < 100; ++i) {
+    //     name.push_back("this is a file" +  to_string(i));
+    // }
+    // name.at(99) = "cmtnchaonsetuhtnoaeus";
+    //
+     for (int i = 0; i < 14; ++i) {
+         name.push_back("new entyf" +to_string(i));
+     }
+    xy xy2 = detectSize();
+    if (xy2.y >= name.size()) {
+        globalState = 3;
     }
-    name.at(99) = "cmtnchaonsetuhtnoaeus";
 
-    for (int i = 0; i < 14; ++i) {
-        name.push_back("new entyf" +to_string(i));
-    }
     //initilization settings
     if (!EnableVTMode()) {printf("Unable to enter VT processing mode. Quitting.\n");return -1;}
     toggleVT(true);

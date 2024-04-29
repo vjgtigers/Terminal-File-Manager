@@ -85,7 +85,18 @@ void displayFileInfo(const std::vector<std::string>& fileNames) {
     tmb_tem tmb = tmbDeterminator();
     debugOutput(std::to_string(tmb.top_length) + ' ' + std::to_string(tmb.middle_pos) + ' '+ std::to_string(tmb.bottom_length), 3);
     debugOutput(std::to_string(currentPointerLocation.x + ' ') + std::to_string(currentPointerLocation.y), 2);
-    if (currentPointerLocation.y < tmb.middle_pos) { //this might not work with new selection pointer
+
+    if (fileNames.size() <= wd.y-5) {
+        for (int i = 2; i <fileNames.size()+2 && i < wd.y-3; ++i) {
+            setCursorPosition(1, i);
+            std::cout << fileNames[i-2].substr(0,20);
+            if (fileNames[i-2].length() < 20) {
+                std::cout << std::string(20 - fileNames[i-2].length(), ' ');
+            }
+        }
+    }
+
+    else if (currentPointerLocation.y < tmb.middle_pos) { //this might not work with new selection pointer
         for (int i = 2; i < fileNames.size()+2 && i < wd.y-3; ++i) {
             setCursorPosition(1, i);
             std::cout << fileNames[i-2].substr(0,20);// << ((20-fileNames[i-2].length() > 0) ? std::string(20-fileNames[i-2].length(), ' '):std::string(0, ' '));
@@ -94,6 +105,7 @@ void displayFileInfo(const std::vector<std::string>& fileNames) {
             }
         }
     }
+
     else if (currentPointerLocation.y > tmb.middle_pos) {
         for (int i = fileNames.size()-1, y =wd.y-4;i >= 0 && y >= 2; i--, y--) {
             setCursorPosition(1,y); //(fileName[i].length()-20 > 0) ? std::string(fileName[i].length()-20, ' ')
@@ -103,8 +115,6 @@ void displayFileInfo(const std::vector<std::string>& fileNames) {
                 std::cout << std::string(20-fileNames[i].length(), ' ');
             }
         }
-
-
     }
 
     else if (currentPointerLocation.y = tmb.middle_pos) {
@@ -115,8 +125,6 @@ void displayFileInfo(const std::vector<std::string>& fileNames) {
                 std::cout << std::string(20-fileNames[fileSelectionPointer-y].length(), ' ');
             }
         }
-
-
         for (int i = tmb.middle_pos+1, y = 1; i < wd.y-3 && y != -1; ++i, ++y) {
             setCursorPosition(1, i);
             std::cout << fileNames[fileSelectionPointer+y].substr(0,20);
@@ -124,10 +132,6 @@ void displayFileInfo(const std::vector<std::string>& fileNames) {
                 std::cout << std::string(20-fileNames[fileSelectionPointer+y].length(), ' ');
             }
         }
-
-
-
-
     }
 
     debugOutput("done", 0);

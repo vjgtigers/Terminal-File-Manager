@@ -82,11 +82,30 @@ void drawSelectionPointer(xy xy_cursor) {
 //display the filename/size/type/mod/creat/exten
 void displayFileInfo(const std::vector<std::string>& fileNames) {
     xy wd = detectSize();
-    for (int i = 2; i < fileNames.size()+2 && i < wd.y-3; ++i) {
-        setCursorPosition(1, i);
-        std::cout << fileNames[i-2];
+    tmb_tem tmb = tmbDeterminator();
+    if (currentPointerLocation.y < tmb.middle_pos) {
+        for (int i = 2; i < fileNames.size()+2 && i < wd.y-3; ++i) {
+            setCursorPosition(1, i);
+            std::cout << fileNames[i-2].substr(0,20);// << ((20-fileNames[i-2].length() > 0) ? std::string(20-fileNames[i-2].length(), ' '):std::string(0, ' '));
+            if (fileNames[i-2].length() < 20) {
+                std::cout << std::string(20- fileNames[i-2].length(), ' ');
+            }
+        }
+    }
+    else if (currentPointerLocation.y > tmb.middle_pos) {
+        for (int i = fileNames.size()-1, y =wd.y-4;i >= 0 && y >= 2; i--, y--) {
+            setCursorPosition(1,y); //(fileName[i].length()-20 > 0) ? std::string(fileName[i].length()-20, ' ')
+            //debugOutput(fileNames[i]);
+            std::cout << fileNames[i].substr(0,20);// << ((20-fileNames[i].length() > 0) ? std::string(""): "");
+            if (fileNames[i].length() < 20) {
+                std::cout << std::string(20-fileNames[i].length(), ' ');
+            }
+        }
+
+
     }
     debugOutput("done");
+    std::cout << tmb.top_length << " " << tmb.middle_pos << " " << tmb.bottom_length;
 }
 
 

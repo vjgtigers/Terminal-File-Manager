@@ -31,6 +31,9 @@ fd_display_data createdView {true, 14}; //recommended size is 14
 
 
 
+//TODO: generate a vector with all the outputs then display them all at once
+
+//top length . center point . bottem length
 
 //TODO: xy-avalible should probably be in the draw functions to update teh window on resize
 
@@ -42,7 +45,7 @@ int main()
 {
     std::cout << "Hello, World!" << std::endl;
 
-    name.push_back("this is my folder");
+    name.push_back("this is my foldeoeueoueur");
     name.push_back("this is my folder2");
     name.push_back("this is my folder3");
     name.push_back("this is my folder4");
@@ -50,7 +53,7 @@ int main()
     for(int i = 0;i < 100; ++i) {
         name.push_back("this is a file" +  to_string(i));
     }
-
+    name.at(99) = "cmtnchaonsetuhtnoaeus";
     //initilization settings
     if (!EnableVTMode()) {printf("Unable to enter VT processing mode. Quitting.\n");return -1;}
     toggleVT(true);
@@ -64,6 +67,8 @@ int main()
     debugOutput("test");
     displayFileInfo(name);
     drawSelectionPointer({0,2});
+
+
     while(true) {
         const int key = key_press(); // blocks until a key is pressed
         //println("Input is: "+to_string(key)+", \""+(char)key+"\"");
@@ -76,6 +81,9 @@ int main()
 
         if(key == 'r') {
             refreshScreen(name);
+        }
+        if(key == 'R') {
+            displayFileInfo(name);
         }
 
         if(key == -40) {drawSelectionPointer({currentPointerLocation.x, currentPointerLocation.y+1});}

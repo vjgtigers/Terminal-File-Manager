@@ -46,3 +46,15 @@ void cursorToggle(bool enable) {
     }
 }
 
+
+tmb_tem tmbDeterminator() {
+    xy wd = detectSize();
+    int usableY = wd.y-5;
+    //std::cout << usableY/2-1 <<' '<< usableY/2 <<' '<<usableY/2;
+    if (usableY % 2 == 0) {
+        return {usableY/2-1, usableY/2+1 ,usableY/2};
+    }
+    else {
+        return {(usableY-1)/2, (usableY-1)/2+2, (usableY-1)/2};
+    }
+}

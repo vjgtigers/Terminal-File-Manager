@@ -20,6 +20,16 @@ struct xy {
     int y;
 };
 
+
+struct tmb_tem {
+    int top_length;
+    int middle_pos;
+    int bottom_length;
+};
+
+
+tmb_tem tmbDeterminator();
+
 //detect the amout of "rows/coulums" that are avalible
 //doeset work if you scroll in/out to make text larger or smaller
 xy detectSize();

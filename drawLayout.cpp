@@ -10,14 +10,13 @@
 #include "terminalCommands.h"
 
 
-
 void drawBaseLayout() {
     clearScreen();
     setCursorPosition(0,1);
     xy wd =  detectSize();
-    std::cout << std::string(wd.x,char(196));
+    std::cout << std::string(wd.x,renderCodes.divHori);
     setCursorPosition(0, wd.y-3);
-    std::cout << std::string(wd.x,char(196));
+    std::cout << std::string(wd.x,renderCodes.divHori);
     setCursorPosition(5,5);
 
     int slots[5];
@@ -33,21 +32,21 @@ void drawBaseLayout() {
 
     for (int i =2; i < wd.y-3; ++i) {
         setCursorPosition(slots[0],i);
-        std::cout << char(179);
+        std::cout << renderCodes.divVert;
         setCursorPosition(slots[1], i);
-        std::cout << char(179);
+        std::cout << renderCodes.divVert;
         setCursorPosition(slots[2], i);
-        std::cout << char(179);
+        std::cout << renderCodes.divVert;
         setCursorPosition(slots[3], i);
-        std::cout << char(179);
+        std::cout << renderCodes.divVert;
         setCursorPosition(slots[4], i);
-        std::cout << char(179);
+        std::cout << renderCodes.divVert;
     }
     for(int i: slots) {
         setCursorPosition(i,1);
-        std::cout << char(194);
+        std::cout << renderCodes.topCombine;
         setCursorPosition(i, wd.y-3);
-        std::cout << char(193);
+        std::cout << renderCodes.bottomCombine;
     }
 
 
@@ -64,7 +63,7 @@ void drawSelectionPointer(xy xy_cursor) {
     setCursorPosition(currentPointerLocation.x, currentPointerLocation.y);
     std::cout << ' ';
     setCursorPosition(xy_cursor.x, xy_cursor.y);
-    std::cout << char(62);
+    std::cout << renderCodes.pointer;
     currentPointerLocation.x = xy_cursor.x;
     currentPointerLocation.y = xy_cursor.y;
 }

@@ -108,6 +108,6 @@ void globalStateCalculator() {
     tmb_tem tmb = tmbDeterminator();
     if (tmb.bottom_length + tmb.top_length + 1 >= fileInformation.size()) {
         globalState = 3;
-    } //TODO : update global state on size rechange/refresh
+    } //TODO : update global state on size rechange/refresh - DONE?
 
 }

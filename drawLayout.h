@@ -22,9 +22,22 @@ extern struct fd_display_data modifiedView;
 extern struct fd_display_data createdView;
 
 extern int fileSelectionPointer;
+
+struct renderCodesTemplate {
+    char pointer;
+    char divVert;
+    char divHori;
+    char topCombine;
+    char bottomCombine;
+};
+
+extern renderCodesTemplate renderCodes;
+
+// ReSharper disable once CppDeclarationSpecifierWithoutDeclarators
+typedef struct fileInfoStruct;
+// ReSharper disable once CppDeclarationSpecifierWithoutDeclarators
 typedef struct xy;
 
-typedef struct fileInfoStruct;
 //used to draw the base outline of the main file view screen
 void drawBaseLayout();
 

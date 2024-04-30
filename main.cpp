@@ -44,8 +44,19 @@ xy currentPointerLocation {0,2};
 vector<fileInfoStruct> fileInformation;
 
 
+
+
+renderCodesTemplate renderCodes = {char(62), char(179), char(196), char(194), char(193)};
+
+
+
+
+
+
+
 int main()
 {
+    system("PAUSE");
     fileInformation.push_back({"oeu","oaeu","oaeu", "aoeu", "ooeu"});
     fileInformation.push_back({"404","5","oaeuuuaeu","33","oaeu[2"});
     //YOU CAN NOT PUT THINGS THAT DEPEND ON TERMINAL SIZE UP HERE
@@ -58,7 +69,7 @@ int main()
     fileSelectionPointer = 0;
 
 
-    for (int i = 0; i < 40; ++i) {
+    for (int i = 0; i < 60; ++i) {
         fileInformation.push_back({"new entry" +to_string(i),to_string(i),to_string(i),to_string(i),to_string(i)});
     }
 

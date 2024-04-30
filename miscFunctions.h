@@ -30,7 +30,8 @@ struct tmb_tem {
     int bottom_length;
 };
 
-extern int fileSelectionPointer;
+
+// ReSharper disable once CppDeclarationSpecifierWithoutDeclarators
 typedef struct fileInfoStruct;
 extern std::vector<fileInfoStruct> fileNames;
 

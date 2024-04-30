@@ -17,10 +17,13 @@ bool EnableVTMode();
 void toggleVT(bool toggle);
 
 
-//clear terminal screen TODO: make better
-//[[deprecated("needs to be redone with a better clear method but still functional")]]
+//updated clear screen - appears to be faster than original
+//original code (https://cplusplus.com/articles/4z18T05o/)
+//(GetConsoleScreenBufferInfo) - NOT RECCOMENDED (https://learn.microsoft.com/en-us/windows/console/fillconsoleoutputattribute)
 void clearScreen();
 
+
+//init window and viewer
 int engineInit();
 
 #endif //TERMINALCOMMANDS_H

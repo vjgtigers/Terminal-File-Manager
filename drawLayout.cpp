@@ -76,8 +76,6 @@ void drawSelectionPointer(xy xy_cursor) {
 //TODO: add vector for each type for files and get them all printed
 
 
-//TODO: will have to be redone to be able to scroll down in the files
-//BUG: cant view other files
 //TODO: one struct with vectors of info in it then pass that to the function
 //display the filename/size/type/mod/creat/exten
 void displayFileInfo(const std::vector<std::string>& fileNames) {

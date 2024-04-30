@@ -21,7 +21,7 @@ struct xy {
     int y;
 };
 
-
+//struct used for tmbDeterminator()
 struct tmb_tem {
     int top_length;
     int middle_pos;
@@ -30,9 +30,10 @@ struct tmb_tem {
 
 extern int fileSelectionPointer;
 
-
+//calculate where the selection cursor is to be drawn when filepointer changes
 void updateCursorandPointerSync(const std::vector<std::string>& fileNames);
 
+//calculates the centerpoint of file drawing and the amount of files that can be displayed above and below
 tmb_tem tmbDeterminator();
 
 //detect the amout of "rows/coulums" that are avalible
@@ -51,7 +52,7 @@ void cursorToggle(bool enable);
 //determin where in the file list should be drawn
 //0 - begining till cant anymore
 //2 - working from bottom up, last files to beginning till cant anymore
-//1 - the middle section of files TODO: this
+//1 - the middle section of files
 //3 - special case for if there is less needed slots than is provided
 extern int globalState;
 

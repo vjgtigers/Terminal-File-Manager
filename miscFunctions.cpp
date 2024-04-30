@@ -93,16 +93,11 @@ void updateCursorandPointerSync(const std::vector<std::string>& fileNames) {
 
     }
     else {
-        debugOutput("iN Zone", 5);
         if (globalState != 1) {
             globalState = 1;
             drawSelectionPointer({0, tmb.middle_pos});
         }
         displayFileInfo(fileNames);
-
-
-
-
     }
 
 }

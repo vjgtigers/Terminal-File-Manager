@@ -143,9 +143,9 @@ void refreshScreen(const std::vector<fileInfoStruct>& fileNames) {
     cursorToggle(false);
     clearScreen();
     drawBaseLayout();
-    displayFileInfo(fileNames);
     currentPointerLocation = {0,2};
     fileSelectionPointer = 0;
+    displayFileInfo(fileNames);
     drawSelectionPointer(currentPointerLocation);
     globalStateCalculator();
 }

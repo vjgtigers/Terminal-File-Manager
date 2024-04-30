@@ -64,10 +64,10 @@ int globalState;
 
 
 
-void updateCursorandPointerSync(const std::vector<std::string>& fileNames) {
+void updateCursorandPointerSync(const std::vector<fileInfoStruct>& fileNames) {
     xy wd = detectSize();
     tmb_tem tmb = tmbDeterminator();
-    debugOutput("file:" + fileNames[fileSelectionPointer], 4);
+    debugOutput("file:" + fileNames[fileSelectionPointer].name, 4);
     debugOutput(std::to_string(fileSelectionPointer), 1);
 
     if (globalState == 3) {

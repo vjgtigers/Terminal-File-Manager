@@ -7,6 +7,8 @@
 #include <string>
 #include <vector>
 
+#include "drawLayout.h"
+
 
 //can be used for debugging //most likely wont be used in accutall product
 
@@ -29,9 +31,11 @@ struct tmb_tem {
 };
 
 extern int fileSelectionPointer;
+typedef struct fileInfoStruct;
+extern std::vector<fileInfoStruct> fileNames;
 
 //calculate where the selection cursor is to be drawn when filepointer changes
-void updateCursorandPointerSync(const std::vector<std::string>& fileNames);
+void updateCursorandPointerSync(const std::vector<fileInfoStruct>& fileNames);
 
 //calculates the centerpoint of file drawing and the amount of files that can be displayed above and below
 tmb_tem tmbDeterminator();

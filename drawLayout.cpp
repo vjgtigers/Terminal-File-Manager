@@ -70,23 +70,23 @@ void drawSelectionPointer(xy xy_cursor) {
 }
 
 
-//TODO: add vector for each type for files and get them all printed
 
 
-//TODO: one struct with vectors of info in it then pass that to the function
+
+
 //display the filename/size/type/mod/creat/exten
-void displayFileInfo(const std::vector<std::string>& fileNames) {
+void displayFileInfo(const std::vector<fileInfoStruct>& fileNames) {
     xy wd = detectSize();
     tmb_tem tmb = tmbDeterminator();
     debugOutput(std::to_string(tmb.top_length) + ' ' + std::to_string(tmb.middle_pos) + ' '+ std::to_string(tmb.bottom_length), 3);
     debugOutput(std::to_string(currentPointerLocation.x + ' ') + std::to_string(currentPointerLocation.y), 2);
-
+    debugOutput("SIZE: " + std::to_string(fileNames.size()), -3);
     if (fileNames.size() <= wd.y-5) {
         for (int i = 2; i <fileNames.size()+2 && i < wd.y-3; ++i) {
             setCursorPosition(1, i);
-            std::cout << fileNames[i-2].substr(0,nameView.size);
-            if (fileNames[i-2].length() < nameView.size) {
-                std::cout << std::string(nameView.size - fileNames[i-2].length(), ' ');
+            std::cout << fileNames[i-2].name.substr(0,nameView.size);
+            if (fileNames[i-2].name.length() < nameView.size) {
+                std::cout << std::string(nameView.size - fileNames[i-2].name.length(), ' ');
             }
         }
     }
@@ -94,9 +94,9 @@ void displayFileInfo(const std::vector<std::string>& fileNames) {
     else if (currentPointerLocation.y < tmb.middle_pos) { //this might not work with new selection pointer
         for (int i = 2; i < fileNames.size()+2 && i < wd.y-3; ++i) {
             setCursorPosition(1, i);
-            std::cout << fileNames[i-2].substr(0,nameView.size);// << ((20-fileNames[i-2].length() > 0) ? std::string(20-fileNames[i-2].length(), ' '):std::string(0, ' '));
-            if (fileNames[i-2].length() < nameView.size) {
-                std::cout << std::string(nameView.size - fileNames[i-2].length(), ' ');
+            std::cout << fileNames[i-2].name.substr(0,nameView.size);// << ((20-fileNames[i-2].length() > 0) ? std::string(20-fileNames[i-2].length(), ' '):std::string(0, ' '));
+            if (fileNames[i-2].name.length() < nameView.size) {
+                std::cout << std::string(nameView.size - fileNames[i-2].name.length(), ' ');
             }
         }
     }
@@ -105,9 +105,9 @@ void displayFileInfo(const std::vector<std::string>& fileNames) {
         for (int i = fileNames.size()-1, y =wd.y-4;i >= 0 && y >= 2; i--, y--) {
             setCursorPosition(1,y); //(fileName[i].length()-20 > 0) ? std::string(fileName[i].length()-20, ' ')
             //debugOutput(fileNames[i]);
-            std::cout << fileNames[i].substr(0,nameView.size);// << ((20-fileNames[i].length() > 0) ? std::string(""): "");
-            if (fileNames[i].length() < nameView.size) {
-                std::cout << std::string(nameView.size-fileNames[i].length(), ' ');
+            std::cout << fileNames[i].name.substr(0,nameView.size);// << ((20-fileNames[i].length() > 0) ? std::string(""): "");
+            if (fileNames[i].name.length() < nameView.size) {
+                std::cout << std::string(nameView.size-fileNames[i].name.length(), ' ');
             }
         }
     }
@@ -115,16 +115,16 @@ void displayFileInfo(const std::vector<std::string>& fileNames) {
     else if (currentPointerLocation.y = tmb.middle_pos) {
         for (int i = tmb.middle_pos, y = 0; i > 1 && y != -1; --i, ++y) {
             setCursorPosition(1, i);
-            std::cout << fileNames[fileSelectionPointer-y].substr(0,nameView.size);
-            if (fileNames[fileSelectionPointer-y].length() < nameView.size) {
-                std::cout << std::string(nameView.size-fileNames[fileSelectionPointer-y].length(), ' ');
+            std::cout << fileNames[fileSelectionPointer-y].name.substr(0,nameView.size);
+            if (fileNames[fileSelectionPointer-y].name.length() < nameView.size) {
+                std::cout << std::string(nameView.size-fileNames[fileSelectionPointer-y].name.length(), ' ');
             }
         }
         for (int i = tmb.middle_pos+1, y = 1; i < wd.y-3 && y != -1; ++i, ++y) {
             setCursorPosition(1, i);
-            std::cout << fileNames[fileSelectionPointer+y].substr(0,nameView.size);
-            if (fileNames[fileSelectionPointer+y].length() < nameView.size) {
-                std::cout << std::string(nameView.size-fileNames[fileSelectionPointer+y].length(), ' ');
+            std::cout << fileNames[fileSelectionPointer+y].name.substr(0,nameView.size);
+            if (fileNames[fileSelectionPointer+y].name.length() < nameView.size) {
+                std::cout << std::string(nameView.size-fileNames[fileSelectionPointer+y].name.length(), ' ');
             }
         }
     }
@@ -136,23 +136,12 @@ void displayFileInfo(const std::vector<std::string>& fileNames) {
 
 
 
-void refreshScreen(const std::vector<std::string>& fileNames) {
+void refreshScreen(const std::vector<fileInfoStruct>& fileNames) {
+    cursorToggle(false);
     clearScreen();
     drawBaseLayout();
     displayFileInfo(fileNames);
     drawSelectionPointer(currentPointerLocation);
 }
-
-
-
-extern std::vector<test>& nekq;//TODO: THIS IS PART OF A WORKING IMPLEMENTATION
-void idktest(std::vector<test>& nekq) {//TODO: THIS IS PART OF A WORKING IMPLEMENTATION
-    for (int i = 0; i < nekq.size(); ++i) {
-        debugOutput(nekq[i].aoeu, -2);
-        system("PAUSE>nul");
-    }
-
-}
-
 
 

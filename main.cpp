@@ -30,57 +30,41 @@ fd_display_data createdView {true, 14}; //recommended size is 14
 
 
 
-//TODO: generate a vector with all the outputs then display them all at once
 
 //top length . center point . bottem length
 int fileSelectionPointer = 0;
 //TODO: xy-avalible should probably be in the draw functions to update teh window on resize
 
-vector<string> name;
+
 
 xy currentPointerLocation {0,2};
 
 
 
-vector<test> aoeuaa;//TODO: THIS IS PART OF A WORKING IMPLEMENTATION
-//TODO: THIS IS PART OF A WORKING IMPLEMENTATION//TODO: THIS IS PART OF A WORKING IMPLEMENTATION//TODO: THIS IS PART OF A WORKING IMPLEMENTATION//TODO: THIS IS PART OF A WORKING IMPLEMENTATION//TODO: THIS IS PART OF A WORKING IMPLEMENTATION//TODO: THIS IS PART OF A WORKING IMPLEMENTATION//TODO: THIS IS PART OF A WORKING IMPLEMENTATION//TODO: THIS IS PART OF A WORKING IMPLEMENTATION//TODO: THIS IS PART OF A WORKING IMPLEMENTATION
-//TODO: THIS IS PART OF A WORKING IMPLEMENTATION
-//TODO: THIS IS PART OF A WORKING IMPLEMENTATION
-//TODO: THIS IS PART OF A WORKING IMPLEMENTATION
-//TODO: THIS IS PART OF A WORKING IMPLEMENTATION
+vector<fileInfoStruct> fileInformation;
+
 
 int main()
 {
-    aoeuaa.push_back({"oeu","oaeu","oaeu"});//TODO: THIS IS PART OF A WORKING IMPLEMENTATION
-    aoeuaa.push_back({"404","5","oaeuuuaeu"});
+    fileInformation.push_back({"oeu","oaeu","oaeu", "aoeu", "ooeu"});
+    fileInformation.push_back({"404","5","oaeuuuaeu","33","oaeu[2"});
     //YOU CAN NOT PUT THINGS THAT DEPEND ON TERMINAL SIZE UP HERE
     //initilization settings
     if (engineInit() == -1) {return -1;}
     //end init settings
-    idktest(aoeuaa);//TODO: THIS IS PART OF A WORKING IMPLEMENTATION
+
 
 
     fileSelectionPointer = 0;
     globalState = 0;
-    name.push_back("this is my foldeoeueoueur");
-    name.push_back("this is my folder2");
-    name.push_back("this is my folder3");
-    name.push_back("this is my folder4");
 
-    // for(int i = 0;i < 100; ++i) {
-    //     name.push_back("this is a file" +  to_string(i));
-    // }
-    // name.at(99) = "cmtnchaonsetuhtnoaeus";
-    //
-     for (int i = 0; i < 31; ++i) {
-         name.push_back("new entyf" +to_string(i));
-     }
+    for (int i = 0; i < 23; ++i) {
+        fileInformation.push_back({"new entry" +to_string(i),to_string(i),to_string(i),to_string(i),to_string(i)});
+    }
 
 
-
-    xy xy2 = detectSize();
     tmb_tem tmb = tmbDeterminator();
-    if (tmb.bottom_length + tmb.top_length + 1 >= name.size()) {
+    if (tmb.bottom_length + tmb.top_length + 1 >= fileInformation.size()) {
         globalState = 3;
     } //TODO : update global state on size rechange/refresh
 
@@ -90,7 +74,7 @@ int main()
 
 
     debugOutput("test", 0);
-    displayFileInfo(name);
+    displayFileInfo(fileInformation);
 
     drawSelectionPointer({0,2});
 
@@ -106,15 +90,15 @@ int main()
         if(key == 'c') {clearScreen();}
 
         if(key == 'r') {
-            refreshScreen(name);
+            refreshScreen(fileInformation);
         }
         if(key == 'R') {
-            displayFileInfo(name);
+            displayFileInfo(fileInformation);
         }
 
 
-        if(key == -40) {(fileSelectionPointer+1 < name.size()) ? (fileSelectionPointer += 1) : true; updateCursorandPointerSync(name); }
-        if(key == -38) {(fileSelectionPointer > 0) ? (fileSelectionPointer -= 1) : true; updateCursorandPointerSync(name); }
+        if(key == -40) {(fileSelectionPointer+1 < fileInformation.size()) ? (fileSelectionPointer += 1) : true; updateCursorandPointerSync(fileInformation); }
+        if(key == -38) {(fileSelectionPointer > 0) ? (fileSelectionPointer -= 1) : true; updateCursorandPointerSync(fileInformation); }
 
         //if(key == -40) {drawSelectionPointer({currentPointerLocation.x, currentPointerLocation.y+1});}
         //if(key == -38) {drawSelectionPointer({currentPointerLocation.x, currentPointerLocation.y-1});}

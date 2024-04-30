@@ -22,10 +22,9 @@ extern struct fd_display_data modifiedView;
 extern struct fd_display_data createdView;
 
 extern int fileSelectionPointer;
+typedef struct xy;
 
-
-void displayFileInfo(const std::vector<std::string>& fileNames);
-
+typedef struct fileInfoStruct;
 //used to draw the base outline of the main file view screen
 void drawBaseLayout();
 
@@ -35,18 +34,25 @@ void drawSelectionPointer(xy xy_cursor);
 
 //can be used to clear the entire screen and redraw
 //helpful if viewing window gets messed up on resize
-void refreshScreen(const std::vector<std::string>& fileNames);
+void refreshScreen(const std::vector<fileInfoStruct>& fileNames);
 
 
 
 
-struct test {//TODO: THIS IS PART OF A WORKING IMPLEMENTATION
-    std::string aoeu;
+struct fileInfoStruct {
     std::string name;
-    std::string aoeuo;
+    std::string extention;
+    std::string size;
+    std::string modDate;
+    std::string createDate;
 };
-extern std::vector<test> aoeuaa;//TODO: THIS IS PART OF A WORKING IMPLEMENTATION
-void idktest(std::vector<test>& nekq);//TODO: THIS IS PART OF A WORKING IMPLEMENTATION
+extern std::vector<fileInfoStruct> fileInformation;
+
+
+
+
+void displayFileInfo(const std::vector<fileInfoStruct>& fileNames);
+
 
 
 #endif //DRAWLAYOUT_H

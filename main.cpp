@@ -40,9 +40,17 @@ int fileSelectionPointer = 0;
 vector<string> name;
 
 xy currentPointerLocation {0,2};
+
+
+
+
 int main()
 {
-    std::cout << "Hello, World!" << std::endl;
+    //YOU CAN NOT PUT THINGS THAT DEPEND ON TERMINAL SIZE UP HERE
+    //initilization settings
+    if (engineInit() == -1) {return -1;}
+    //end init settings
+
     fileSelectionPointer = 0;
     globalState = 0;
     name.push_back("this is my foldeoeueoueur");
@@ -55,20 +63,19 @@ int main()
     // }
     // name.at(99) = "cmtnchaonsetuhtnoaeus";
     //
-     for (int i = 0; i < 14; ++i) {
+     for (int i = 0; i < 31; ++i) {
          name.push_back("new entyf" +to_string(i));
      }
-    xy xy2 = detectSize();
-    if (xy2.y >= name.size()) {
-        globalState = 3;
-    }
 
-    //initilization settings
-    if (!EnableVTMode()) {printf("Unable to enter VT processing mode. Quitting.\n");return -1;}
-    toggleVT(true);
-    ShowScrollBar(GetConsoleWindow(), SB_VERT, 0);
-    cursorToggle(false);
-    //end init settings
+
+
+    xy xy2 = detectSize();
+    tmb_tem tmb = tmbDeterminator();
+    if (tmb.bottom_length + tmb.top_length + 1 >= name.size()) {
+        globalState = 3;
+    } //TODO : update global state on size rechange/refresh
+
+
 
     drawBaseLayout();
 
@@ -79,6 +86,7 @@ int main()
     drawSelectionPointer({0,2});
 
     while(true) {
+        debugOutput("Global State: " + to_string(globalState),-1);
         const int key = key_press(); // blocks until a key is pressed
         //println("Input is: "+to_string(key)+", \""+(char)key+"\"");
         xy available = detectSize();

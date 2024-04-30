@@ -21,4 +21,6 @@ void toggleVT(bool toggle);
 //[[deprecated("needs to be redone with a better clear method but still functional")]]
 void clearScreen();
 
+int engineInit();
+
 #endif //TERMINALCOMMANDS_H

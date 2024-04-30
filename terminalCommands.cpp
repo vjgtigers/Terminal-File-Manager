@@ -9,6 +9,8 @@
 #include <iostream>
 #include <Windows.h>
 
+#include "miscFunctions.h"
+
 //commonly used escape sequence for commands
 #define CSI "\x1b["
 
@@ -55,4 +57,13 @@ void toggleVT(bool toggle) {
 
 void clearScreen() {
     system("CLS");
+}
+
+
+int engineInit() {
+    if (!EnableVTMode()) {printf("Unable to enter VT processing mode. Quitting.\n");return -1;}
+    toggleVT(true);
+    ShowScrollBar(GetConsoleWindow(), SB_VERT, 0);
+    cursorToggle(false);
+    return 1;
 }

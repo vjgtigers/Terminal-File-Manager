@@ -50,9 +50,10 @@ extern std::vector<fileInfoStruct> fileInformation;
 
 
 
-
+//display the filename/
 void displayFileInfo(const std::vector<fileInfoStruct>& fileNames);
 
-
+//display more information about the files
+void extendedFileInfoDisplay();
 
 #endif //DRAWLAYOUT_H

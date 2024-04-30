@@ -70,11 +70,15 @@ void drawSelectionPointer(xy xy_cursor) {
 }
 
 
+void extendedFileInfoDisplay() {
+
+
+
+}
 
 
 
 
-//display the filename/size/type/mod/creat/exten
 void displayFileInfo(const std::vector<fileInfoStruct>& fileNames) {
     xy wd = detectSize();
     tmb_tem tmb = tmbDeterminator();
@@ -141,7 +145,10 @@ void refreshScreen(const std::vector<fileInfoStruct>& fileNames) {
     clearScreen();
     drawBaseLayout();
     displayFileInfo(fileNames);
+    currentPointerLocation = {0,2};
+    fileSelectionPointer = 0;
     drawSelectionPointer(currentPointerLocation);
+    globalStateCalculator();
 }
 
 

@@ -56,20 +56,15 @@ int main()
 
 
     fileSelectionPointer = 0;
-    globalState = 0;
 
-    for (int i = 0; i < 23; ++i) {
+
+    for (int i = 0; i < 40; ++i) {
         fileInformation.push_back({"new entry" +to_string(i),to_string(i),to_string(i),to_string(i),to_string(i)});
     }
 
 
-    tmb_tem tmb = tmbDeterminator();
-    if (tmb.bottom_length + tmb.top_length + 1 >= fileInformation.size()) {
-        globalState = 3;
-    } //TODO : update global state on size rechange/refresh
-
-
-
+    //TODO: globalStateCalc needs to be in the function that reads in files to determin global state then
+    globalStateCalculator();
     drawBaseLayout();
 
 

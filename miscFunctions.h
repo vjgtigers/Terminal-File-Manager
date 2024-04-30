@@ -60,4 +60,7 @@ void cursorToggle(bool enable);
 //3 - special case for if there is less needed slots than is provided
 extern int globalState;
 
+//used to calclate global state - needed for refreshing screen with diffrent size
+void globalStateCalculator();
+
 #endif //MISCFUNCTIONS_H

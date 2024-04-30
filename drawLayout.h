@@ -18,7 +18,6 @@ struct fd_display_data {
 extern struct fd_display_data nameView;
 extern struct fd_display_data extentionView;
 extern struct fd_display_data sizeView;
-extern struct fd_display_data typeView;
 extern struct fd_display_data modifiedView;
 extern struct fd_display_data createdView;
 
@@ -42,8 +41,8 @@ void refreshScreen(const std::vector<std::string>& fileNames);
 
 
 struct test {//TODO: THIS IS PART OF A WORKING IMPLEMENTATION
-
-    int aoeu;
+    std::string aoeu;
+    std::string name;
     std::string aoeuo;
 };
 extern std::vector<test> aoeuaa;//TODO: THIS IS PART OF A WORKING IMPLEMENTATION

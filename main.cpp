@@ -25,7 +25,6 @@ using namespace std;
 fd_display_data nameView {true, 20}; //no particularly recommended size
 fd_display_data extentionView {true, 5};
 fd_display_data sizeView {true, 6}; //recommended size is 6 or 7
-fd_display_data typeView {true, 4}; //TODO: is this nessessary?
 fd_display_data modifiedView {true, 14}; //recommended size is 14
 fd_display_data createdView {true, 14}; //recommended size is 14
 
@@ -52,8 +51,8 @@ vector<test> aoeuaa;//TODO: THIS IS PART OF A WORKING IMPLEMENTATION
 
 int main()
 {
-    aoeuaa.push_back({2,"oaeu"});//TODO: THIS IS PART OF A WORKING IMPLEMENTATION
-    aoeuaa.push_back({5,"oaeuuuaeu"});
+    aoeuaa.push_back({"oeu","oaeu","oaeu"});//TODO: THIS IS PART OF A WORKING IMPLEMENTATION
+    aoeuaa.push_back({"404","5","oaeuuuaeu"});
     //YOU CAN NOT PUT THINGS THAT DEPEND ON TERMINAL SIZE UP HERE
     //initilization settings
     if (engineInit() == -1) {return -1;}

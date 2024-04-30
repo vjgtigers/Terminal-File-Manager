@@ -62,32 +62,40 @@ tmb_tem tmbDeterminator() {
 int globalState;
 
 
-void updateCursorandPointerSync(const std::vector<std::string> &fileNames) {
+
+
+void updateCursorandPointerSync(const std::vector<std::string>& fileNames) {
     xy wd = detectSize();
     tmb_tem tmb = tmbDeterminator();
     debugOutput("file:" + fileNames[fileSelectionPointer], 4);
     debugOutput(std::to_string(fileSelectionPointer), 1);
 
     if (globalState == 3) {
-        drawSelectionPointer({0, fileSelectionPointer + 2});
-    } else if (fileSelectionPointer < tmb.top_length) {
-        drawSelectionPointer({0, fileSelectionPointer + 2});
+        drawSelectionPointer({0, fileSelectionPointer+2});
+    }
+
+    else if (fileSelectionPointer < tmb.top_length) {
+        drawSelectionPointer({0, fileSelectionPointer+2});
         if (globalState != 0) {
             globalState = 0;
             displayFileInfo(fileNames);
         }
-    } else if (fileSelectionPointer >= fileNames.size() - tmb.bottom_length) {
-        int y = wd.y - 3 - (fileNames.size() - fileSelectionPointer);
-        drawSelectionPointer({0, y});
+    }
+    else if (fileSelectionPointer >= fileNames.size()-tmb.bottom_length) {
+        int y = wd.y-3 - (fileNames.size()-fileSelectionPointer);
+        drawSelectionPointer({0,y});
         if (globalState != 2) {
             globalState = 2;
             displayFileInfo(fileNames);
         }
-    } else {
+
+    }
+    else {
         if (globalState != 1) {
             globalState = 1;
             drawSelectionPointer({0, tmb.middle_pos});
         }
         displayFileInfo(fileNames);
     }
+
 }

@@ -63,6 +63,7 @@ int engineInit() {
     toggleVT(true);
     ShowScrollBar(GetConsoleWindow(), SB_VERT, 0);
     cursorToggle(false);
+    std::cout << "\033]0;" << "TFV - DEVELOPMENT" << "\007";
     return 1;
 }
 

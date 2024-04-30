@@ -87,9 +87,9 @@ void displayFileInfo(const std::vector<std::string>& fileNames) {
     if (fileNames.size() <= wd.y-5) {
         for (int i = 2; i <fileNames.size()+2 && i < wd.y-3; ++i) {
             setCursorPosition(1, i);
-            std::cout << fileNames[i-2].substr(0,20);
-            if (fileNames[i-2].length() < 20) {
-                std::cout << std::string(20 - fileNames[i-2].length(), ' ');
+            std::cout << fileNames[i-2].substr(0,nameView.size);
+            if (fileNames[i-2].length() < nameView.size) {
+                std::cout << std::string(nameView.size - fileNames[i-2].length(), ' ');
             }
         }
     }
@@ -97,9 +97,9 @@ void displayFileInfo(const std::vector<std::string>& fileNames) {
     else if (currentPointerLocation.y < tmb.middle_pos) { //this might not work with new selection pointer
         for (int i = 2; i < fileNames.size()+2 && i < wd.y-3; ++i) {
             setCursorPosition(1, i);
-            std::cout << fileNames[i-2].substr(0,20);// << ((20-fileNames[i-2].length() > 0) ? std::string(20-fileNames[i-2].length(), ' '):std::string(0, ' '));
-            if (fileNames[i-2].length() < 20) {
-                std::cout << std::string(20- fileNames[i-2].length(), ' ');
+            std::cout << fileNames[i-2].substr(0,nameView.size);// << ((20-fileNames[i-2].length() > 0) ? std::string(20-fileNames[i-2].length(), ' '):std::string(0, ' '));
+            if (fileNames[i-2].length() < nameView.size) {
+                std::cout << std::string(nameView.size - fileNames[i-2].length(), ' ');
             }
         }
     }
@@ -108,9 +108,9 @@ void displayFileInfo(const std::vector<std::string>& fileNames) {
         for (int i = fileNames.size()-1, y =wd.y-4;i >= 0 && y >= 2; i--, y--) {
             setCursorPosition(1,y); //(fileName[i].length()-20 > 0) ? std::string(fileName[i].length()-20, ' ')
             //debugOutput(fileNames[i]);
-            std::cout << fileNames[i].substr(0,20);// << ((20-fileNames[i].length() > 0) ? std::string(""): "");
-            if (fileNames[i].length() < 20) {
-                std::cout << std::string(20-fileNames[i].length(), ' ');
+            std::cout << fileNames[i].substr(0,nameView.size);// << ((20-fileNames[i].length() > 0) ? std::string(""): "");
+            if (fileNames[i].length() < nameView.size) {
+                std::cout << std::string(nameView.size-fileNames[i].length(), ' ');
             }
         }
     }
@@ -118,16 +118,16 @@ void displayFileInfo(const std::vector<std::string>& fileNames) {
     else if (currentPointerLocation.y = tmb.middle_pos) {
         for (int i = tmb.middle_pos, y = 0; i > 1 && y != -1; --i, ++y) {
             setCursorPosition(1, i);
-            std::cout << fileNames[fileSelectionPointer-y].substr(0,20);
-            if (fileNames[fileSelectionPointer-y].length() < 20) {
-                std::cout << std::string(20-fileNames[fileSelectionPointer-y].length(), ' ');
+            std::cout << fileNames[fileSelectionPointer-y].substr(0,nameView.size);
+            if (fileNames[fileSelectionPointer-y].length() < nameView.size) {
+                std::cout << std::string(nameView.size-fileNames[fileSelectionPointer-y].length(), ' ');
             }
         }
         for (int i = tmb.middle_pos+1, y = 1; i < wd.y-3 && y != -1; ++i, ++y) {
             setCursorPosition(1, i);
-            std::cout << fileNames[fileSelectionPointer+y].substr(0,20);
-            if (fileNames[fileSelectionPointer+y].length() < 20) {
-                std::cout << std::string(20-fileNames[fileSelectionPointer+y].length(), ' ');
+            std::cout << fileNames[fileSelectionPointer+y].substr(0,nameView.size);
+            if (fileNames[fileSelectionPointer+y].length() < nameView.size) {
+                std::cout << std::string(nameView.size-fileNames[fileSelectionPointer+y].length(), ' ');
             }
         }
     }
@@ -145,3 +145,17 @@ void refreshScreen(const std::vector<std::string>& fileNames) {
     displayFileInfo(fileNames);
     drawSelectionPointer(currentPointerLocation);
 }
+
+
+
+extern std::vector<test>& nekq;//TODO: THIS IS PART OF A WORKING IMPLEMENTATION
+void idktest(std::vector<test>& nekq) {//TODO: THIS IS PART OF A WORKING IMPLEMENTATION
+    for (int i = 0; i < nekq.size(); ++i) {
+        debugOutput(std::to_string(nekq[i].aoeu), -2);
+        system("PAUSE>nul");
+    }
+
+}
+
+
+

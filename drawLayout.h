@@ -41,9 +41,13 @@ void refreshScreen(const std::vector<std::string>& fileNames);
 
 
 
+struct test {//TODO: THIS IS PART OF A WORKING IMPLEMENTATION
 
-
-
+    int aoeu;
+    std::string aoeuo;
+};
+extern std::vector<test> aoeuaa;//TODO: THIS IS PART OF A WORKING IMPLEMENTATION
+void idktest(std::vector<test>& nekq);//TODO: THIS IS PART OF A WORKING IMPLEMENTATION
 
 
 #endif //DRAWLAYOUT_H

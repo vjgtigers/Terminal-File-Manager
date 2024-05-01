@@ -25,7 +25,6 @@ fd_display_data sizeView {true, 6}; //recommended size is 6 or 7
 fd_display_data modifiedView {true, 14}; //recommended size is 14
 fd_display_data createdView {true, 14}; //recommended size is 14
 
-//TODO: xy-avalible should probably be in the draw functions to update teh window on resize
 
 int fileSelectionPointer;
 xy currentPointerLocation {0,2};
@@ -42,7 +41,6 @@ int main() {
     //initilization settings
     if (engineInit() == -1) {return -1;}
     //end init settings
-    //TODO: globalStateCalc needs to be in the function that reads in files to determin global state then
 
 
 

@@ -4,11 +4,14 @@
 
 #include "drawLayout.h"
 
+#include <io.h>
 #include <iostream>
 #include <string>
 #include "miscFunctions.h"
 #include "terminalCommands.h"
+#include <array>
 
+extern xy currentPointerLocation;
 
 void drawBaseLayout() {
     clearScreen();
@@ -19,43 +22,31 @@ void drawBaseLayout() {
     std::cout << std::string(wd.x,renderCodes.divHori);
     setCursorPosition(5,5);
 
-    int slots[5];
-    if (nameView.active == true){slots[0] = 1+nameView.size;}
+    int arrLen = nameView.active + extentionView.active + sizeView.active + modifiedView.active + createdView.active;
+    int slots[arrLen];
+    if (nameView.active == true){slots[0] = 1+nameView.size;} //nameview will alwasy be active
     else {slots[0] = 1;}
-    //TODO: this is the basic framework for cheking if activation
-        //however we need to check for activation on line draw too
-        // i need to work on this
-    slots[1] = 1+slots[0]+extentionView.size;
-    slots[2] = 1+slots[1]+sizeView.size;
-    slots[3] = 1+slots[2]+modifiedView.size;
-    slots[4] = 1+slots[3]+createdView.size;
+    int slotCounter = 1;
 
-    for (int i =2; i < wd.y-3; ++i) {
-        setCursorPosition(slots[0],i);
-        std::cout << renderCodes.divVert;
-        setCursorPosition(slots[1], i);
-        std::cout << renderCodes.divVert;
-        setCursorPosition(slots[2], i);
-        std::cout << renderCodes.divVert;
-        setCursorPosition(slots[3], i);
-        std::cout << renderCodes.divVert;
-        setCursorPosition(slots[4], i);
-        std::cout << renderCodes.divVert;
-    }
-    for(int i: slots) {
+    if (extentionView.active == true) {slots[slotCounter] = extentionView.size+1 + slots[slotCounter - 1]; slotCounter += 1;}
+    if (sizeView.active == true) {slots[slotCounter] = sizeView.size+1 + slots[slotCounter - 1]; slotCounter += 1;}
+    if (modifiedView.active == true) {slots[slotCounter] = modifiedView.size+1 + slots[slotCounter - 1]; slotCounter += 1;}
+    if (createdView.active == true) {slots[slotCounter] = createdView.size+1 + slots[slotCounter - 1]; slotCounter += 1;}
+
+    for ( int i : slots) {
+        for (int j = 2; j< wd.y-3; ++j) {
+            setCursorPosition(i,j);
+            std::cout << renderCodes.divVert;
+        }
         setCursorPosition(i,1);
         std::cout << renderCodes.topCombine;
         setCursorPosition(i, wd.y-3);
         std::cout << renderCodes.bottomCombine;
+
     }
-
-
-
     setCursorPosition(0,wd.y-1);
     //std::cout << nameView.size;
 }
-
-extern xy currentPointerLocation;
 
 void drawSelectionPointer(xy xy_cursor) {
     xy wd =  detectSize();

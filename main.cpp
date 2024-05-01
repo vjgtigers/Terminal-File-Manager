@@ -20,7 +20,7 @@
 using namespace std;
 
 fd_display_data nameView {true, 20}; //no particularly recommended size
-fd_display_data extentionView {true, 5};
+fd_display_data extentionView {true, 5};//if file then display type, if folder then fldr
 fd_display_data sizeView {true, 6}; //recommended size is 6 or 7
 fd_display_data modifiedView {true, 14}; //recommended size is 14
 fd_display_data createdView {true, 14}; //recommended size is 14
@@ -34,24 +34,21 @@ renderCodesTemplate renderCodes = {char(62), char(179), char(196), char(194), ch
 
 
 int main() {
-    system("PAUSE");
-    fileInformation.push_back({"oeu","oaeu","oaeu", "aoeu", "ooeu"});
-    fileInformation.push_back({"404","5","oaeuuuaeu","33","oaeu[2"});
+    string path_dir = "C:\\Users\\vjgti\\CLionProjects\\TFV\\cmake-build-debug";
+    //path will be SAVED ON COMMIT
+
+
     //YOU CAN NOT PUT THINGS THAT DEPEND ON TERMINAL SIZE UP HERE
     //initilization settings
     if (engineInit() == -1) {return -1;}
     //end init settings
-
-
-    for (int i = 0; i < 60; ++i) {
-        fileInformation.push_back({"new entry" +to_string(i),to_string(i),to_string(i),to_string(i),to_string(i)});
-    }
-
     //TODO: globalStateCalc needs to be in the function that reads in files to determin global state then
-    globalStateCalculator();
+
 
 
     drawBaseLayout();
+    fileInput(fileInformation, path_dir);
+
     displayFileInfo(fileInformation);
     drawSelectionPointer({0,2});
 

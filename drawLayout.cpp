@@ -128,7 +128,7 @@ void displayFileInfo(const std::vector<fileInfoStruct>& fileNames) {
 }
 
 
-
+//TODO: some refresh function should research files
 
 void refreshScreen(const std::vector<fileInfoStruct>& fileNames) {
     cursorToggle(false);
@@ -142,3 +142,12 @@ void refreshScreen(const std::vector<fileInfoStruct>& fileNames) {
 }
 
 
+void maintainStateRefresh(const std::vector<fileInfoStruct>& fileNames) {
+    cursorToggle(false);
+    clearScreen();
+    drawBaseLayout();
+    globalStateCalculator();
+    displayFileInfo(fileNames);
+    drawSelectionPointer(currentPointerLocation);
+
+}

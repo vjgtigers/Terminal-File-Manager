@@ -18,10 +18,6 @@
 
 namespace fs = std::filesystem;
 
-void println(const std::string& s) {
-    std::cout << s << std::endl;
-}
-
 void sleep(const double t) {
     if(t>0.0) std::this_thread::sleep_for(std::chrono::milliseconds((int)(1E3*t+0.5)));
 }

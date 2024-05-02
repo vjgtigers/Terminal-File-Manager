@@ -69,4 +69,7 @@ void displayFileInfo(const std::vector<fileInfoStruct>& fileNames);
 //display more information about the files
 void extendedFileInfoDisplay();
 
+//used to redraw file screen from point left off - usefull if screen is needed to display alternate information
+void maintainStateRefresh(const std::vector<fileInfoStruct>& fileNames);
+
 #endif //DRAWLAYOUT_H

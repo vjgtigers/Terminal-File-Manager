@@ -33,7 +33,7 @@ renderCodesTemplate renderCodes = {char(62), char(179), char(196), char(194), ch
 
 
 int main() {
-    string path_dir = "C:\\Users\\vjgti\\CLionProjects\\TFV\\cmake-build-debug";
+    string path_dir = R"(C:\Users\vjgti\CLionProjects\TFV\cmake-build-debug)";
     //path will be SAVED ON COMMIT
 
 
@@ -64,7 +64,7 @@ int main() {
             refreshScreen(fileInformation);
         }
         if(key == 'R') {
-            displayFileInfo(fileInformation);
+            maintainStateRefresh(fileInformation);
         }
         if(key == -40) {(fileSelectionPointer+1 < fileInformation.size()) ? (fileSelectionPointer += 1) : true; updateCursorandPointerSync(fileInformation); }
         if(key == -38) {(fileSelectionPointer > 0) ? (fileSelectionPointer -= 1) : true; updateCursorandPointerSync(fileInformation); }

@@ -10,9 +10,6 @@
 #include "drawLayout.h"
 
 
-//can be used for debugging //most likely wont be used in accutall product
-
-void println(const std::string& s="");
 
 //prehaps an inproved version of sleep? im not sure
 void sleep(const double t);

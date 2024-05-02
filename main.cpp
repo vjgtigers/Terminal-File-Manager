@@ -25,11 +25,15 @@ fd_display_data sizeView {true, 6}; //recommended size is 6 or 7
 fd_display_data modifiedView {true, 14}; //recommended size is 14
 fd_display_data createdView {true, 14}; //recommended size is 14
 
+topBarSettings_tmp topBarSettings = {
+    48, //when changing this there should be ample space for time and some area between
+    17 //15 is the recommended amount
+};
 
 int fileSelectionPointer;
 xy currentPointerLocation {0,2};
 vector<fileInfoStruct> fileInformation;
-renderCodesTemplate renderCodes = {char(62), char(179), char(196), char(194), char(193)};
+renderCodesTemplate renderCodes = {char(62), char(179), char(196), char(194), char(193), char(197)};
 
 
 int main() {
@@ -41,10 +45,13 @@ int main() {
     //initilization settings
     if (engineInit() == -1) {return -1;}
     //end init settings
-
+    xy wd = detectSize();
+    topBarSettings.dirMaxLen = wd.x/3;
 
 
     drawBaseLayout();
+    displayDirBar(path_dir);
+    displayTime();
     fileInput(fileInformation, path_dir);
 
     displayFileInfo(fileInformation);

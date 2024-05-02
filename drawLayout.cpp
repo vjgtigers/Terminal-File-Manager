@@ -4,12 +4,32 @@
 
 #include "drawLayout.h"
 
+#include <filesystem>
 #include <io.h>
 #include <iostream>
+#include <Windows.h>
+#include <chrono>
+#include <ctime>
+
 #include <string>
 #include "miscFunctions.h"
 #include "terminalCommands.h"
-#include <array>
+
+
+
+
+#include <bits/fs_path.h>
+#include <stdio.h>
+
+
+
+
+
+
+
+
+
+
 
 extern xy currentPointerLocation;
 
@@ -46,7 +66,57 @@ void drawBaseLayout() {
     }
     setCursorPosition(0,wd.y-1);
     //std::cout << nameView.size;
+
+
+    //TODO: combine into one and loop though array that has the values in it
+    //start draw dir divider
+    setCursorPosition(topBarSettings.dirMaxLen +1 ,0);
+    std::cout << renderCodes.divVert;
+    setCursorPosition(topBarSettings.dirMaxLen+1, 1);
+    std::cout << renderCodes.bottomCombine;
+    setCursorPosition(topBarSettings.dirMaxLen+1, 1);
+    for (int  j : slots) {
+        if (j == topBarSettings.dirMaxLen+1) {
+            std::cout << renderCodes.allcombine;
+            break;
+        }
+    }
+    //end draw dir divider
+
+
+    setCursorPosition(wd.x-topBarSettings.timeMaxLen-1, 0);
+    std::cout << renderCodes.divVert;
+    setCursorPosition(wd.x-topBarSettings.timeMaxLen-1, 1);
+    std::cout << renderCodes.bottomCombine;
+    setCursorPosition(wd.x-topBarSettings.timeMaxLen-1, 1);
+    for (int  j : slots) {
+        if (j == wd.x-topBarSettings.timeMaxLen-1) {
+            std::cout << renderCodes.allcombine;
+            break;
+        }
+    }
 }
+
+void displayDirBar(const std::string& dirName) {
+    setCursorPosition(1,0);
+    if( dirName.length() > topBarSettings.dirMaxLen) {
+        std::cout << dirName.substr(dirName.length()-topBarSettings.dirMaxLen);
+    } else {
+        std::cout << dirName;
+    }
+}
+
+void displayTime() {
+    xy wd = detectSize();
+    auto t1 = std::chrono::system_clock::now();
+    std::time_t t2 = std::chrono::system_clock::to_time_t(t1);
+    char* o = ctime(&t2);
+    std::string s((LPCTSTR)o); //contvert from c string to std::string
+    setCursorPosition(wd.x - topBarSettings.timeMaxLen + 1, 0);
+    std::cout << s.substr(0,16);
+}
+
+
 
 void drawSelectionPointer(xy xy_cursor) {
     xy wd =  detectSize();
@@ -129,6 +199,7 @@ void displayFileInfo(const std::vector<fileInfoStruct>& fileNames) {
 
 
 //TODO: some refresh function should research files
+//TODO: on refresh recaluclate where div divider should be drawn
 
 void refreshScreen(const std::vector<fileInfoStruct>& fileNames) {
     cursorToggle(false);

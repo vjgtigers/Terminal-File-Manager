@@ -29,6 +29,7 @@ struct renderCodesTemplate {
     char divHori;
     char topCombine;
     char bottomCombine;
+    char allcombine;
 };
 
 extern renderCodesTemplate renderCodes;
@@ -49,8 +50,9 @@ void drawSelectionPointer(xy xy_cursor);
 //helpful if viewing window gets messed up on resize
 void refreshScreen(const std::vector<fileInfoStruct>& fileNames);
 
+void displayDirBar(const std::string& dirName);
 
-
+void displayTime();
 
 struct fileInfoStruct {
     std::string name;
@@ -61,6 +63,12 @@ struct fileInfoStruct {
 };
 extern std::vector<fileInfoStruct> fileInformation;
 
+
+struct topBarSettings_tmp {
+    int dirMaxLen;
+    int timeMaxLen;
+};
+extern topBarSettings_tmp topBarSettings;
 
 
 //display the filename/

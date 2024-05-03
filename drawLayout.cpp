@@ -123,13 +123,15 @@ void drawSelectionPointer(xy xy_cursor) {
 }
 
 
-void extendedFileInfoDisplay() {
 
-
+void extendedFileInfoDisplay(const std::string& extention, const xy& wd) {
+    setCursorPosition(wd.x, wd.y);
+    std::cout << extention.substr(0, extentionView.size);
+    if (extention.length() < extentionView.size) {
+        std::cout << std::string(extentionView.size - extention.length(), ' ');
+    }
 
 }
-
-
 
 
 void displayFileInfo(const std::vector<fileInfoStruct>& fileNames) {
@@ -145,6 +147,7 @@ void displayFileInfo(const std::vector<fileInfoStruct>& fileNames) {
             if (fileNames[i-2].name.length() < nameView.size) {
                 std::cout << std::string(nameView.size - fileNames[i-2].name.length(), ' ');
             }
+            extendedFileInfoDisplay(fileNames[i-2].extention, {nameView.size+2, i});
         }
     }
 
@@ -155,6 +158,7 @@ void displayFileInfo(const std::vector<fileInfoStruct>& fileNames) {
             if (fileNames[i-2].name.length() < nameView.size) {
                 std::cout << std::string(nameView.size - fileNames[i-2].name.length(), ' ');
             }
+            extendedFileInfoDisplay(fileNames[i-2].extention, {nameView.size+2, i});
         }
     }
 
@@ -166,6 +170,7 @@ void displayFileInfo(const std::vector<fileInfoStruct>& fileNames) {
             if (fileNames[i].name.length() < nameView.size) {
                 std::cout << std::string(nameView.size-fileNames[i].name.length(), ' ');
             }
+            extendedFileInfoDisplay(fileNames[i].extention, {nameView.size + 2, y});
         }
     }
 
@@ -176,6 +181,7 @@ void displayFileInfo(const std::vector<fileInfoStruct>& fileNames) {
             if (fileNames[fileSelectionPointer-y].name.length() < nameView.size) {
                 std::cout << std::string(nameView.size-fileNames[fileSelectionPointer-y].name.length(), ' ');
             }
+            extendedFileInfoDisplay(fileNames[fileSelectionPointer-y].extention, {nameView.size+2, i});
         }
         for (int i = tmb.middle_pos+1, y = 1; i < wd.y-3 && y != -1; ++i, ++y) {
             setCursorPosition(1, i);
@@ -183,11 +189,12 @@ void displayFileInfo(const std::vector<fileInfoStruct>& fileNames) {
             if (fileNames[fileSelectionPointer+y].name.length() < nameView.size) {
                 std::cout << std::string(nameView.size-fileNames[fileSelectionPointer+y].name.length(), ' ');
             }
+            extendedFileInfoDisplay(fileNames[fileSelectionPointer+y].extention, {nameView.size+2, i});
         }
     }
 
     debugOutput("done", 0);
-    std::cout << tmb.top_length << " " << tmb.middle_pos << " " << tmb.bottom_length;
+    //std::cout << tmb.top_length << " " << tmb.middle_pos << " " << tmb.bottom_length;
 }
 
 

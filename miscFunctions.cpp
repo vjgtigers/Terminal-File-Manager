@@ -139,7 +139,7 @@ void fileInput(std::vector<fileInfoStruct>& fileNames, const std::string& pathDi
             fileNames.push_back({outfilename_str.substr(chopLen),"0","oaeu", "aoeu", "ooeu"});
         }
         else {
-            fileNames.push_back({outfilename_str.substr(chopLen),"1","oaeu", "aoeu", "ooeu"});
+            fileNames.push_back({outfilename_str.substr(chopLen),"FLDR","oaeu", "aoeu", "ooeu"});
         }
     }
 

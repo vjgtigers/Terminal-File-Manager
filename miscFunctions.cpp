@@ -117,6 +117,8 @@ void globalStateCalculator() {
 void fileInput(std::vector<fileInfoStruct>& fileNames, const std::string& pathDir) {
     struct stat sb;
 
+    fileNames.clear();
+
     //If the path is just the drive letter, the chopLen is off by one
     int chopLen = pathDir.length() +1;
     if (pathDir.length() <= 3) {chopLen -= 1;}
@@ -143,4 +145,20 @@ void fileInput(std::vector<fileInfoStruct>& fileNames, const std::string& pathDi
 
     globalStateCalculator();
 }
+
+void backOneDir(std::vector<fileInfoStruct>& fileNames, std::string& pathDir) {
+    for (int i = pathDir.length()-1; i >= 0; --i) {
+        if(pathDir[i]== '\\') {
+            if(!(i <3)) {
+                pathDir = pathDir.substr(0,i);
+                break;
+            } else {
+                pathDir = pathDir.substr(0, i+1);
+            }
+        }
+    }
+    fileInput(fileNames, pathDir);
+    dirBackRefresh(fileNames);
+}
+
 

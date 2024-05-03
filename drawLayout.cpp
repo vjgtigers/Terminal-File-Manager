@@ -103,6 +103,7 @@ void displayDirBar(const std::string& dirName) {
         std::cout << dirName.substr(dirName.length()-topBarSettings.dirMaxLen);
     } else {
         std::cout << dirName;
+        std::cout << std::string(topBarSettings.dirMaxLen- dirName.length(), ' ');
     }
 }
 
@@ -198,9 +199,28 @@ void displayFileInfo(const std::vector<fileInfoStruct>& fileNames) {
 }
 
 
+void clearFileInfo() {
+    xy wd = detectSize();
+    for (int i = 2; i < wd.y-3; ++i) {
+        setCursorPosition(0, i);
+        std::cout << std::string(nameView.size +1, ' ');
+    }
+}
+
+
+void dirBackRefresh(const std::vector<fileInfoStruct>& fileNames) {
+    currentPointerLocation = {0,2};
+    fileSelectionPointer = 0;
+    clearFileInfo();
+    displayTime();
+    displayDirBar(path_dir);
+    displayFileInfo(fileNames);
+
+}
+
+
 //TODO: some refresh function should research files
 //TODO: on refresh recaluclate where div divider should be drawn
-
 void refreshScreen(const std::vector<fileInfoStruct>& fileNames) {
     cursorToggle(false);
     clearScreen();
@@ -210,6 +230,8 @@ void refreshScreen(const std::vector<fileInfoStruct>& fileNames) {
     displayFileInfo(fileNames);
     drawSelectionPointer(currentPointerLocation);
     globalStateCalculator();
+    displayDirBar(path_dir);
+    displayTime();
 }
 
 

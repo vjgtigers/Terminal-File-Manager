@@ -35,9 +35,10 @@ xy currentPointerLocation {0,2};
 vector<fileInfoStruct> fileInformation;
 renderCodesTemplate renderCodes = {char(62), char(179), char(196), char(194), char(193), char(197)};
 
+string path_dir;
 
 int main() {
-    string path_dir = R"(C:\Users\vjgti\CLionProjects\TFV\cmake-build-debug)";
+    path_dir = R"(C:\Users\vjgti\CLionProjects\TFV\cmake-build-debug)";
     //path will be SAVED ON COMMIT
 
 
@@ -75,7 +76,7 @@ int main() {
         }
         if(key == -40) {(fileSelectionPointer+1 < fileInformation.size()) ? (fileSelectionPointer += 1) : true; updateCursorandPointerSync(fileInformation); }
         if(key == -38) {(fileSelectionPointer > 0) ? (fileSelectionPointer -= 1) : true; updateCursorandPointerSync(fileInformation); }
-
+        if(key == - 37) {fileSelectionPointer = 0; backOneDir(fileInformation, path_dir); updateCursorandPointerSync(fileInformation);}
     }
 
     return 0;

@@ -34,6 +34,8 @@ struct renderCodesTemplate {
 
 extern renderCodesTemplate renderCodes;
 
+extern std::string path_dir;
+
 // ReSharper disable once CppDeclarationSpecifierWithoutDeclarators
 typedef struct fileInfoStruct;
 // ReSharper disable once CppDeclarationSpecifierWithoutDeclarators
@@ -50,8 +52,11 @@ void drawSelectionPointer(xy xy_cursor);
 //helpful if viewing window gets messed up on resize
 void refreshScreen(const std::vector<fileInfoStruct>& fileNames);
 
+//display the current dir at the top of the screen
 void displayDirBar(const std::string& dirName);
 
+//TODO: update
+//display the current time
 void displayTime();
 
 struct fileInfoStruct {
@@ -79,5 +84,12 @@ void extendedFileInfoDisplay();
 
 //used to redraw file screen from point left off - usefull if screen is needed to display alternate information
 void maintainStateRefresh(const std::vector<fileInfoStruct>& fileNames);
+
+//TODO can this work both ways?
+//refresh command specificly if directory goes back
+void dirBackRefresh(const std::vector<fileInfoStruct>& fileNames);
+
+//erases file info ON THE SCREEN so shorter dir can be displayed
+void clearFileInfo();
 
 #endif //DRAWLAYOUT_H

@@ -64,4 +64,8 @@ void globalStateCalculator();
 //TODO: rest of file info
 //read file names if dir and add to vector
 void fileInput(std::vector<fileInfoStruct>& fileNames, const std::string& pathDir);
+
+//go to the parent dir
+void backOneDir(std::vector<fileInfoStruct>& fileNames, std::string& pathDir);
+
 #endif //MISCFUNCTIONS_H

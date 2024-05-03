@@ -23,14 +23,6 @@
 
 
 
-
-
-
-
-
-
-
-
 extern xy currentPointerLocation;
 
 void drawBaseLayout() {
@@ -215,7 +207,7 @@ void dirBackRefresh(const std::vector<fileInfoStruct>& fileNames) {
     displayTime();
     displayDirBar(path_dir);
     displayFileInfo(fileNames);
-
+    updateCursorandPointerSync(fileNames);
 }
 
 

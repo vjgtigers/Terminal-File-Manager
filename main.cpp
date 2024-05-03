@@ -4,6 +4,7 @@
 #include <thread>
 #include <string>
 
+#include "commandLine.h"
 #include "drawLayout.h"
 #include "keyTracker.h"
 #include "terminalCommands.h"
@@ -19,7 +20,7 @@
 
 using namespace std;
 
-fd_display_data nameView {true, 20}; //no particularly recommended size
+fd_display_data nameView {true, 20}; //no particularly recommended size - must remain active
 fd_display_data extentionView {true, 5};//if file then display type, if folder then fldr
 fd_display_data sizeView {true, 6}; //recommended size is 6 or 7
 fd_display_data modifiedView {true, 14}; //recommended size is 14
@@ -72,6 +73,8 @@ int main() {
         if(key == -40) {(fileSelectionPointer+1 < fileInformation.size()) ? (fileSelectionPointer += 1) : true; updateCursorandPointerSync(fileInformation); }
         if(key == -38) {(fileSelectionPointer > 0) ? (fileSelectionPointer -= 1) : true; updateCursorandPointerSync(fileInformation); }
         if(key == - 37) {fileSelectionPointer = 0; backOneDir(fileInformation, path_dir); updateCursorandPointerSync(fileInformation);}
+
+        if(key == 58) {cmdMain();}
     }
 
     return 0;

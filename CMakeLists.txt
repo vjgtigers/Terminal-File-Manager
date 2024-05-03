@@ -11,7 +11,10 @@ add_executable(TFV main.cpp
         miscFunctions.cpp
         miscFunctions.h
         drawLayout.cpp
-        drawLayout.h)
+        drawLayout.h
+        commandLine.cpp
+        commandLine.h
+        commandLine.h)
 
 set(GCC_COVERAGE_COMPILE_FLAGS "-static")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${GCC_COVERAGE_COMPILE_FLAGS}" )

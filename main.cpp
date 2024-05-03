@@ -47,17 +47,12 @@ int main() {
     if (engineInit() == -1) {return -1;}
     //end init settings
     xy wd = detectSize();
-    topBarSettings.dirMaxLen = wd.x/3;
+    topBarSettings.dirMaxLen = wd.x/2;
 
-
-    drawBaseLayout();
-    displayDirBar(path_dir);
-    displayTime();
+    //draw inital screen
     fileInput(fileInformation, path_dir);
-
-    displayFileInfo(fileInformation);
-    drawSelectionPointer({0,2});
-
+    refreshScreen(fileInformation); //could be faster i guess but for simplicity sake just did this (May 2 11 PM)
+    //end draw inital screen
     while(true) {
         debugOutput("Global State: " + to_string(globalState),-1);
         const int key = key_press(); // blocks until a key is pressed

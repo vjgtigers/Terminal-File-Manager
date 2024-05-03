@@ -44,7 +44,7 @@ typedef struct xy;
 //used to draw the base outline of the main file view screen
 void drawBaseLayout();
 
-//draws selection pointer
+//draws pointer that shows what file is currently selected
 void drawSelectionPointer(xy xy_cursor);
 
 
@@ -76,7 +76,7 @@ struct topBarSettings_tmp {
 extern topBarSettings_tmp topBarSettings;
 
 
-//display the filename/
+//display the filenames in the first colum
 void displayFileInfo(const std::vector<fileInfoStruct>& fileNames);
 
 //display more information about the files

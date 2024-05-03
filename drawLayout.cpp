@@ -222,6 +222,8 @@ void dirBackRefresh(const std::vector<fileInfoStruct>& fileNames) {
 //TODO: some refresh function should research files
 //TODO: on refresh recaluclate where div divider should be drawn
 void refreshScreen(const std::vector<fileInfoStruct>& fileNames) {
+    xy wd = detectSize();
+    topBarSettings.dirMaxLen = wd.x/2;
     cursorToggle(false);
     clearScreen();
     drawBaseLayout();
@@ -236,9 +238,13 @@ void refreshScreen(const std::vector<fileInfoStruct>& fileNames) {
 
 
 void maintainStateRefresh(const std::vector<fileInfoStruct>& fileNames) {
+    xy wd = detectSize();
+    topBarSettings.dirMaxLen = wd.x/2;
     cursorToggle(false);
     clearScreen();
     drawBaseLayout();
+    displayTime();
+    displayDirBar(path_dir);
     globalStateCalculator();
     displayFileInfo(fileNames);
     drawSelectionPointer(currentPointerLocation);

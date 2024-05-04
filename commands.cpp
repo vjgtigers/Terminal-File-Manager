@@ -14,13 +14,16 @@
 #include "miscFunctions.h"
 #include "terminalCommands.h"
 
-
+//TODO: move error to own function
 //TODO: parser to accully handle ..\
 //update dir
 void changeDir(const std::string& command) {
         std::string subCommand = command.substr(command.find(' ') +1);
         struct stat sb;
+        xy wd = detectSize();
         if (stat(subCommand.c_str(), &sb) != 0) {
+                setCursorPosition(0, wd.y-1);
+                std::cout << "INVALID DIR";
                 return;
         }
         if (subCommand.back() != '\\') {

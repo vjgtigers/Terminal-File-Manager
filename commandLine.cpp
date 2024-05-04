@@ -17,8 +17,9 @@ void cmdMain() {
     xy wd = detectSize();
     setCursorPosition(0,wd.y-2);
     std::cout << ':';
+    setCursorPosition(0,wd.y-1);
+    std::cout << std::string(wd.x-1, ' ');
     while(true) { //TODO: swap to case and in main too
-
         const int key = key_press(); // blocks until a key is pressed
         xy available = detectSize();
         if (key == 10) { //enter

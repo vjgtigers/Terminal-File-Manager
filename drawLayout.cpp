@@ -108,8 +108,8 @@ void displayTime() {
     debugOutput(s, -12);
     if (s.substr(0,16) != currTime) {
         setCursorPosition(wd.x - topBarSettings.timeMaxLen + 1, 0);
-        std::cout << s.substr(0,16);
-        currTime = s.substr(0,16);
+        std::cout << s.substr(0,10) << s.substr(19);//just date
+        currTime = s.substr(0,10) + s.substr(19);
     }
 }
 

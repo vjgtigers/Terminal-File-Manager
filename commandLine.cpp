@@ -61,7 +61,7 @@ void commandCalls(std::string& currCommand) {
     debugOutput(command, -9);
 
 
-    if (command == "cd") {changeDir(currCommand);
-    }
+    if (command == "cd") {changeDir(currCommand);}
+    if (command == "help") {displayHelp(currCommand);}
 
 }

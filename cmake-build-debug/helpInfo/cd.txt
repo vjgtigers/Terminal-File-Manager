@@ -1,0 +1,3 @@
+set dir path to be what input is
+if dir path DNE then nothing happens
+for the time being dir path must be absolute

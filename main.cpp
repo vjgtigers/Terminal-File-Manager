@@ -36,6 +36,7 @@ xy currentPointerLocation {0,2};
 vector<fileInfoStruct> fileInformation;
 renderCodesTemplate renderCodes = {char(62), char(179), char(196), char(194), char(193), char(197)};
 
+string currTime = "";
 string path_dir;
 
 int main() {
@@ -55,6 +56,7 @@ int main() {
     refreshScreen(fileInformation); //could be faster i guess but for simplicity sake just did this (May 2 11 PM)
     //end draw inital screen
     while(true) {
+
         debugOutput("Global State: " + to_string(globalState),-1);
         const int key = key_press(); // blocks until a key is pressed
         xy available = detectSize();

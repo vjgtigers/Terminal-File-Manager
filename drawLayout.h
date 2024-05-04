@@ -47,6 +47,7 @@ void drawBaseLayout();
 //draws pointer that shows what file is currently selected
 void drawSelectionPointer(xy xy_cursor);
 
+extern std::string currTime;
 
 //can be used to clear the entire screen and redraw
 //helpful if viewing window gets messed up on resize

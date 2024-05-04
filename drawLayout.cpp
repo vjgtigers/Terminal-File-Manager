@@ -105,8 +105,12 @@ void displayTime() {
     std::time_t t2 = std::chrono::system_clock::to_time_t(t1);
     char* o = ctime(&t2);
     std::string s((LPCTSTR)o); //contvert from c string to std::string
-    setCursorPosition(wd.x - topBarSettings.timeMaxLen + 1, 0);
-    std::cout << s.substr(0,16);
+    debugOutput(s, -12);
+    if (s.substr(0,16) != currTime) {
+        setCursorPosition(wd.x - topBarSettings.timeMaxLen + 1, 0);
+        std::cout << s.substr(0,16);
+        currTime = s.substr(0,16);
+    }
 }
 
 

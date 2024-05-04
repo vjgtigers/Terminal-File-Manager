@@ -137,6 +137,9 @@ void fileInput(std::vector<fileInfoStruct>& fileNames, const std::string& pathDi
         if (stat(path1, &sb) == 0 && !(sb.st_mode & S_IFDIR)) {
             // cout << path << endl;
             fileNames.push_back({outfilename_str.substr(chopLen),"0","oaeu", "aoeu", "ooeu"});
+            outfilename_str.length() >= outfilename_str.find('.')
+                ? (fileNames.back().extention = outfilename_str.substr(outfilename_str.find('.')))
+                : "true";
         }
         else {
             fileNames.push_back({outfilename_str.substr(chopLen),"FLDR","oaeu", "aoeu", "ooeu"});

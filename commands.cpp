@@ -10,6 +10,8 @@
 #include "miscFunctions.h"
 
 
+//TODO: parser to accully handle ..\
+//update dir
 void changeDir(const std::string& command) {
         std::string subCommand = command.substr(command.find(' ') +1);
         struct stat sb;

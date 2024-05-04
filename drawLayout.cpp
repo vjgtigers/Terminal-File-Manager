@@ -207,6 +207,7 @@ void clearFileInfo() {
     for (int i = 2; i < wd.y-3; ++i) {
         setCursorPosition(0, i);
         std::cout << std::string(nameView.size +1, ' ');
+        std::cout << renderCodes.divVert << std::string(extentionView.size, ' ');
     }
 }
 

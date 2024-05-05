@@ -142,20 +142,20 @@ void fileInput(std::vector<fileInfoStruct>& fileNames, const std::string& pathDi
                 : "true";
         }
         else {
-            fileNames.push_back({outfilename_str.substr(chopLen),"FLDR","oaeu", "aoeu", "ooeu"});
+            fileNames.push_back({outfilename_str.substr(chopLen),"<DIR>","oaeu", "aoeu", "ooeu"});
         }
     }
     //TODO: improve this
     std::vector<fileInfoStruct> fileNames2(fileNames.size());
     int p = 0;
     for(fileInfoStruct data: fileNames) {
-        if (data.extention == "FLDR") {
+        if (data.extention == "<DIR>") {
             fileNames2[p] = data;
             p += 1;
         }
     }
     for(fileInfoStruct data: fileNames) {
-        if (data.extention != "FLDR") {
+        if (data.extention != "<DIR>") {
             fileNames2[p] = data;
             p += 1;
         }

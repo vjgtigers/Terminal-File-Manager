@@ -52,7 +52,6 @@ void drawCommand(const std::string& currCommand, const xy& wd) {
     std::cout << currCommand;
 }
 
-
 void commandCalls(std::string& currCommand) {
     //find first n char untill space
     //macth to funtcion

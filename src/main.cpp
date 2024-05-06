@@ -75,8 +75,8 @@ int main() {//IF I REDID DRAW WAY I COULD MAKE A RELLY COOL SCREENSHOT TAKER
         }
         if(key == -40) {(fileSelectionPointer+1 < fileInformation.size()) ? (fileSelectionPointer += 1) : true; updateCursorandPointerSync(fileInformation); }
         if(key == -38) {(fileSelectionPointer > 0) ? (fileSelectionPointer -= 1) : true; updateCursorandPointerSync(fileInformation); }
-        if(key == - 37) {fileSelectionPointer = 0; backOneDir(fileInformation, path_dir); updateCursorandPointerSync(fileInformation);}
-        if(key == char('a')) {fileSelectionPointer = 0; backOneDir(fileInformation, path_dir); updateCursorandPointerSync(fileInformation);}
+        if(key == - 37) {fileSelectionPointer = 0; changeDir(fileInformation, path_dir); updateCursorandPointerSync(fileInformation);}
+        if(key == char('a')) {fileSelectionPointer = 0; changeDir(fileInformation, path_dir); updateCursorandPointerSync(fileInformation);}
 
         if(key == 58) {cmdMain();}
     }

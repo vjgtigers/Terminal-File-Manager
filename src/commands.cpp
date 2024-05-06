@@ -15,20 +15,21 @@
 #include "terminalCommands.h"
 
 
-//TODO: parser to accully handle ..\
-//update dir
 
 
+//display an error message under cmd line
 void displayError(const std::string &message) {
     xy wd = detectSize();
     setCursorPosition(0, wd.y - 1);
     std::cout << message;
 }
 
+
+//update dir on user input through :cd <dir>
 void changeDir(const std::string &command) {
     std::string subCommand = command.substr(command.find(' ') + 1);
     struct stat sb;
-
+    std::string temp = path_dir;
     if (subCommand[1] == ':') {
         if (subCommand.back() != '\\') {
             subCommand += '\\';
@@ -47,15 +48,16 @@ void changeDir(const std::string &command) {
         path_dir = path_dir + "\\" + subCommand + "\\";
     }
 
-    if (stat(subCommand.c_str(), &sb) != 0) {
+    if (stat(path_dir.c_str(), &sb) != 0) {
         displayError("Invalid directory");
+        path_dir = temp;
         return;
     }
 
-    backOneDir(fileInformation, path_dir);
+    changeDir(fileInformation, path_dir);
 }
 
-
+//display help page for provided command - q to quit
 void displayHelp(const std::string &command) {
     std::string subCommand = command.substr(command.find(' ') + 1);
     debugOutput(subCommand + " aouthn", -14);
@@ -69,6 +71,7 @@ void displayHelp(const std::string &command) {
             fileData = openFile.get();
             std::cout << fileData;
         }
+        std::cout << std::endl << "Press 'q' to quit";
     } else {
         displayError("Command Does Not exist");
         return;

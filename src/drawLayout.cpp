@@ -212,7 +212,7 @@ void clearFileInfo() {
 }
 
 
-void dirBackRefresh(const std::vector<fileInfoStruct>& fileNames) {
+void changeDir(const std::vector<fileInfoStruct>& fileNames) {
     currentPointerLocation = {0,2};
     fileSelectionPointer = 0;
     clearFileInfo();

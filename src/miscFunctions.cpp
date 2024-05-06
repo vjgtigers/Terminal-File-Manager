@@ -168,7 +168,7 @@ void fileInput(std::vector<fileInfoStruct>& fileNames, const std::string& pathDi
     globalStateCalculator();
 }
 
-void backOneDir(std::vector<fileInfoStruct>& fileNames, std::string& pathDir) {
+void changeDir(std::vector<fileInfoStruct>& fileNames, std::string& pathDir) {
     for (int i = pathDir.length()-1; i >= 0; --i) {
         if(pathDir[i]== '\\') {
             if(!(i <3)) {
@@ -180,7 +180,7 @@ void backOneDir(std::vector<fileInfoStruct>& fileNames, std::string& pathDir) {
         }
     }
     fileInput(fileNames, pathDir);
-    dirBackRefresh(fileNames);
+    changeDir(fileNames);
 }
 
 

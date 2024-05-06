@@ -66,6 +66,6 @@ void globalStateCalculator();
 void fileInput(std::vector<fileInfoStruct>& fileNames, const std::string& pathDir);
 
 //go to the parent dir
-void backOneDir(std::vector<fileInfoStruct>& fileNames, std::string& pathDir);
+void changeDir(std::vector<fileInfoStruct>& fileNames, std::string& pathDir);
 
 #endif //MISCFUNCTIONS_H

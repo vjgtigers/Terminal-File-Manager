@@ -3,21 +3,21 @@ project(TFV)
 
 set(CMAKE_CXX_STANDARD 26)
 
-add_executable(TFV main.cpp
-        keyTracker.cpp
-        keyTracker.h
-        terminalCommands.cpp
-        terminalCommands.h
-        miscFunctions.cpp
-        miscFunctions.h
-        drawLayout.cpp
-        drawLayout.h
-        commandLine.cpp
-        commandLine.h
-        commandLine.h
-        commands.cpp
-        commands.h
-        commands.h)
+add_executable(TFV ./src/main.cpp
+        ./src/keyTracker.cpp
+        ./src/keyTracker.h
+        ./src/terminalCommands.cpp
+        ./src/terminalCommands.h
+        ./src/miscFunctions.cpp
+        ./src/miscFunctions.h
+        ./src/drawLayout.cpp
+        ./src/drawLayout.h
+        ./src/commandLine.cpp
+        ./src/commandLine.h
+        ./src/commandLine.h
+        ./src/commands.cpp
+        ./src/commands.h
+        ./src/commands.h)
 
 set(GCC_COVERAGE_COMPILE_FLAGS "-static")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${GCC_COVERAGE_COMPILE_FLAGS}" )

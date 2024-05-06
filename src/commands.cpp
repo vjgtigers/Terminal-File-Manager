@@ -28,14 +28,28 @@ void displayError(const std::string& message) {
 void changeDir(const std::string& command) {
         std::string subCommand = command.substr(command.find(' ') +1);
         struct stat sb;
-        if (stat(subCommand.c_str(), &sb) != 0) {
+
+        if (subCommand[1] == ':') {
+                if (subCommand.back() != '\\') {
+                        subCommand += '\\';
+                }
+                path_dir = subCommand;
+        }
+        else if (subCommand.substr(0,2) == "..") {
+                char full[_MAX_PATH];
+                if (_fullpath(full, (path_dir+"\\"+subCommand).c_str(), _MAX_PATH) != NULL) {
+                        path_dir = full;
+                } else {
+                        displayError("Change Dir Failed");
+                }
+        } else {
+                path_dir = path_dir + "\\" + subCommand + "\\";
+        }
+         if (stat(subCommand.c_str(), &sb) != 0) {
                 displayError("Invalid directory");
                 return;
-        }
-        if (subCommand.back() != '\\') {
-                subCommand += '\\';
-        }
-        path_dir = subCommand;
+         }
+
         backOneDir(fileInformation, path_dir);
 
 }

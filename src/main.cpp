@@ -39,7 +39,9 @@ string currTime = "";
 string path_dir;
 
 int main() {//IF I REDID DRAW WAY I COULD MAKE A RELLY COOL SCREENSHOT TAKER
-    path_dir = R"(C:\Users\vjgti\CLionProjects\TFV\cmake-build-debug)";
+    char full[_MAX_PATH];
+    path_dir = _fullpath(full, ".", 260);
+    path_dir = full;
     //path will be SAVED ON COMMIT
 
 

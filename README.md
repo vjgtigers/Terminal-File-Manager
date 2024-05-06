@@ -25,8 +25,7 @@ You will then be able to start typing at the bottom of the screen
 | help | type help then command to get command info |
 
 
-1. currently cd must take in a direct path
-    * will be fixed soon
+1. For the most part functions like windows cd except for some edge cases
 
 
 # Other

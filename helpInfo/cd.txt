@@ -1,3 +1,5 @@
-set dir path to be what input is
-if dir path DNE then nothing happens
-for the time being dir path must be absolute
+change dir to be what is inputted
+can take absolute path or relative path
+
+some things don't work on here that work for
+windows "cd"

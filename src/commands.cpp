@@ -34,6 +34,7 @@ void changeDir(const std::string &command) {
             subCommand += '\\';
         }
         path_dir = subCommand;
+
     } else if (subCommand.substr(0, 2) == "..") {
         char full[_MAX_PATH];
         if (_fullpath(full, (path_dir + "\\" + subCommand).c_str(), _MAX_PATH) != NULL) {
@@ -41,9 +42,11 @@ void changeDir(const std::string &command) {
         } else {
             displayError("Change Dir Failed");
         }
+
     } else {
         path_dir = path_dir + "\\" + subCommand + "\\";
     }
+
     if (stat(subCommand.c_str(), &sb) != 0) {
         displayError("Invalid directory");
         return;

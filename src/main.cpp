@@ -20,8 +20,8 @@
 using namespace std;
 
 fd_display_data nameView {true, 20}; //no particularly recommended size - must remain active
-fd_display_data extentionView {true, 5};//if file then display type, if folder then fldr
-fd_display_data sizeView {true, 8}; //recommended size is 6 or 7 --probably 8
+fd_display_data extentionView {false, 5};//if file then display type, if folder then fldr
+fd_display_data sizeView {false, 8}; //recommended size is 6 or 7 --probably 8
 fd_display_data modifiedView {true, 14}; //recommended size is 14
 fd_display_data createdView {true, 14}; //recommended size is 14
 

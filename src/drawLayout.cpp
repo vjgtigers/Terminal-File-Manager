@@ -129,15 +129,19 @@ void drawSelectionPointer(xy xy_cursor) {
 
 
 void extendedFileInfoDisplay(const fileInfoStruct& fileInfo, const xy& wd) {
-    setCursorPosition(wd.x, wd.y);
-    std::cout << fileInfo.extention.substr(0, extentionView.size);
-    if (fileInfo.extention.length() < extentionView.size) {
-        std::cout << std::string(extentionView.size - fileInfo.extention.length(), ' ');
+    if(extentionView.active == true) {
+        setCursorPosition(wd.x, wd.y);
+        std::cout << fileInfo.extention.substr(0, extentionView.size);
+        if (fileInfo.extention.length() < extentionView.size) {
+            std::cout << std::string(extentionView.size - fileInfo.extention.length(), ' ');
+        }
+        std::cout << renderCodes.divVert;
     }
-    std::cout << renderCodes.divVert;
-    std::cout << fileInfo.size.substr(0,sizeView.size);
-    if (fileInfo.size.length() < sizeView.size) {
-        std::cout << std::string(sizeView.size - fileInfo.size.length(), ' ');
+    if (sizeView.active == true) {
+        std::cout << fileInfo.size.substr(0,sizeView.size);
+        if (fileInfo.size.length() < sizeView.size) {
+            std::cout << std::string(sizeView.size - fileInfo.size.length(), ' ');
+        }
     }
 }
 

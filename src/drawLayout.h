@@ -87,7 +87,7 @@ void maintainStateRefresh(const std::vector<fileInfoStruct>& fileNames);
 
 //TODO can this work both ways?
 //refresh command specificly if directory goes back
-void changeDir(const std::vector<fileInfoStruct>& fileNames);
+void dirBackRefresh(const std::vector<fileInfoStruct>& fileNames);
 
 //erases file info ON THE SCREEN so shorter dir can be displayed
 void clearFileInfo(const int& size);

@@ -197,7 +197,7 @@ void changeDir(std::vector<fileInfoStruct>& fileNames, std::string& pathDir) {
         }
     }
     fileInput(fileNames, pathDir);
-    changeDir(fileNames);
+    dirBackRefresh(fileNames);
 }
 
 

@@ -8,7 +8,7 @@
 #include <bits/fs_path.h>
 #include <string>
 #include <sys/stat.h>
-
+#include <cmath>
 
 #include "miscFunctions.h"
 #include "drawLayout.h"
@@ -114,11 +114,22 @@ void globalStateCalculator() {
 
 
 
+
+temp_size calcSize(std::uintmax_t size) {
+    int o{};
+    std::string test2 = "";
+    double mantissa = size;
+    for (; mantissa >= 1024.; mantissa /= 1024., ++o);
+    return {std::ceil(mantissa * 10.) / 10., "BKMGTPE"[o]};
+}
+
+
 void fileInput(std::vector<fileInfoStruct>& fileNames, const std::string& pathDir) {
     struct stat sb;
-
+    int temp_dec;
+    int temp_zero;
     fileNames.clear();
-
+    temp_size temp;
     //If the path is just the drive letter, the chopLen is off by one
     int chopLen = pathDir.length() +1;
     if (pathDir.length() <= 3) {chopLen -= 1;}
@@ -136,13 +147,19 @@ void fileInput(std::vector<fileInfoStruct>& fileNames, const std::string& pathDi
         // non-directory or not If it does, displays path
         if (stat(path1, &sb) == 0 && !(sb.st_mode & S_IFDIR)) {
             // cout << path << endl;
-            fileNames.push_back({outfilename_str.substr(chopLen),"0","oaeu", "aoeu", "ooeu"});
+            fileNames.push_back({outfilename_str.substr(chopLen),"","oaeu", "aoeu", "ooeu"});
             outfilename_str.length() >= outfilename_str.find('.')
                 ? (fileNames.back().extention = outfilename_str.substr(outfilename_str.find('.')))
                 : "true";
+
+            temp = calcSize(fs::file_size(fileName));
+            temp_dec = std::to_string(temp.size).find('.');
+            temp_zero = std::to_string(temp.size).find('0', temp_dec);
+            if (temp_dec +1 == temp_zero) {temp_zero-1;}
+            fileNames.back().size = std::to_string(temp.size).substr(0,temp_zero) + temp.suffix + 'B';
         }
         else {
-            fileNames.push_back({outfilename_str.substr(chopLen),"<DIR>","oaeu", "aoeu", "ooeu"});
+            fileNames.push_back({outfilename_str.substr(chopLen),"<DIR>","", "aoeu", "ooeu"});
         }
     }
     //TODO: improve this

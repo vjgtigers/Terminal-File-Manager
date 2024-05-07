@@ -9,7 +9,6 @@
 
 #include "miscFunctions.h"
 
-
 //type and if active of the diffrent information to be displayed
 struct fd_display_data {
     bool active;

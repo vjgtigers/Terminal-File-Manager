@@ -128,13 +128,17 @@ void drawSelectionPointer(xy xy_cursor) {
 
 
 
-void extendedFileInfoDisplay(const std::string& extention, const xy& wd) {
+void extendedFileInfoDisplay(const fileInfoStruct& fileInfo, const xy& wd) {
     setCursorPosition(wd.x, wd.y);
-    std::cout << extention.substr(0, extentionView.size);
-    if (extention.length() < extentionView.size) {
-        std::cout << std::string(extentionView.size - extention.length(), ' ');
+    std::cout << fileInfo.extention.substr(0, extentionView.size);
+    if (fileInfo.extention.length() < extentionView.size) {
+        std::cout << std::string(extentionView.size - fileInfo.extention.length(), ' ');
     }
-
+    std::cout << renderCodes.divVert;
+    std::cout << fileInfo.size.substr(0,sizeView.size);
+    if (fileInfo.size.length() < sizeView.size) {
+        std::cout << std::string(sizeView.size - fileInfo.size.length(), ' ');
+    }
 }
 
 
@@ -151,7 +155,7 @@ void displayFileInfo(const std::vector<fileInfoStruct>& fileNames) {
             if (fileNames[i-2].name.length() < nameView.size) {
                 std::cout << std::string(nameView.size - fileNames[i-2].name.length(), ' ');
             }
-            extendedFileInfoDisplay(fileNames[i-2].extention, {nameView.size+2, i});
+            extendedFileInfoDisplay(fileNames[i-2], {nameView.size+2, i});
         }
     }
 
@@ -162,7 +166,7 @@ void displayFileInfo(const std::vector<fileInfoStruct>& fileNames) {
             if (fileNames[i-2].name.length() < nameView.size) {
                 std::cout << std::string(nameView.size - fileNames[i-2].name.length(), ' ');
             }
-            extendedFileInfoDisplay(fileNames[i-2].extention, {nameView.size+2, i});
+            extendedFileInfoDisplay(fileNames[i-2], {nameView.size+2, i});
         }
     }
 
@@ -174,7 +178,7 @@ void displayFileInfo(const std::vector<fileInfoStruct>& fileNames) {
             if (fileNames[i].name.length() < nameView.size) {
                 std::cout << std::string(nameView.size-fileNames[i].name.length(), ' ');
             }
-            extendedFileInfoDisplay(fileNames[i].extention, {nameView.size + 2, y});
+            extendedFileInfoDisplay(fileNames[i], {nameView.size + 2, y});
         }
     }
 
@@ -185,7 +189,7 @@ void displayFileInfo(const std::vector<fileInfoStruct>& fileNames) {
             if (fileNames[fileSelectionPointer-y].name.length() < nameView.size) {
                 std::cout << std::string(nameView.size-fileNames[fileSelectionPointer-y].name.length(), ' ');
             }
-            extendedFileInfoDisplay(fileNames[fileSelectionPointer-y].extention, {nameView.size+2, i});
+            extendedFileInfoDisplay(fileNames[fileSelectionPointer-y], {nameView.size+2, i});
         }
         for (int i = tmb.middle_pos+1, y = 1; i < wd.y-3 && y != -1; ++i, ++y) {
             setCursorPosition(1, i);
@@ -193,7 +197,7 @@ void displayFileInfo(const std::vector<fileInfoStruct>& fileNames) {
             if (fileNames[fileSelectionPointer+y].name.length() < nameView.size) {
                 std::cout << std::string(nameView.size-fileNames[fileSelectionPointer+y].name.length(), ' ');
             }
-            extendedFileInfoDisplay(fileNames[fileSelectionPointer+y].extention, {nameView.size+2, i});
+            extendedFileInfoDisplay(fileNames[fileSelectionPointer+y], {nameView.size+2, i});
         }
     }
 
@@ -208,6 +212,7 @@ void clearFileInfo() {
         setCursorPosition(0, i);
         std::cout << std::string(nameView.size +1, ' ');
         std::cout << renderCodes.divVert << std::string(extentionView.size, ' ');
+        std::cout << renderCodes.divVert << std::string(sizeView.size, ' ');
     }
 }
 

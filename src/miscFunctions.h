@@ -6,9 +6,8 @@
 #define MISCFUNCTIONS_H
 #include <string>
 #include <vector>
-
+#include <cstdint>
 #include "drawLayout.h"
-
 
 
 //prehaps an inproved version of sleep? im not sure
@@ -67,5 +66,17 @@ void fileInput(std::vector<fileInfoStruct>& fileNames, const std::string& pathDi
 
 //go to the parent dir
 void changeDir(std::vector<fileInfoStruct>& fileNames, std::string& pathDir);
+
+
+struct temp_size {
+    double size;
+    char suffix;
+};
+
+
+//caluclate displayable size of file
+//original code (https://en.cppreference.com/w/cpp/filesystem/file_size)
+//EXTREAMLY modified though
+temp_size calcSize(std::uintmax_t size);
 
 #endif //MISCFUNCTIONS_H

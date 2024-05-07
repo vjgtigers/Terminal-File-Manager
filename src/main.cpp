@@ -21,7 +21,7 @@ using namespace std;
 
 fd_display_data nameView {true, 20}; //no particularly recommended size - must remain active
 fd_display_data extentionView {true, 5};//if file then display type, if folder then fldr
-fd_display_data sizeView {true, 6}; //recommended size is 6 or 7
+fd_display_data sizeView {true, 8}; //recommended size is 6 or 7 --probably 8
 fd_display_data modifiedView {true, 14}; //recommended size is 14
 fd_display_data createdView {true, 14}; //recommended size is 14
 
@@ -57,7 +57,7 @@ int main() {//IF I REDID DRAW WAY I COULD MAKE A RELLY COOL SCREENSHOT TAKER
     refreshScreen(fileInformation); //could be faster i guess but for simplicity sake just did this (May 2 11 PM)
     //end draw inital screen
     while(true) {
-
+        debugOutput("size of file" + fileInformation[fileSelectionPointer].size, -7);
         debugOutput("Global State: " + to_string(globalState),-1);
         const int key = key_press(); // blocks until a key is pressed
         xy available = detectSize();

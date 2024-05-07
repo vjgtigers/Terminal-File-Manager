@@ -12,7 +12,8 @@ This project aims to be a fast, customizable, and lightweight file browser for y
 * file management ability's
 * "onboarding process"
 * Colors
-
+* Live Search
+* Vim/NeoVim like bindings
 
 # Command Line (Work in Progress)
 **To activate the command line press ":"** <br>

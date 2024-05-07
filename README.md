@@ -15,15 +15,27 @@ This project aims to be a fast, customizable, and lightweight file browser for y
 * Live Search
 * Vim/NeoVim like bindings
 
+
+# Usage 
+| Key Presses | Description           |
+|-------------|-----------------------|
+| a           | go to parent dir      |
+| s           | enter selected dir    |
+| u           | down one file         |
+| h           | up one file           |
+| :           | activate command line |
+| q           | exit program          |
+
+
 # Command Line (Work in Progress)
 **To activate the command line press ":"** <br>
 You will then be able to start typing at the bottom of the screen
 
 
-| Commands       | Descpition |
-|----------------|-----------|
-| cd<sup>1</sup> | change directory like windows cd |
-| help | type help then command to get command info |
+| Commands       | Description                                |
+|----------------|--------------------------------------------|
+| cd<sup>1</sup> | change directory like windows cd           |
+| help           | type help then command to get command info |
 
 
 1. For the most part functions like windows cd except for some edge cases
@@ -31,6 +43,7 @@ You will then be able to start typing at the bottom of the screen
 
 # Other
 ## Contributing
+View CONTRIBUTING.md <br>
 This is a cmake project, so it can be built that way
 If you use CLion drop the src and CMakeLists.txt into the main dir
 and drop the helpInfo into the debug folder or where the project is built

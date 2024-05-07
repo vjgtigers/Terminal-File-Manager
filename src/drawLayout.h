@@ -90,6 +90,6 @@ void maintainStateRefresh(const std::vector<fileInfoStruct>& fileNames);
 void changeDir(const std::vector<fileInfoStruct>& fileNames);
 
 //erases file info ON THE SCREEN so shorter dir can be displayed
-void clearFileInfo();
+void clearFileInfo(const int& size);
 
 #endif //DRAWLAYOUT_H

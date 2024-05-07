@@ -206,9 +206,10 @@ void displayFileInfo(const std::vector<fileInfoStruct>& fileNames) {
 }
 
 
-void clearFileInfo() {
+void clearFileInfo(const int& size) {
     xy wd = detectSize();
-    for (int i = 2; i < wd.y-3; ++i) {
+    if (size > wd.y-5) {return;}
+    for (int i = 2 + size; i < wd.y-3; ++i) {
         setCursorPosition(0, i);
         std::cout << std::string(nameView.size +1, ' ');
         std::cout << renderCodes.divVert << std::string(extentionView.size, ' ');
@@ -220,7 +221,7 @@ void clearFileInfo() {
 void changeDir(const std::vector<fileInfoStruct>& fileNames) {
     currentPointerLocation = {0,2};
     fileSelectionPointer = 0;
-    clearFileInfo();
+    clearFileInfo(fileNames.size());
     displayTime();
     displayDirBar(path_dir);
     displayFileInfo(fileNames);

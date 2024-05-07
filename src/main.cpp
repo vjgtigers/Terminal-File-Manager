@@ -8,6 +8,7 @@
 #include "keyTracker.h"
 #include "terminalCommands.h"
 #include "miscFunctions.h"
+#include "readConfig.h"
 
 #define  WIN32_LEAN_AND_MEAN
 #define VC_EXTRALEAN
@@ -51,7 +52,7 @@ int main() {//IF I REDID DRAW WAY I COULD MAKE A RELLY COOL SCREENSHOT TAKER
     //end init settings
     xy wd = detectSize();
     topBarSettings.dirMaxLen = wd.x/2;
-
+    readUserConfig();
     //draw inital screen
     fileInput(fileInformation, path_dir);
     refreshScreen(fileInformation); //could be faster i guess but for simplicity sake just did this (May 2 11 PM)
@@ -87,7 +88,7 @@ int main() {//IF I REDID DRAW WAY I COULD MAKE A RELLY COOL SCREENSHOT TAKER
 
         if(key == 'h') {(fileSelectionPointer+1 < fileInformation.size()) ? (fileSelectionPointer += 1) : true; updateCursorandPointerSync(fileInformation); }
 
-        if(key == 'u') {(fileSelectionPointer > 0) ? (fileSelectionPointer -= 1) : true; updateCursorandPointerSync(fileInformation); }
+        if(key == 't') {(fileSelectionPointer > 0) ? (fileSelectionPointer -= 1) : true; updateCursorandPointerSync(fileInformation); }
 
 
         if(key == 58) {cmdMain();}

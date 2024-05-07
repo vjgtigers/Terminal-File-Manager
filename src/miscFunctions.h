@@ -60,7 +60,7 @@ extern int globalState;
 //used to calclate global state - needed for refreshing screen with diffrent size
 void globalStateCalculator();
 
-//TODO: rest of file info
+
 //read file names if dir and add to vector
 void fileInput(std::vector<fileInfoStruct>& fileNames, const std::string& pathDir);
 

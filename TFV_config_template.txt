@@ -1,0 +1,20 @@
+#config file for Terminal-File-Viewer
+#all non-config lines must start with a #
+#to use default version # out line
+#place the character code of the part you want to change in the parenthesis
+#
+#division char codes
+1[rc-vd](179) #vertical divisor
+1[rc-hd](196) #horizontal divisor
+1[rc-tc](194) #top combine
+1[rc-bc](193) #bottom combine
+1[rc-ac](197) #allcombine
+1[rc-pt](62)  #pointer
+#
+#
+#file info display options
+2[nameV](1|20)		 #must remain true, can modify size though, rec size 20 -- can NOT be disabled
+2[extentionV](1|5)	 #display file extention (in dev), rec size 5
+2[sizeV](1|20)		 #display file size, rec size 8
+2[modV](1|20)		 #display date file was modified, rec size 14
+2[createV](1|20)	 #display date file was created, rec size 14

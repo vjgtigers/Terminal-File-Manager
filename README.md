@@ -7,8 +7,7 @@ This project aims to be a fast, customizable, and lightweight file browser for y
 
 # Road Map
 ## After the basic file browsing functionality is fully implemented
-* improve the customizable aspect
-  * have config file
+* customize key press bindings
 * file management ability's
 * "onboarding process"
 * Colors
@@ -21,7 +20,7 @@ This project aims to be a fast, customizable, and lightweight file browser for y
 |-------------|-----------------------|
 | a           | go to parent dir      |
 | s           | enter selected dir    |
-| u           | down one file         |
+| t           | down one file         |
 | h           | up one file           |
 | :           | activate command line |
 | q           | exit program          |
@@ -40,6 +39,9 @@ You will then be able to start typing at the bottom of the screen
 
 1. For the most part functions like windows cd except for some edge cases
 
+# Config
+allows the ability to customize aspects of the program <br>
+see CONFIG.MD for more in depth and TFV_config_template.txt for an example config
 
 # Other
 ## Contributing

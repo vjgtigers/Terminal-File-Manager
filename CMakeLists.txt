@@ -17,7 +17,9 @@ add_executable(TFV ./src/main.cpp
         ./src/commandLine.h
         ./src/commands.cpp
         ./src/commands.h
-        ./src/commands.h)
+        ./src/commands.h
+        ./src/readConfig.cpp
+        ./src/readConfig.h)
 
 set(GCC_COVERAGE_COMPILE_FLAGS "-static")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${GCC_COVERAGE_COMPILE_FLAGS}" )

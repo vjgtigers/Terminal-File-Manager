@@ -35,7 +35,7 @@ You will then be able to start typing at the bottom of the screen
 |----------------|--------------------------------------------|
 | cd<sup>1</sup> | change directory like windows cd           |
 | help           | type help then command to get command info |
-
+| nvim           | launch neovim with selected file if non is provided|
 
 1. For the most part functions like windows cd except for some edge cases
 

@@ -19,4 +19,11 @@ void displayHelp(const std::string& command);
 //gets cleared when user starts typing a new command
 void displayError(const std::string& message);
 
+
+//launch neovim
+//if file name is provided opens that file
+//else checks if pointer is on a file if so opens that in neovim
+//if folder then lauches blank nvim
+void launchNVim(const std::string& command);
+
 #endif //COMMANDS_H

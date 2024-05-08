@@ -38,7 +38,7 @@ renderCodesTemplate renderCodes = {char(62), char(179), char(196), char(194), ch
 
 string currTime = "";
 string path_dir;
-
+//TODO: would it be worth it to make specific draw function so I could save all draw info?
 int main() {//IF I REDID DRAW WAY I COULD MAKE A RELLY COOL SCREENSHOT TAKER
     char full[_MAX_PATH];
     path_dir = _fullpath(full, ".", 260);

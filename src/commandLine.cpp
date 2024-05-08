@@ -63,5 +63,5 @@ void commandCalls(std::string& currCommand) {
 
     if (command == "cd") {changeDir(currCommand);}
     if (command == "help") {displayHelp(currCommand);}
-
+    if (command == "nvim") {launchNVim(currCommand);}
 }

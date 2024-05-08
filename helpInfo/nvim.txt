@@ -1,0 +1,5 @@
+launches neovim
+if a file is provided after then it opens that one
+if no file is provided then checks if the pointer is on a file
+if it is then it opens that
+if not opens a black neovim entry

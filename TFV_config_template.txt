@@ -13,6 +13,7 @@
 #
 #
 #file info display options
+# 1 or 0 for on or off then | then size
 2[nameV](1|20)		 #must remain true, can modify size though, rec size 20 -- can NOT be disabled
 2[extentionV](1|5)	 #display file extention (in dev), rec size 5
 2[sizeV](1|20)		 #display file size, rec size 8

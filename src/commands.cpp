@@ -84,3 +84,20 @@ void displayHelp(const std::string &command) {
         }
     }
 }
+
+
+void launchNVim(const std::string& command) {
+    if (command.length() == 4) {
+        if (fileInformation[fileSelectionPointer].extention != "<DIR>") {
+            system(("nvim " + path_dir + "\\" + fileInformation[fileSelectionPointer].name).c_str());
+        }
+        else {system("nvim");}
+     }
+    else {
+        std::string fileName = command.substr(command.find(' ')+1);
+        system(("nvim " + path_dir + "\\" + fileName).c_str());
+    }
+    ShowScrollBar(GetConsoleWindow(), SB_VERT, 0);
+    toggleVT(true);
+    maintainStateRefresh(fileInformation);
+}

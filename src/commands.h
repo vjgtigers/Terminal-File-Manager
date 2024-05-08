@@ -6,6 +6,20 @@
 #define COMMANDS_H
 #include <string>
 
+
+struct keyPressCodes_temp {
+    char quit;
+    char refresh;
+    char maintainStateRefresh;
+    char clear;
+    char enterCurrFolder;
+    char enterParFolder;
+    char down;
+    char up;
+
+};
+extern keyPressCodes_temp keyPressCodes ;
+
 //changes dir to absoulute path
 //if rel path then curret functinoaliy is undefined
 void changeDir(const std::string& command);

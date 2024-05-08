@@ -4,6 +4,7 @@
 #include <string>
 
 #include "commandLine.h"
+#include "commands.h"
 #include "drawLayout.h"
 #include "keyTracker.h"
 #include "terminalCommands.h"
@@ -35,10 +36,11 @@ int fileSelectionPointer;
 xy currentPointerLocation {0,2};
 vector<fileInfoStruct> fileInformation;
 renderCodesTemplate renderCodes = {char(62), char(179), char(196), char(194), char(193), char(197)};
-
+keyPressCodes_temp keyPressCodes ={'q', 'r', 'R', 'c', 's', 'a', 'h', 't'};
 string currTime = "";
 string path_dir;
 //TODO: would it be worth it to make specific draw function so I could save all draw info?
+//TODO: crashes if you try to open folder that you dont have perms too
 int main() {//IF I REDID DRAW WAY I COULD MAKE A RELLY COOL SCREENSHOT TAKER
     char full[_MAX_PATH];
     path_dir = _fullpath(full, ".", 260);
@@ -65,33 +67,31 @@ int main() {//IF I REDID DRAW WAY I COULD MAKE A RELLY COOL SCREENSHOT TAKER
         debugOutput(to_string(key) +" "+(char)key +" " + to_string(available.x) + " " + to_string(available.y), 0);
 
 
-        if(key == 'q') {toggleVT(false);return 0;}
-        if(key == 'c') {clearScreen();}
+        if(key == keyPressCodes.quit) {toggleVT(false);return 0;}
+        if(key == keyPressCodes.clear) {clearScreen();}
 
-        if(key == 'r') {
+        if(key == keyPressCodes.refresh) {
             refreshScreen(fileInformation);
         }
-        if(key == 'R') {
+        if(key == keyPressCodes.maintainStateRefresh) {
             maintainStateRefresh(fileInformation);
         }
-        if(key == -40) {(fileSelectionPointer+1 < fileInformation.size()) ? (fileSelectionPointer += 1) : true; updateCursorandPointerSync(fileInformation); }
-        if(key == -38) {(fileSelectionPointer > 0) ? (fileSelectionPointer -= 1) : true; updateCursorandPointerSync(fileInformation); }
-        if(key == - 37) {fileSelectionPointer = 0; changeDir(fileInformation, path_dir); updateCursorandPointerSync(fileInformation);}
-        if(key == char('a')) {fileSelectionPointer = 0; changeDir(fileInformation, path_dir); updateCursorandPointerSync(fileInformation);}
-        if(key == char('s')) {
+        //
+        //if(key == -40) {(fileSelectionPointer+1 < fileInformation.size()) ? (fileSelectionPointer += 1) : true; updateCursorandPointerSync(fileInformation); }
+        //if(key == -38) {(fileSelectionPointer > 0) ? (fileSelectionPointer -= 1) : true; updateCursorandPointerSync(fileInformation); }
+        //if(key == - 37) {fileSelectionPointer = 0; changeDir(fileInformation, path_dir); updateCursorandPointerSync(fileInformation);}
+        if(key == keyPressCodes.enterParFolder || key == -37) {fileSelectionPointer = 0; changeDir(fileInformation, path_dir); updateCursorandPointerSync(fileInformation);}
+        if(key == keyPressCodes.enterCurrFolder || key == -39) {
             if (fileInformation[fileSelectionPointer].extention == "<DIR>") {
                 path_dir =  path_dir + "\\" + fileInformation[fileSelectionPointer].name + "\\";
                 changeDir(fileInformation, path_dir);
                 updateCursorandPointerSync(fileInformation);
             }
         }
+        if(key == keyPressCodes.down || key == -40) {(fileSelectionPointer+1 < fileInformation.size()) ? (fileSelectionPointer += 1) : true; updateCursorandPointerSync(fileInformation); }
+        if(key == keyPressCodes.up || key == -38) {(fileSelectionPointer > 0) ? (fileSelectionPointer -= 1) : true; updateCursorandPointerSync(fileInformation); }
 
-        if(key == 'h') {(fileSelectionPointer+1 < fileInformation.size()) ? (fileSelectionPointer += 1) : true; updateCursorandPointerSync(fileInformation); }
-
-        if(key == 't') {(fileSelectionPointer > 0) ? (fileSelectionPointer -= 1) : true; updateCursorandPointerSync(fileInformation); }
-
-
-        if(key == 58) {cmdMain();}
+        if(key == ':') {cmdMain();}
     }
 
     return 0;

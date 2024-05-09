@@ -20,8 +20,8 @@ This project aims to be a fast, customizable, and lightweight file browser for y
 |-------------|-----------------------|
 | a           | go to parent dir      |
 | s           | enter selected dir    |
-| t           | down one file         |
-| h           | up one file           |
+| h           | down          |
+| t           | up            |
 | :           | activate command line |
 | q           | exit program          |
 

@@ -11,6 +11,7 @@
 #include <string>
 #include <unordered_map>
 
+#include "commands.h"
 #include "drawLayout.h"
 
 void setUserConfig(std::string setting, std::string data) {
@@ -26,7 +27,15 @@ void setUserConfig(std::string setting, std::string data) {
         {"extentionV", 7},
         {"sizeV", 8},
         {"modV", 9},
-        {"createV", 10}
+        {"createV", 10},
+        {"kc-up", 11},
+        {"kc-down", 12},
+        {"kc-quit", 13},
+        {"kc-refresh", 14},
+        {"kc-maintainRefresh", 15},
+        {"kc-clear", 16},
+        {"kc-enterFolder", 17},
+        {"kc-enterPar", 18},
     };
 
 
@@ -74,11 +83,37 @@ void setUserConfig(std::string setting, std::string data) {
             createdView.size = std::stoi(data.substr(2));
             break;
         //end view options
+
+        //start key press codes
+        case 11:
+            keyPressCodes.up = char(stoi(data));
+            break;
+        case 12:
+            keyPressCodes.down = char(stoi(data));
+            break;
+        case 13:
+            keyPressCodes.quit = char(stoi(data));
+            break;
+        case 14:
+            keyPressCodes.refresh = char(stoi(data));
+            break;
+        case 15:
+            keyPressCodes.maintainStateRefresh = char(stoi(data));
+            break;
+        case 16:
+            keyPressCodes.clear = char(stoi(data));
+            break;
+        case 17:
+            keyPressCodes.enterCurrFolder = char(stoi(data));
+            break;
+        case 18:
+            keyPressCodes.enterParFolder = char(stoi(data));
+            break;
+        //end key press codes
+
         default:
             break;
     }
-
-
 }
 
 void readUserConfig() {
@@ -87,7 +122,7 @@ void readUserConfig() {
     if (configFile.is_open() == true) {
         std::string lineData;
         while(std::getline(configFile, lineData)) {
-            if(lineData[0] == '1' || lineData[0] == '2'){
+            if(lineData[0] == '1' || lineData[0] == '2' || lineData[0] == '3'){
                 //debugOutput("user data: " + lineData.substr(2, lineData.find(']')-2) + " " + lineData.substr(lineData.find('(')+1, lineData.find(')')-1), -16);
                 //system("PAUSE");
                 setUserConfig(lineData.substr(2, lineData.find(']')-2), lineData.substr(lineData.find('(')+1, lineData.find(')')-1));

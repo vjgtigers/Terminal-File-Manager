@@ -73,7 +73,7 @@ void displayHelp(const std::string &command) {
         }
         std::cout << std::endl << "Press 'q' to quit";
     } else {
-        displayError("Command Does Not exist");
+        displayError("Command does not exist or no help file");
         return;
     }
     while (true) {

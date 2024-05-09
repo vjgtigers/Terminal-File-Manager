@@ -3,7 +3,8 @@
 #to use default version # out line
 #place the character code of the part you want to change in the parenthesis
 #
-#division char codes
+#renderCodes
+#render char codes
 1[rc-vd](179) #vertical divisor
 1[rc-hd](196) #horizontal divisor
 1[rc-tc](194) #top combine
@@ -19,3 +20,16 @@
 2[sizeV](1|20)		 #display file size, rec size 8
 2[modV](1|14)		 #display date file was modified, rec size 14
 2[createV](1|14)	 #display date file was created, rec size 14
+#
+#
+#key press codes
+#operates the same way as the renderCodes
+#some of these may be removed in the future if the functionality doesnt need to be user facing
+3[kc-up](116)               #default 't'
+3[kc-down](104)             #default 'h'
+3[kc-quit](113)             #default 'q'
+3[kc-refresh](114)          #default 'r'
+3[kc-maintainRefresh](82)   #default 'R'
+3[kc-clear](99)             #default 'c'
+3[kc-enterFolder](115)      #default 's'
+3[kc-enterPar](97)          #default 'a'

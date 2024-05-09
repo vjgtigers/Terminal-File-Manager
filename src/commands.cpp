@@ -12,6 +12,7 @@
 
 #include "keyTracker.h"
 #include "miscFunctions.h"
+#include "readConfig.h"
 #include "terminalCommands.h"
 
 
@@ -100,4 +101,8 @@ void launchNVim(const std::string& command) {
     ShowScrollBar(GetConsoleWindow(), SB_VERT, 0);
     toggleVT(true);
     maintainStateRefresh(fileInformation);
+}
+
+void refreshConfig() {
+    readUserConfig();
 }

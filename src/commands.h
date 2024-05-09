@@ -40,4 +40,7 @@ void displayError(const std::string& message);
 //if folder then lauches blank nvim
 void launchNVim(const std::string& command);
 
+//hot refreshable config so program doesnt have to be relaunched on config change
+void refreshConfig();
+
 #endif //COMMANDS_H

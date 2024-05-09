@@ -1,0 +1,2 @@
+reads the config file and refreshes setting
+used if you don't want to relaunch the app to test config

@@ -26,6 +26,8 @@ void cmdMain() {
             commandCalls(currCommand);
             setCursorPosition(0, wd.y-2);
             std::cout<<std::string(wd.x-1, ' ');
+            setCursorPosition(0, wd.y-1);
+            std::cout<<std::string(wd.x-1, ' ');
             return;
         } //TODO: call funtion search
 
@@ -33,12 +35,22 @@ void cmdMain() {
             if (currCommand.length() != 0) {
                 currCommand.pop_back();
                 drawCommand(currCommand, wd);
+                currPos -= 1;
+                setCursorPosition(0,wd.y-1);
+                std::cout<<std::string(wd.x-1, ' ');
+                setCursorPosition(currPos-1, wd.y-1);
+                std::cout << char(217) << char(192);
             }
         }
 
         else {
             currCommand += key;
             drawCommand(currCommand, wd);
+            setCursorPosition(0, wd.y-1);
+            std::cout<<std::string(wd.x-1, ' ');
+            setCursorPosition(currPos, wd.y-1);
+            std::cout << char(217) << char(192);
+            currPos += 1;
         }
         debugOutput(currCommand, -7);
 
@@ -62,7 +74,9 @@ void commandCalls(std::string& currCommand) {
 
 
     if (command == "cd") {changeDir(currCommand);}
-    if (command == "help") {displayHelp(currCommand);}
-    if (command == "nvim") {launchNVim(currCommand);}
-    if (command == "refreshConfig") {refreshConfig();}
+    else if (command == "help") {displayHelp(currCommand);}
+    else if (command == "nvim") {launchNVim(currCommand);}
+    else if (command == "refreshConfig") {refreshConfig();}
+
+    else {displayError("Command does not exist");}
 }

@@ -36,6 +36,8 @@ void setUserConfig(std::string setting, std::string data) {
         {"kc-clear", 16},
         {"kc-enterFolder", 17},
         {"kc-enterPar", 18},
+        {"rc-cl", 19},
+        {"rc-cr", 20}
     };
 
 
@@ -58,6 +60,12 @@ void setUserConfig(std::string setting, std::string data) {
             break;
         case 5:
             renderCodes.allcombine  = char(std::stoi(data));
+            break;
+        case 19:
+            renderCodes.cmdLcursor = char(std::stoi(data));
+            break;
+        case 20:
+            renderCodes.cmdRcursor = char(std::stoi(data));
             break;
         //end render codes
 

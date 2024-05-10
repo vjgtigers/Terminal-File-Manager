@@ -5,6 +5,7 @@
 3. Use this [AsciiTable](https://www.asciitable.com/) to help find the ascii codes you want to use
 4. replace the ascii codes in the text file with your own
 
+* there are more that I haven't added to this table but can be found in the config file
 
 | Name       | Function                                                                |
 |------------|-------------------------------------------------------------------------|
@@ -14,7 +15,9 @@
 | rc-bc      | combine horizontal divisor with <br> vertical on top, default (193)     |
 | rc-ac      | combine all sides, default (197)                                        |
 | rc-pt      | pointer, default (62)                                                   |
- | nameV      | size of area to display file name (file name)                           |
+| rc-cl      | left part of the cursor for the cmd line, default (217)                 |
+| rc-cr      | right part of the cursor for the cmd line, default (192)                |
+| nameV      | size of area to display file name (file name)                           |
 | extentionV | 1 or 0 for active and size (file extension)                             |
 | sizeV      | 1 or 0 for active and size (file size)                                  |
 | modV       | 1 or 0 for active and size (modified date)                              |

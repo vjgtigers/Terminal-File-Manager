@@ -33,8 +33,8 @@ void cmdMain() {
                 drawCommand(currCommand, wd);
                 currPos -= 1;
                 sendData(std::string(wd.x-1, ' '), {0,wd.y-1});
-                sendData(char(217), {currPos-1, wd.y-1});
-                sendData(char(192));//TODO: add this to config options
+                sendData(renderCodes.cmdLcursor, {currPos-1, wd.y-1});
+                sendData(renderCodes.cmdRcursor);
             }
         }
 
@@ -42,8 +42,8 @@ void cmdMain() {
             currCommand += key;
             drawCommand(currCommand, wd);
             sendData(std::string(wd.x-1, ' '), {0, wd.y-1});
-            sendData(char(217), {currPos, wd.y-1});
-            sendData(char(192));
+            sendData(renderCodes.cmdLcursor, {currPos, wd.y-1});
+            sendData(renderCodes.cmdRcursor);
             currPos += 1;
         }
         debugOutput(currCommand, -7);

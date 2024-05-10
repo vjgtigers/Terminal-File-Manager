@@ -29,6 +29,8 @@ struct renderCodesTemplate {
     char topCombine;
     char bottomCombine;
     char allcombine;
+    char cmdLcursor;
+    char cmdRcursor;
 };
 
 extern renderCodesTemplate renderCodes;

@@ -11,6 +11,8 @@
 1[rc-bc](193) #bottom combine
 1[rc-ac](197) #allcombine
 1[rc-pt](62)  #pointer
+1[rc-cl](217) #left part of the cursor for the cmd line
+1[rc-cr](192) #right part of the cursor for the command line
 #
 #
 #file info display options

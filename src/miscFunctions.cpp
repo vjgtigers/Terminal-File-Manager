@@ -31,18 +31,16 @@ xy detectSize() {
 
 void debugOutput(const std::string& s, const int offset) {
     xy wd = detectSize();
-    setCursorPosition(wd.x-30,wd.y-(wd.y-20)+offset);
-    std::cout << std::string(30, ' ');
-    setCursorPosition(wd.x-30,wd.y-(wd.y-20)+offset);
-    std::cout << s.substr(0,30);
+    sendData(std::string(30, ' '), {wd.x-30,wd.y-(wd.y-20)+offset});
+    sendData(s.substr(0,30), {wd.x-30,wd.y-(wd.y-20)+offset});
 }
 
 
 void cursorToggle(bool enable) {
     if (enable == true) {
-        printf(CSI "?25h");
+        sendData(CSI "?25h");
     } else {
-        printf(CSI "?25l");
+        sendData(CSI "?25l");
     }
 }
 
@@ -50,7 +48,6 @@ void cursorToggle(bool enable) {
 tmb_tem tmbDeterminator() {
     xy wd = detectSize();
     int usableY = wd.y - 5;
-    //std::cout << usableY/2-1 <<' '<< usableY/2 <<' '<<usableY/2;
     if (usableY % 2 == 0) {
         return {usableY / 2 - 1, usableY / 2 + 1, usableY / 2};
     } else {

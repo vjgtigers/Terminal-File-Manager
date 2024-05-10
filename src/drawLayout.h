@@ -92,4 +92,9 @@ void dirBackRefresh(const std::vector<fileInfoStruct>& fileNames);
 //erases file info ON THE SCREEN so shorter dir can be displayed
 void clearFileInfo(const int& size);
 
+
+void sendData(const std::string& out, const xy& pos);
+void sendData(const std::string& out);
+void sendData(const char& out);
+void sendData(const char& out, const xy& pos);
 #endif //DRAWLAYOUT_H

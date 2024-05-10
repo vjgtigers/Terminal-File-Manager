@@ -21,8 +21,7 @@
 //display an error message under cmd line
 void displayError(const std::string &message) {
     xy wd = detectSize();
-    setCursorPosition(0, wd.y - 1);
-    std::cout << message;
+    sendData(message, {0, wd.y-1});
 }
 
 
@@ -67,12 +66,13 @@ void displayHelp(const std::string &command) {
         debugOutput(subCommand + " 11111", -14);
         std::string fileData;
         clearScreen();
-        setCursorPosition(0, 0);
+        // setCursorPosition(0, 0);
+        sendData("Command: " + command.substr(command.find(' ')) + "\n", {0,0});
         while (openFile) {
             fileData = openFile.get();
-            std::cout << fileData;
+            sendData(fileData);
         }
-        std::cout << std::endl << "Press 'q' to quit";
+        sendData("Press 'q' to quit");
     } else {
         displayError("Command does not exist or no help file");
         return;

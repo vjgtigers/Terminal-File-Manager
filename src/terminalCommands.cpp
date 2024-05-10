@@ -48,10 +48,10 @@ bool EnableVTMode() {
 
 void toggleVT(bool toggle) {
     if (toggle == true) {
-        printf(CSI "?1049h");
+        sendData(CSI "?1049h");
     }
     else {
-        printf(CSI "?1049l");
+        sendData(CSI "?1049l");
     }
 }
 
@@ -65,7 +65,7 @@ int engineInit() {
     cursorToggle(false);
     globalStateCalculator(); //not strictly nessessary because no files are in the system yet
     fileSelectionPointer = 0;
-    std::cout << "\033]0;" << "TFV - DEVELOPMENT" << "\007";
+    sendData("\033]0; TFV - DEVELOPMENT - BRANCH: IDF \007");
     return 1;
 }
 

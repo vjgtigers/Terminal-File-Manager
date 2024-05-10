@@ -31,10 +31,12 @@ xy detectSize() {
 
 void debugOutput(const std::string& s, const int offset) {
     xy wd = detectSize();
-    setCursorPosition(wd.x-30,wd.y-(wd.y-20)+offset);
-    std::cout << std::string(30, ' ');
-    setCursorPosition(wd.x-30,wd.y-(wd.y-20)+offset);
-    std::cout << s.substr(0,30);
+    //setCursorPosition(wd.x-30,wd.y-(wd.y-20)+offset);
+    //std::cout << std::string(30, ' ');
+    sendData(std::string(30, ' '), {wd.x-30,wd.y-(wd.y-20)+offset});
+    //setCursorPosition(wd.x-30,wd.y-(wd.y-20)+offset);
+    //std::cout << s.substr(0,30);
+    sendData(s.substr(0,30), {wd.x-30,wd.y-(wd.y-20)+offset});
 }
 
 

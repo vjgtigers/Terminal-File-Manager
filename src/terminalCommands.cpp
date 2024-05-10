@@ -65,7 +65,7 @@ int engineInit() {
     cursorToggle(false);
     globalStateCalculator(); //not strictly nessessary because no files are in the system yet
     fileSelectionPointer = 0;
-    sendData("\033]0; TFV - DEVELOPMENT - BRANCH: IDF \007");
+    sendData("\033]0; TFV - DEVELOPMENT \007");
     return 1;
 }
 

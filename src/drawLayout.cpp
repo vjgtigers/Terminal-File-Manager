@@ -359,4 +359,7 @@ void sendData(const std::string& out) {
 void sendData(const char& out) {
     std::cout << out;
 }
-
+void sendData(const char& out, const xy& pos) {
+    setCursorPosition(pos.x, pos.y);
+    std::cout << out;
+}

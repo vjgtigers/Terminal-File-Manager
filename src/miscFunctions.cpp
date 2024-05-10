@@ -42,9 +42,11 @@ void debugOutput(const std::string& s, const int offset) {
 
 void cursorToggle(bool enable) {
     if (enable == true) {
-        printf(CSI "?25h");
+        //printf(CSI "?25h");
+        sendData(CSI "?25h");
     } else {
-        printf(CSI "?25l");
+        //printf(CSI "?25l");
+        sendData(CSI "?25l");
     }
 }
 

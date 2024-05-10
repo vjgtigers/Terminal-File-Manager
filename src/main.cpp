@@ -32,11 +32,18 @@ topBarSettings_tmp topBarSettings = {
     17 //15 is the recommended amount
 };
 
+
+
+std::vector<std::string> saveOutData; //used to save all screen prints if debug mode is on
+
 int fileSelectionPointer;
 xy currentPointerLocation {0,2};
 vector<fileInfoStruct> fileInformation;
+
+advancedCodes_template advancedCodes = {false};
 renderCodesTemplate renderCodes = {char(62), char(179), char(196), char(194), char(193), char(197), char(217), char(192)};
 keyPressCodes_temp keyPressCodes ={'q', 'r', 'R', 'c', 's', 'a', 'h', 't'};
+
 string currTime = "";
 string path_dir;
 //TODO: would it be worth it to make specific draw function so I could save all draw info?
@@ -67,7 +74,7 @@ int main() {//IF I REDID DRAW WAY I COULD MAKE A RELLY COOL SCREENSHOT TAKER
         debugOutput(to_string(key) +" "+(char)key +" " + to_string(available.x) + " " + to_string(available.y), 0);
 
 
-        if(key == keyPressCodes.quit) {toggleVT(false);return 0;}
+        if(key == keyPressCodes.quit) {toggleVT(false); onQuit();  return 0;}
         if(key == keyPressCodes.clear) {clearScreen();}
 
         if(key == keyPressCodes.refresh) {

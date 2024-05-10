@@ -32,6 +32,10 @@ struct renderCodesTemplate {
     char cmdLcursor;
     char cmdRcursor;
 };
+struct advancedCodes_template {
+    bool debugMode;
+};
+extern advancedCodes_template advancedCodes;
 
 extern renderCodesTemplate renderCodes;
 
@@ -99,4 +103,6 @@ void sendData(const std::string& out, const xy& pos);
 void sendData(const std::string& out);
 void sendData(const char& out);
 void sendData(const char& out, const xy& pos);
+
+void onQuit();
 #endif //DRAWLAYOUT_H

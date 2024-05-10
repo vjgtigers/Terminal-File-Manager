@@ -105,4 +105,5 @@ void launchNVim(const std::string& command) {
 
 void refreshConfig() {
     readUserConfig();
+    maintainStateRefresh(fileInformation);
 }

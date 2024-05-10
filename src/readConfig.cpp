@@ -37,7 +37,8 @@ void setUserConfig(std::string setting, std::string data) {
         {"kc-enterFolder", 17},
         {"kc-enterPar", 18},
         {"rc-cl", 19},
-        {"rc-cr", 20}
+        {"rc-cr", 20},
+        {"ac-debug", 21}
     };
 
 
@@ -119,6 +120,11 @@ void setUserConfig(std::string setting, std::string data) {
             break;
         //end key press codes
 
+        //start advanced codes
+        case 21:
+            advancedCodes.debugMode = std::stoi(data);
+            break;
+        //end advanced codes
         default:
             break;
     }
@@ -130,7 +136,7 @@ void readUserConfig() {
     if (configFile.is_open() == true) {
         std::string lineData;
         while(std::getline(configFile, lineData)) {
-            if(lineData[0] == '1' || lineData[0] == '2' || lineData[0] == '3'){
+            if(lineData[0] == '1' || lineData[0] == '2' || lineData[0] == '3' || lineData[0] == '4'){
                 //debugOutput("user data: " + lineData.substr(2, lineData.find(']')-2) + " " + lineData.substr(lineData.find('(')+1, lineData.find(')')-1), -16);
                 //system("PAUSE");
                 setUserConfig(lineData.substr(2, lineData.find(']')-2), lineData.substr(lineData.find('(')+1, lineData.find(')')-1));

@@ -259,19 +259,42 @@ void maintainStateRefresh(const std::vector<fileInfoStruct>& fileNames) {
 
 }
 
-
+extern std::vector<std::string> saveOutData;
 
 void sendData(const std::string& out, const xy& pos) {
     setCursorPosition(pos.x, pos.y);
     std::cout << out;
+    if (advancedCodes.debugMode == true) {
+        saveOutData.push_back("<" + std::to_string(pos.x) +',' +  std::to_string(pos.y) + ">" +out + '.');
+    }
 }
 void sendData(const std::string& out) {
     std::cout << out;
+    if (advancedCodes.debugMode == true) {
+        saveOutData.push_back("<0,0>" +out + '.');
+    }
 }
 void sendData(const char& out) {
     std::cout << out;
+    if (advancedCodes.debugMode == true) {
+        saveOutData.push_back("<0,0>"+ out + '.');
+    }
 }
 void sendData(const char& out, const xy& pos) {
     setCursorPosition(pos.x, pos.y);
     std::cout << out;
+    if (advancedCodes.debugMode == true) {
+        saveOutData.push_back("<" + std::to_string(pos.x) + ','+ std::to_string(pos.y) + ">" +out + '.');
+    }
+}
+
+#include <fstream>
+void onQuit() {
+    if(advancedCodes.debugMode != true) {return;}
+    std::ofstream file("data.txt");
+    for(auto t : saveOutData) {
+        //std::cout << t << std::endl;
+        file << t << std::endl;
+    }
+    file.close();
 }

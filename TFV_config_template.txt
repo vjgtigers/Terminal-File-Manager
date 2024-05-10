@@ -35,3 +35,8 @@
 3[kc-clear](99)             #default 'c'
 3[kc-enterFolder](115)      #default 's'
 3[kc-enterPar](97)          #default 'a'
+#
+#
+#advanced codes
+#these should not be changed unless you know what you are doing
+4[ac-debug](0)    #debug mode

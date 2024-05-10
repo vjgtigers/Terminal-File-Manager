@@ -271,13 +271,13 @@ void sendData(const std::string& out, const xy& pos) {
 void sendData(const std::string& out) {
     std::cout << out;
     if (advancedCodes.debugMode == true) {
-        saveOutData.push_back("<0,0>" +out + '.');
+        saveOutData.push_back("<-,->" +out + '.');
     }
 }
 void sendData(const char& out) {
     std::cout << out;
     if (advancedCodes.debugMode == true) {
-        saveOutData.push_back("<0,0>"+ out + '.');
+        saveOutData.push_back("<-,->"+ out + '.');
     }
 }
 void sendData(const char& out, const xy& pos) {

@@ -31,12 +31,13 @@ This project aims to be a fast, customizable, and lightweight file browser for y
 You will then be able to start typing at the bottom of the screen
 
 
-| Commands       | Description                                |
-|----------------|--------------------------------------------|
-| cd<sup>1</sup> | change directory like windows cd           |
-| help           | type help then command to get command info |
-| nvim           | launch neovim with selected file if non is provided|
-| refreshConfig  | reload config settings |
+| Commands              | Description                                         |
+|-----------------------|-----------------------------------------------------|
+| cd<sup>1</sup>        | change directory like windows cd                    |
+| help                  | type help then command to get command info          |
+| nvim                  | launch neovim with selected file if non is provided |
+| refreshConfig         | reload config settings                              |
+| setConfigOption (sco) | modify config option and write it to file           |
 
 1. For the most part functions like windows cd except for some edge cases
 

@@ -9,4 +9,6 @@
 void readUserConfig();
 void setUserConfig(std::string setting, std::string data);
 
+
+void writeUserConfig(std::string& command);
 #endif //READCONFIG_H

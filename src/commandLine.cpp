@@ -10,6 +10,7 @@
 #include "miscFunctions.h"
 #include "terminalCommands.h"
 #include "commands.h"
+#include "readConfig.h"
 
 void cmdMain() {
     std::string currCommand = "";
@@ -69,6 +70,7 @@ void commandCalls(std::string& currCommand) {
     else if (command == "help") {displayHelp(currCommand);}
     else if (command == "nvim") {launchNVim(currCommand);}
     else if (command == "refreshConfig") {refreshConfig();}
+    else if (command == "sco" || command == "setConfigOption") {writeUserConfig(currCommand);}
 
     else {displayError("Command does not exist");}
 }

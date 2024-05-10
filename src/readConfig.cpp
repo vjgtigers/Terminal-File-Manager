@@ -146,3 +146,25 @@ void readUserConfig() {
 }
 
 
+void writeUserConfig(std::string& command) {
+    std::string option = command.substr(4);
+    std::string setting = option.substr(option.find(' ')+1);
+    option = option.substr(0, option.find(' '));
+    std::fstream configFile;
+    configFile.open("TFV_config.txt");
+    std::vector<std::string> lineData;
+    std::string tempData;
+    if (configFile.is_open() == true) {
+        while (std::getline(configFile, tempData)) {
+            lineData.push_back(tempData);
+        }
+    }
+    configFile.close();
+    std::ofstream configFileOut("TFV_config.txt");
+    for(std::string t : lineData) {
+        //std::cout << t << std::endl;
+        configFileOut << t << std::endl;
+    }
+    //configFileOut << option << "," << setting;
+    configFileOut.close();
+}

@@ -283,20 +283,14 @@ void clearFileInfo(const int& size) {
     xy wd = detectSize();
     if (size > wd.y-5) {return;}
     for (int i = 2 + size; i < wd.y-3; ++i) {
-        //setCursorPosition(0, i);
-        //std::cout << std::string(nameView.size +1, ' ');
-
-        sendData(std::string(nameView.size +1, ' '));
+        sendData(std::string(nameView.size +1, ' '), {0, i});
         sendData(renderCodes.divVert);
 
-        //std::cout << renderCodes.divVert;
         if (extentionView.active == true) {
-            //std::cout << std::string(extentionView.size, ' ')  ;
             sendData(std::string(extentionView.size, ' '));
         }
 
         if (sizeView.active == true) {
-            //std::cout << renderCodes.divVert << std::string(sizeView.size, ' ');
             sendData(renderCodes.divVert);
             sendData(std::string(sizeView.size, ' '));
 
@@ -352,14 +346,18 @@ void maintainStateRefresh(const std::vector<fileInfoStruct>& fileNames) {
 void sendData(const std::string& out, const xy& pos) {
     setCursorPosition(pos.x, pos.y);
     std::cout << out;
+    //system("pause>nul");
 }
 void sendData(const std::string& out) {
     std::cout << out;
+    //system("pause>nul");
 }
 void sendData(const char& out) {
     std::cout << out;
+    //system("pause>nul");
 }
 void sendData(const char& out, const xy& pos) {
     setCursorPosition(pos.x, pos.y);
     std::cout << out;
+    //system("pause>nul");
 }

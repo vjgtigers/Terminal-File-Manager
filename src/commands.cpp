@@ -21,8 +21,6 @@
 //display an error message under cmd line
 void displayError(const std::string &message) {
     xy wd = detectSize();
-    //setCursorPosition(0, wd.y - 1);
-    //std::cout << message;
     sendData(message, {0, wd.y-1});
 }
 

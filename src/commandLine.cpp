@@ -71,6 +71,7 @@ void commandCalls(std::string& currCommand) {
     else if (command == "nvim") {launchNVim(currCommand);}
     else if (command == "refreshConfig") {refreshConfig();}
     else if (command == "sco" || command == "setConfigOption") {writeUserConfig(currCommand);}
+    else if (command == "tco" || command == "testConfigOption") {tempUserConfig(currCommand);}
 
     else {displayError("Command does not exist");}
 }

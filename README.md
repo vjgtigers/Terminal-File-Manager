@@ -38,7 +38,7 @@ You will then be able to start typing at the bottom of the screen
 | nvim                  | launch neovim with selected file if non is provided |
 | refreshConfig         | reload config settings                              |
 | setConfigOption (sco) | modify config option and write it to file           |
-
+| testConfigOption (tco)| modify config without saving.<br> settings will be lost on program exit |
 1. For the most part functions like windows cd except for some edge cases
 
 # Config

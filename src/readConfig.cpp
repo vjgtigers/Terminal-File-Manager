@@ -178,3 +178,11 @@ void writeUserConfig(std::string& command) {
     configFileOut.close();
     refreshConfig();
 }
+
+void tempUserConfig(std::string& command) {
+    std::string option = command.substr(command.find(' ') + 1);
+    std::string setting = option.substr(option.find(' ')+1);
+    option = option.substr(0, option.find(' '));
+    setUserConfig(option, setting);
+    refreshScreen(fileInformation);
+}

@@ -4,6 +4,7 @@
 
 #include "commands.h"
 
+#include <cstring>
 #include <string>
 #include <iostream>
 #include <sys/stat.h>
@@ -40,6 +41,7 @@ void changeDir(const std::string &command) {
         char full[_MAX_PATH];
         if (_fullpath(full, (path_dir + "\\" + subCommand).c_str(), _MAX_PATH) != NULL) {
             path_dir = full;
+            path_dir += '\\';
         } else {
             displayError("Change Dir Failed");
         }

@@ -21,6 +21,12 @@ void cmdMain() {
     while(true) { //TODO: swap to case and in main too
         const int key = key_press(); // blocks until a key is pressed
         xy available = detectSize();
+
+        if (key == 27) {
+            sendData(std::string(wd.x-1, ' '), {0, wd.y-2});
+            sendData(std::string(wd.x-1, ' '), {0, wd.y-1});
+            return;
+        }
         if (key == 10) { //enter
             commandCalls(currCommand);
             sendData(std::string(wd.x-1, ' '), {0, wd.y-2});

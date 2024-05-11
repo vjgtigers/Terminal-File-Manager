@@ -40,3 +40,9 @@
 #advanced codes
 #these should not be changed unless you know what you are doing
 4[ac-debug](0)    #debug mode
+#
+#
+#With the way that config settings are read
+#you can add any settings below this line that you want
+#to change instead of modifying the ones above and it will take precedent
+#precedent is ranked from bottom to top

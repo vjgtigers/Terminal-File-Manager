@@ -10,7 +10,7 @@
 #include "miscFunctions.h"
 #include "terminalCommands.h"
 #include "commands.h"
-#include "readConfig.h"
+#include "configInfo.h"
 
 void cmdMain() {
     std::string currCommand = "";

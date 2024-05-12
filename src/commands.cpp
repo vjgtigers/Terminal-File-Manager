@@ -13,7 +13,7 @@
 
 #include "keyTracker.h"
 #include "miscFunctions.h"
-#include "readConfig.h"
+#include "configInfo.h"
 #include "terminalCommands.h"
 
 

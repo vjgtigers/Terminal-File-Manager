@@ -2,8 +2,8 @@
 // Created by vjgti on 5/7/2024.
 //
 
-#ifndef READCONFIG_H
-#define READCONFIG_H
+#ifndef CONFIGINFO_H
+#define CONFIGINFO_H
 
 
 void readUserConfig();

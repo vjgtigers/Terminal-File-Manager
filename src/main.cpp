@@ -9,7 +9,7 @@
 #include "keyTracker.h"
 #include "terminalCommands.h"
 #include "miscFunctions.h"
-#include "readConfig.h"
+#include "configInfo.h"
 
 #define  WIN32_LEAN_AND_MEAN
 #define VC_EXTRALEAN

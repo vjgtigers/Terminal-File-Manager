@@ -6,7 +6,7 @@
 #include <fstream>
 #include <string>
 
-#include "readConfig.h"
+#include "configInfo.h"
 
 #include <string>
 #include <unordered_map>

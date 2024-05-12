@@ -8,6 +8,9 @@
 #include <string>
 #include <iostream>
 #include <sys/stat.h>
+#include <direct.h>
+#include <stdlib.h>
+#include <stdio.h>
 
 #include <fstream>
 
@@ -108,4 +111,12 @@ void launchNVim(const std::string& command) {
 void refreshConfig() {
     readUserConfig();
     maintainStateRefresh(fileInformation);
+}
+
+void createDir(std::string& command) { //TODO: no errer on fail
+    if (_mkdir(      (path_dir +"\\" +command.substr(command.find(' ') +1)).c_str()       ) == 0) {
+    } else {
+        displayError("Error Creating folder:" + command.substr(command.find(' ') +1));
+    }
+    return;
 }

@@ -43,4 +43,6 @@ void launchNVim(const std::string& command);
 //hot refreshable config so program doesnt have to be relaunched on config change
 void refreshConfig();
 
+//create dir in current path with provided name
+void createDir(std::string& command);
 #endif //COMMANDS_H

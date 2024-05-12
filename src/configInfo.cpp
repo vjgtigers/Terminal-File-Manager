@@ -38,7 +38,8 @@ void setUserConfig(std::string setting, std::string data) {
         {"kc-enterPar", 18},
         {"rc-cl", 19},
         {"rc-cr", 20},
-        {"ac-debug", 21}
+        {"ac-debug", 21},
+        {"ac-config", 22}
     };
 
 
@@ -124,6 +125,9 @@ void setUserConfig(std::string setting, std::string data) {
         case 21:
             advancedCodes.debugMode = std::stoi(data);
             break;
+        case 22:
+            advancedCodes.disableConfigLoad = std::stoi(data);
+            break;
         //end advanced codes
         default:
             break;
@@ -131,6 +135,7 @@ void setUserConfig(std::string setting, std::string data) {
 }
 
 void readUserConfig() {
+    if (advancedCodes.disableConfigLoad == true) {return;}
     std::fstream configFile;
     configFile.open("TFV_config.txt");
     if (configFile.is_open() == true) {
@@ -139,7 +144,12 @@ void readUserConfig() {
             if(lineData[0] == '1' || lineData[0] == '2' || lineData[0] == '3' || lineData[0] == '4'){
                 //debugOutput("user data: " + lineData.substr(2, lineData.find(']')-2) + " " + lineData.substr(lineData.find('(')+1, lineData.find(')')-1), -16);
                 //system("PAUSE");
-                setUserConfig(lineData.substr(2, lineData.find(']')-2), lineData.substr(lineData.find('(')+1, lineData.find(')')-1));
+                setUserConfig(lineData.substr(2, lineData.find(']')-2), lineData.substr(lineData.find('(')+1, lineData.find(')')-lineData.find('(')-1));
+            } else if (lineData[0] == '*') {
+                setUserConfig(lineData.substr(2, lineData.find(']')-2), lineData.substr(lineData.find('(')+1, lineData.find(')')-lineData.find('(')-1));
+                if (lineData.substr(2, lineData.find(']')-2) == "ac-config" && lineData.substr(lineData.find('(')+1, lineData.find(')')-lineData.find('(')-1) == "1") {
+                    break;
+                }
             }
         }
     }

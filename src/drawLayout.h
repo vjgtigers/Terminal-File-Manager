@@ -34,6 +34,7 @@ struct renderCodesTemplate {
 };
 struct advancedCodes_template {
     bool debugMode;
+    bool disableConfigLoad;
 };
 extern advancedCodes_template advancedCodes;
 

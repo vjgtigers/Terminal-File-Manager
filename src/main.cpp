@@ -40,7 +40,7 @@ int fileSelectionPointer;
 xy currentPointerLocation {0,2};
 vector<fileInfoStruct> fileInformation;
 
-advancedCodes_template advancedCodes = {false};
+advancedCodes_template advancedCodes = {false, false};
 renderCodesTemplate renderCodes = {char(62), char(179), char(196), char(194), char(193), char(197), char(217), char(192)};
 keyPressCodes_temp keyPressCodes ={'q', 'r', 'R', 'c', 's', 'a', 'h', 't'};
 

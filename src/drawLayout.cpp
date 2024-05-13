@@ -222,8 +222,8 @@ void dirBackRefresh(const std::vector<fileInfoStruct>& fileNames) {
     clearFileInfo(fileNames.size());
     displayTime();
     displayDirBar(path_dir);
-    displayFileInfo(fileNames);
     updateCursorandPointerSync(fileNames);
+    displayFileInfo(fileNames);
 }
 
 

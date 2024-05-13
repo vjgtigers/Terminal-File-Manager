@@ -7,13 +7,16 @@ This project aims to be a fast, customizable, and lightweight file browser for y
 
 # Road Map
 ## After the basic file browsing functionality is fully implemented
-* customize key press bindings
-* file management ability's
+* ~~customize key press bindings~~
+* file management ability's (**Top Priority**)
+* view file permissions
 * "onboarding process"
 * Colors
+* Git explorer (tentative)
+* encryption symmetrical/asymmetrical 
 * Live Search
-* Vim/NeoVim like bindings
-
+* ~~Vim/NeoVim like bindings~~
+* file compression
 
 # Usage 
 | Key Presses | Description           |

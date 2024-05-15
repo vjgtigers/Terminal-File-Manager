@@ -5,6 +5,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <sys/stat.h>
 
 #include "configInfo.h"
 
@@ -196,3 +197,28 @@ void tempUserConfig(std::string& command) {
     setUserConfig(option, setting);
     refreshScreen(fileInformation);
 }
+
+
+void createUserConfig(const std::string& command) {
+    struct stat buffer;
+    std::string commandName = "initConfig;";
+    std::string name = "TFV_config";
+    bool override;
+    if (command.length() == commandName.length()) {override = false;}
+    else {
+        if(command.find("--override") != std::string::npos) {
+            override = true;
+        }
+    }
+    //be able to pass in a override flag to rewrite file
+    bool exists = (stat(name.c_str(), &buffer) == 0);
+    if (exists == true && override == false) {return;}
+
+    //everything in this function so far is untested
+    //TODO
+}
+
+
+
+
+

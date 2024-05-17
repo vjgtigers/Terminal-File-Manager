@@ -28,9 +28,9 @@ void cmdMain() {
             return;
         }
         if (key == 10) { //enter
-            commandCalls(currCommand);
             sendData(std::string(wd.x-1, ' '), {0, wd.y-2});
             sendData(std::string(wd.x-1, ' '), {0, wd.y-1});
+            commandCalls(currCommand);
             return;
         } //TODO: call funtion search
 
@@ -79,6 +79,7 @@ void commandCalls(std::string& currCommand) {
     else if (command == "sco" || command == "setConfigOption") {writeUserConfig(currCommand);}
     else if (command == "tco" || command == "testConfigOption") {tempUserConfig(currCommand);}
     else if (command == "mkdir") {createDir(currCommand);}
+    else if (command == "mkf") {createFile(currCommand);}
 
     else {displayError("Command does not exist");}
 }

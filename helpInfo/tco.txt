@@ -1,0 +1,2 @@
+set a config option in the program but doesn't write to config file
+will be cleared when program ends

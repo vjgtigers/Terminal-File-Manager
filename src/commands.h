@@ -45,4 +45,7 @@ void refreshConfig();
 
 //create dir in current path with provided name
 void createDir(std::string& command);
+
+//creates new file - doesnt work if file already exists but no error message
+void createFile(std::string& command);
 #endif //COMMANDS_H

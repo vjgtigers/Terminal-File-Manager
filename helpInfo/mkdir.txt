@@ -1,0 +1,2 @@
+creates a new directory
+for the time being dir name MUST contain NO spaces

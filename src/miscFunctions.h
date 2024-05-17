@@ -79,4 +79,6 @@ struct temp_size {
 //EXTREAMLY modified though
 temp_size calcSize(std::uintmax_t size);
 
+//regets files and folders from dir
+void researchDir();
 #endif //MISCFUNCTIONS_H

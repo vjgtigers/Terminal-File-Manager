@@ -201,7 +201,7 @@ void tempUserConfig(std::string& command) {
 
 void createUserConfig(const std::string& command) {
     struct stat buffer;
-    std::string commandName = "initConfig;";
+    std::string commandName = "initConfig";
     std::string name = "TFV_config";
     bool override;
     if (command.length() == commandName.length()) {override = false;}
@@ -214,8 +214,12 @@ void createUserConfig(const std::string& command) {
     bool exists = (stat(name.c_str(), &buffer) == 0);
     if (exists == true && override == false) {return;}
 
+
     //everything in this function so far is untested
     //TODO
+    //other flag to write current settings or default settings
+    //could i do a system call to tfv and pass in overide flag if active and then just current commands
+    //idk if this would work though because how would i run the command
 }
 
 

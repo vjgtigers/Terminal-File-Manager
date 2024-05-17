@@ -113,10 +113,34 @@ void refreshConfig() {
     maintainStateRefresh(fileInformation);
 }
 
-void createDir(std::string& command) { //TODO: no errer on fail
+void createDir(std::string& command) {
     if (_mkdir(      (path_dir +"\\" +command.substr(command.find(' ') +1)).c_str()       ) == 0) {
     } else {
-        displayError("Error Creating folder:" + command.substr(command.find(' ') +1));
+        displayError("Error Creating folder: " + command.substr(command.find(' ') +1));
     }
+    researchDir();
+    return;
+}
+
+void createFile(std::string& command) {  //TODO: implement spaced name and error
+    std::string Fname;
+    if (command.substr(command.find(' ') +1,1) != "\"") {
+        Fname = command.substr(command.find(' ') +1);
+    }
+    std::string path = path_dir + '\\' + Fname;
+    HANDLE h = CreateFileA(path.c_str(),    // name of the file
+                      GENERIC_WRITE, // open for writing
+                      0,             // sharing mode, none in this case
+                      nullptr,             // use default security descriptor
+                      CREATE_NEW, // dont overwrite if exists - could add option
+                      FILE_ATTRIBUTE_NORMAL,
+                      nullptr);
+
+    if (h) {
+        CloseHandle(h);
+    } else { //TODO: doesnt work
+        displayError(std::to_string(GetLastError()));
+    }
+    researchDir();
     return;
 }

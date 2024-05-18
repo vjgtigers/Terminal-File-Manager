@@ -117,6 +117,7 @@ temp_size calcSize(std::uintmax_t size) {
     std::string test2 = "";
     double mantissa = size;
     for (; mantissa >= 1024.; mantissa /= 1024., ++o);
+    if (std::ceil(mantissa * 10.) / 10. == 0){return {0, ' '};}
     return {std::ceil(mantissa * 10.) / 10., "BKMGTPE"[o]};
 }
 
@@ -153,7 +154,13 @@ void fileInput(std::vector<fileInfoStruct>& fileNames, const std::string& pathDi
             temp_dec = std::to_string(temp.size).find('.');
             temp_zero = std::to_string(temp.size).find('0', temp_dec);
             if (temp_dec +1 == temp_zero) {temp_zero-1;}
-            fileNames.back().size = std::to_string(temp.size).substr(0,temp_zero) + temp.suffix + 'B';
+            if (temp.suffix != 'B') {
+                fileNames.back().size = std::to_string(temp.size).substr(0,temp_zero) + temp.suffix + 'B';
+            }
+            else {
+                fileNames.back().size = std::to_string(temp.size).substr(0,temp_zero) + temp.suffix;
+            }
+            if (temp.size == 0) {fileNames.back().size = "0B";}
         }
         else {
             fileNames.push_back({outfilename_str.substr(chopLen),"<DIR>","", "aoeu", "ooeu"});

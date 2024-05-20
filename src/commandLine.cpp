@@ -20,7 +20,6 @@ void cmdMain() {
     sendData(std::string(wd.x-1, ' '), {0, wd.y-1});
     while(true) {
         const int key = key_press(); // blocks until a key is pressed
-        xy available = detectSize();
 
         if (key == 27) {
             sendData(std::string(wd.x-1, ' '), {0, wd.y-2});

@@ -21,15 +21,12 @@
 
 
 
-
-//display an error message under cmd line
 void displayError(const std::string &message) {
     xy wd = detectSize();
     sendData(message, {0, wd.y-1});
 }
 
 
-//update dir on user input through :cd <dir>
 void changeDir(const std::string &command) {
     std::string subCommand = command.substr(command.find(' ') + 1);
     struct stat sb;
@@ -62,7 +59,6 @@ void changeDir(const std::string &command) {
     changeDir(fileInformation, path_dir);
 }
 
-//display help page for provided command - q to quit
 void displayHelp(const std::string &command) {
     std::string subCommand = command.substr(command.find(' ') + 1);
     debugOutput(subCommand + " aouthn", -14);
@@ -128,9 +124,6 @@ void createDir(std::string& command) {
 void createFile(std::string& command) {
     std::vector<std::string> tokens = tokenizeInput(command);
     std::string Fname;
-    //if (command.substr(command.find(' ') +1,1) != "\"") {
-    //    Fname = command.substr(command.find(' ') +1);
-    //}
     Fname = tokens[1];
     std::string path = path_dir + '\\' + Fname;
     HANDLE h = CreateFileA(path.c_str(),    // name of the file

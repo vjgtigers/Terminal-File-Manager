@@ -23,8 +23,6 @@ void setCursorPosition(int x, int y)
     SetConsoleCursorPosition(hOut, coord);
 }
 
-
-
 bool EnableVTMode() {
     HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
     if (hOut == INVALID_HANDLE_VALUE) {
@@ -44,8 +42,6 @@ bool EnableVTMode() {
     return true;
 }
 
-
-
 void toggleVT(bool toggle) {
     if (toggle == true) {
         sendData(CSI "?1049h");
@@ -54,9 +50,6 @@ void toggleVT(bool toggle) {
         sendData(CSI "?1049l");
     }
 }
-
-
-
 
 int engineInit() {
     if (!EnableVTMode()) {printf("Unable to enter VT processing mode. Quitting.\n");return -1;}
@@ -68,7 +61,6 @@ int engineInit() {
     sendData("\033]0; TFV - DEVELOPMENT \007");
     return 1;
 }
-
 
 void clearScreen()
 {
@@ -87,19 +79,11 @@ void clearScreen()
 
     /* Fill the entire buffer with spaces */
     if (!FillConsoleOutputCharacter(
-      hStdOut,
-      (TCHAR) ' ',
-      cellCount,
-      homeCoords,
-      &count
-      )) return;
+      hStdOut, (TCHAR) ' ', cellCount, homeCoords, &count))
+        return;
 
     /* Fill the entire buffer with the current colors and attributes */
     if (!FillConsoleOutputAttribute(
-      hStdOut,
-      csbi.wAttributes,
-      cellCount,
-      homeCoords,
-      &count
-      )) return;
+      hStdOut, csbi.wAttributes, cellCount, homeCoords, &count))
+        return;
 }

@@ -20,11 +20,11 @@ struct keyPressCodes_temp {
 };
 extern keyPressCodes_temp keyPressCodes ;
 
-//changes dir to absoulute path
-//if rel path then curret functinoaliy is undefined
+//update dir on user input through :cd <dir>
+//works with absolute path. mostly works with rel path
 void changeDir(const std::string& command);
 
-
+//display help page for provided command - q to quit
 //clears screen and displays help data for passed command ie help cd
 //press q to return to file screen
 void displayHelp(const std::string& command);

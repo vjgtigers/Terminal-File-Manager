@@ -81,4 +81,8 @@ temp_size calcSize(std::uintmax_t size);
 
 //regets files and folders from dir
 void researchDir();
+
+//return a vector of tokens for user input
+//take into accout quotes
+std::vector<std::string> tokenizeInput(std::string& init);
 #endif //MISCFUNCTIONS_H

@@ -98,17 +98,16 @@ void dirBackRefresh(const std::vector<fileInfoStruct>& fileNames);
 //erases file info ON THE SCREEN so shorter dir can be displayed
 void clearFileInfo(const int& size);
 
-
+//set of functions for printing data to screen
 void sendData(const std::string& out, const xy& pos);
+//set of functions for printing data to screen
 void sendData(const std::string& out);
+//set of functions for printing data to screen
 void sendData(const char& out);
+//set of functions for printing data to screen
 void sendData(const char& out, const xy& pos);
 
 //can be used to preform actions before the program exits
 void onQuit();
-
-//return a vector of tokens for user input
-//take into accout quotes
-std::vector<std::string> tokenizeInput(std::string& init);
 
 #endif //DRAWLAYOUT_H

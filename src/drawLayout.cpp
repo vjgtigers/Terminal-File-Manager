@@ -10,6 +10,7 @@
 #include <Windows.h>
 #include <chrono>
 #include <ctime>
+#include <fstream>
 
 #include <string>
 #include "miscFunctions.h"
@@ -223,7 +224,6 @@ void dirBackRefresh(const std::vector<fileInfoStruct>& fileNames) {
 }
 
 
-//TODO: some refresh function should research files
 
 void refreshScreen(const std::vector<fileInfoStruct>& fileNames) {
     xy wd = detectSize();
@@ -284,7 +284,7 @@ void sendData(const char& out, const xy& pos) {
     }
 }
 
-#include <fstream>
+
 void onQuit() {
     if(advancedCodes.debugMode != true) {return;}
     std::ofstream file("data.txt");
@@ -294,35 +294,3 @@ void onQuit() {
     }
     file.close();
 }
-
-std::vector<std::string> tokenizeInput(std::string& init) {
-    int currentPos = 0;
-    std::vector<std::string> tokens;
-    int end;
-    while (true) {
-        if (init.find('"',currentPos) == std::string::npos && init.find(' ', currentPos) == std::string::npos) {
-            break;
-        }
-        if (init.find('"', currentPos) < init.find(' ', currentPos)) {
-            end = init.find('"', currentPos+1);
-            tokens.push_back(init.substr(currentPos +1, end-currentPos -1));
-            if (end+1 == 0) {
-                break;
-            }
-            currentPos = end+2;
-        } else {
-            end = init.find(' ', currentPos + 1);
-            tokens.push_back(init.substr(currentPos, end -currentPos));
-            if (end+1 == 0) {
-                break;
-            }
-            currentPos = end+1;
-        }
-    }
-    return tokens;
-}
-
-
-
-
-

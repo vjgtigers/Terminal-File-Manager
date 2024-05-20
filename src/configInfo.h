@@ -6,7 +6,10 @@
 #define CONFIGINFO_H
 
 
+//reads in config options from TFV_config.txt
 void readUserConfig();
+
+//sets the user config option in the program
 void setUserConfig(std::string setting, std::string data);
 
 //writes the provided config info to the file

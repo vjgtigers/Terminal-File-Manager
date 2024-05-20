@@ -16,12 +16,10 @@ bool EnableVTMode();
 //toggle between virtule terminal and regular terminal
 void toggleVT(bool toggle);
 
-
 //updated clear screen - appears to be faster than original
 //original code (https://cplusplus.com/articles/4z18T05o/)
 //(GetConsoleScreenBufferInfo) - NOT RECCOMENDED (https://learn.microsoft.com/en-us/windows/console/fillconsoleoutputattribute)
 void clearScreen();
-
 
 //init window and viewer
 int engineInit();

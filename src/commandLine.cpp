@@ -80,6 +80,7 @@ void commandCalls(std::string& currCommand) {
     else if (command == "tco" || command == "testConfigOption") {tempUserConfig(currCommand);}
     else if (command == "mkdir") {createDir(currCommand);}
     else if (command == "mkf") {createFile(currCommand);}
+    else if (command == "initConfig") {createUserConfig(currCommand); }
 
     else {displayError("Command does not exist");}
 }

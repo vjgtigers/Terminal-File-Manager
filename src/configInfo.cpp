@@ -199,27 +199,61 @@ void tempUserConfig(std::string& command) {
 }
 
 
+
 void createUserConfig(const std::string& command) {
     struct stat buffer;
     std::string commandName = "initConfig";
-    std::string name = "TFV_config";
-    bool override;
+    std::string name = "TFV_config.txt";
+    bool override = false;
     if (command.length() == commandName.length()) {override = false;}
     else {
         if(command.find("--override") != std::string::npos) {
             override = true;
         }
     }
-    //be able to pass in a override flag to rewrite file
+
     bool exists = (stat(name.c_str(), &buffer) == 0);
-    if (exists == true && override == false) {return;}
+    if (exists == true && override == false) {displayError("already exits - use --override to rewrite");return;}
+    struct temp_template {
+        std::string name;
+        std::string option;
+    };
+    std::vector<temp_template> config {
+    {"1[rc-vd]", "179"},
+    {"1[rc-hd]", "196"},
+    {"1[rc-tc]", "194"},
+    {"1[rc-bc]", "193"},
+    {"1[rc-ac]", "197"},
+    {"1[rc-pt]", "62"},
+    {"1[rc-cl]", "217"},
+    {"1[rc-cr]", "192"},
 
+    {"2[nameV]", "1|20"},
+    {"2[extentionV]", "1|5"},
+    {"2[sizeV]", "1|8"},
+    {"2[modV]", "1|14"},
+    {"2[createV]", "1|14"},
 
-    //everything in this function so far is untested
-    //TODO
-    //other flag to write current settings or default settings
-    //could i do a system call to tfv and pass in overide flag if active and then just current commands
-    //idk if this would work though because how would i run the command
+    {"3[kc-up]", "116"},
+    {"3[kc-down]", "104"},
+    {"3[kc-quit]", "113"},
+    {"3[kc-refresh]", "114"},
+    {"3[kc-maintainRefresh]", "82"},
+    {"3[kc-clear]", "99"},
+    {"3[kc-enterFolder]", "115"},
+    {"3[kc-enterPar]", "97"},
+
+    {"4[ac-debug]", "0"},
+    {"*[ac-config]", "0"}
+    };
+
+    std::ofstream file;
+    file.open(name);
+    for (temp_template t : config) {
+        file << t.name << "(" << t.option << ")" << std::endl;
+    }
+    file.close();
+    return;
 }
 
 

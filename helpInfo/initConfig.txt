@@ -1,0 +1,4 @@
+creates/overwrites config file with default options
+if config file already exists it will error out
+if you want to override pass the --override flag
+after the command

@@ -16,4 +16,7 @@ void writeUserConfig(std::string& command);
 //sets the config setting while the progrom is running
 //does NOT write to file - ends affect after program ends
 void tempUserConfig(std::string& command);
+
+//write config file with default config options
+void createUserConfig(const std::string& command);
 #endif //READCONFIG_H

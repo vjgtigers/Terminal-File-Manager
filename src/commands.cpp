@@ -114,7 +114,10 @@ void refreshConfig() {
 }
 
 void createDir(std::string& command) {
-    if (_mkdir(      (path_dir +"\\" +command.substr(command.find(' ') +1)).c_str()       ) == 0) {
+    std::vector<std::string> tokens = tokenizeInput(command);
+    std::string Fname = tokens[1];
+
+    if (_mkdir((path_dir +"\\" +Fname).c_str()) == 0) {
     } else {
         displayError("Error Creating folder: " + command.substr(command.find(' ') +1));
     }
@@ -122,11 +125,13 @@ void createDir(std::string& command) {
     return;
 }
 
-void createFile(std::string& command) {  //TODO: implement spaced name and error
+void createFile(std::string& command) {
+    std::vector<std::string> tokens = tokenizeInput(command);
     std::string Fname;
-    if (command.substr(command.find(' ') +1,1) != "\"") {
-        Fname = command.substr(command.find(' ') +1);
-    }
+    //if (command.substr(command.find(' ') +1,1) != "\"") {
+    //    Fname = command.substr(command.find(' ') +1);
+    //}
+    Fname = tokens[1];
     std::string path = path_dir + '\\' + Fname;
     HANDLE h = CreateFileA(path.c_str(),    // name of the file
                       GENERIC_WRITE, // open for writing

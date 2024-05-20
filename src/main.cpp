@@ -46,7 +46,7 @@ keyPressCodes_temp keyPressCodes ={'q', 'r', 'R', 'c', 's', 'a', 'h', 't'};
 
 string currTime = "";
 string path_dir;
-//TODO: would it be worth it to make specific draw function so I could save all draw info?
+
 //TODO: crashes if you try to open folder that you dont have perms too
 int main() {//IF I REDID DRAW WAY I COULD MAKE A RELLY COOL SCREENSHOT TAKER
     char full[_MAX_PATH];

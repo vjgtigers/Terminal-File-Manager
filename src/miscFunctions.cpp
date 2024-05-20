@@ -170,7 +170,7 @@ void fileInput(std::vector<fileInfoStruct>& fileNames, const std::string& pathDi
             fileNames.push_back({outfilename_str.substr(chopLen),"<DIR>","", "aoeu", "ooeu"});
         }
     }
-    //TODO: improve this
+
     std::vector<fileInfoStruct> fileNames2(fileNames.size());
     int p = 0;
     for(fileInfoStruct data: fileNames) {

@@ -62,7 +62,6 @@ void refreshScreen(const std::vector<fileInfoStruct>& fileNames);
 //display the current dir at the top of the screen
 void displayDirBar(const std::string& dirName);
 
-//TODO: update
 //display the current time
 void displayTime();
 
@@ -92,8 +91,8 @@ void extendedFileInfoDisplay();
 //used to redraw file screen from point left off - usefull if screen is needed to display alternate information
 void maintainStateRefresh(const std::vector<fileInfoStruct>& fileNames);
 
-//TODO can this work both ways?
-//refresh command specificly if directory goes back
+
+//refresh command when directiory changes
 void dirBackRefresh(const std::vector<fileInfoStruct>& fileNames);
 
 //erases file info ON THE SCREEN so shorter dir can be displayed
@@ -105,5 +104,11 @@ void sendData(const std::string& out);
 void sendData(const char& out);
 void sendData(const char& out, const xy& pos);
 
+//can be used to preform actions before the program exits
 void onQuit();
+
+//return a vector of tokens for user input
+//take into accout quotes
+std::vector<std::string> tokenizeInput(std::string& init);
+
 #endif //DRAWLAYOUT_H

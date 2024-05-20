@@ -18,7 +18,7 @@ void cmdMain() {
     xy wd = detectSize();
     sendData(':', {0, wd.y-2});
     sendData(std::string(wd.x-1, ' '), {0, wd.y-1});
-    while(true) { //TODO: swap to case and in main too
+    while(true) {
         const int key = key_press(); // blocks until a key is pressed
         xy available = detectSize();
 
@@ -32,7 +32,7 @@ void cmdMain() {
             sendData(std::string(wd.x-1, ' '), {0, wd.y-1});
             commandCalls(currCommand);
             return;
-        } //TODO: call funtion search
+        }
 
         if (key == 8) {//backspace
             if (currCommand.length() != 0) {

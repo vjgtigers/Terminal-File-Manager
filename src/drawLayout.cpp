@@ -43,6 +43,7 @@ void drawBaseLayout() {
     if (modifiedView.active == true) {slots[slotCounter] = modifiedView.size+1 + slots[slotCounter - 1]; slotCounter += 1;}
     if (createdView.active == true) {slots[slotCounter] = createdView.size+1 + slots[slotCounter - 1]; slotCounter += 1;}
 
+
     for ( int i : slots) {
         for (int j = 2; j< wd.y-3; ++j) {
             sendData(renderCodes.divVert, {i, j});
@@ -50,8 +51,6 @@ void drawBaseLayout() {
         sendData(renderCodes.topCombine, {i, 1});
         sendData(renderCodes.bottomCombine, {i, wd.y-3});
     }
-    //TODO: combine into one and loop though array that has the values in it
-    //start draw dir divider
     sendData(renderCodes.divVert, {topBarSettings.dirMaxLen+1, 0});
     sendData(renderCodes.bottomCombine, {topBarSettings.dirMaxLen+1, 1});
 
@@ -62,9 +61,6 @@ void drawBaseLayout() {
             break;
         }
     }
-    //end draw dir divider
-
-
     sendData(renderCodes.divVert, {wd.x-topBarSettings.timeMaxLen-1, 0});
     sendData(renderCodes.bottomCombine, {wd.x-topBarSettings.timeMaxLen-1, 1});
 
@@ -228,7 +224,7 @@ void dirBackRefresh(const std::vector<fileInfoStruct>& fileNames) {
 
 
 //TODO: some refresh function should research files
-//TODO: on refresh recaluclate where div divider should be drawn
+
 void refreshScreen(const std::vector<fileInfoStruct>& fileNames) {
     xy wd = detectSize();
     topBarSettings.dirMaxLen = wd.x/2;
@@ -298,3 +294,35 @@ void onQuit() {
     }
     file.close();
 }
+
+std::vector<std::string> tokenizeInput(std::string& init) {
+    int currentPos = 0;
+    std::vector<std::string> tokens;
+    int end;
+    while (true) {
+        if (init.find('"',currentPos) == std::string::npos && init.find(' ', currentPos) == std::string::npos) {
+            break;
+        }
+        if (init.find('"', currentPos) < init.find(' ', currentPos)) {
+            end = init.find('"', currentPos+1);
+            tokens.push_back(init.substr(currentPos +1, end-currentPos -1));
+            if (end+1 == 0) {
+                break;
+            }
+            currentPos = end+2;
+        } else {
+            end = init.find(' ', currentPos + 1);
+            tokens.push_back(init.substr(currentPos, end -currentPos));
+            if (end+1 == 0) {
+                break;
+            }
+            currentPos = end+1;
+        }
+    }
+    return tokens;
+}
+
+
+
+
+

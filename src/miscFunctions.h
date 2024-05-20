@@ -64,7 +64,7 @@ void globalStateCalculator();
 //read file names if dir and add to vector
 void fileInput(std::vector<fileInfoStruct>& fileNames, const std::string& pathDir);
 
-//go to the parent dir
+//go to the parent dir - accutly can do both i think
 void changeDir(std::vector<fileInfoStruct>& fileNames, std::string& pathDir);
 
 

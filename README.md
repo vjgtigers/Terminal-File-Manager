@@ -44,7 +44,7 @@ You will then be able to start typing at the bottom of the screen
 | setConfigOption (sco)  | modify config option and write it to file                               |
 | testConfigOption (tco) | modify config without saving.<br> settings will be lost on program exit |
 | mkf                    | create file                                                             |
-
+| initConfig             | create config file with defaults. to override pass --override           |
 1. For the most part functions like windows cd except for some edge cases
 2. No error message on fail and also fails if dir already present
 # Config

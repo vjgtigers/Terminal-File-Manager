@@ -75,7 +75,6 @@ void updateCursorandPointerSync(const std::vector<fileInfoStruct>& fileNames) {
         drawSelectionPointer({0, fileSelectionPointer+2});
         if (globalState != 0) {
             globalState = 0;
-            displayFileInfo(fileNames);
         }
     }
     else if (fileSelectionPointer >= fileNames.size()-tmb.bottom_length) {
@@ -83,7 +82,6 @@ void updateCursorandPointerSync(const std::vector<fileInfoStruct>& fileNames) {
         drawSelectionPointer({0,y});
         if (globalState != 2) {
             globalState = 2;
-            displayFileInfo(fileNames);
         }
 
     }
@@ -92,9 +90,8 @@ void updateCursorandPointerSync(const std::vector<fileInfoStruct>& fileNames) {
             globalState = 1;
             drawSelectionPointer({0, tmb.middle_pos});
         }
-        displayFileInfo(fileNames);
     }
-
+displayFileInfo(fileNames);
 }
 
 
@@ -106,9 +103,16 @@ void globalStateCalculator() {
     if (tmb.bottom_length + tmb.top_length + 1 >= fileInformation.size()) {
         globalState = 3;
     }
-
+    else if (fileSelectionPointer < tmb.top_length) {
+            globalState = 0;
+    }
+    else if (fileSelectionPointer >= fileInformation.size()-tmb.bottom_length) {
+            globalState = 2;
+    }
+    else {
+            globalState = 1;
+    }
 }
-
 
 
 

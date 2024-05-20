@@ -21,6 +21,7 @@
 #include <bits/fs_path.h>
 #include <stdio.h>
 
+#include "commands.h"
 
 
 extern xy currentPointerLocation;
@@ -223,7 +224,6 @@ void dirBackRefresh(const std::vector<fileInfoStruct>& fileNames) {
     displayTime();
     displayDirBar(path_dir);
     updateCursorandPointerSync(fileNames);
-    displayFileInfo(fileNames);
 }
 
 

@@ -4,7 +4,7 @@ THIS PROGRAM IS NOT READY FOR GENERAL USE
 Navigate your computer faster than the basic "dir" and "cd" <br>
 This project aims to be a fast, customizable, and lightweight file browser for your terminal
 
-
+![display image](https://i.ibb.co/mvprMVj/Screenshot-2024-05-21-185134-screen.png)
 # Road Map
 ## After the basic file browsing functionality is fully implemented
 * ~~customize key press bindings~~

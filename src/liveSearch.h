@@ -4,5 +4,8 @@
 
 #ifndef LIVESEARCH_H
 #define LIVESEARCH_H
+#include "drawLayout.h"
 
+//something
+void liveSearch(std::vector<fileInfoStruct> files, std::string command = "");
 #endif //LIVESEARCH_H

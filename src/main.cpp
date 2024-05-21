@@ -10,6 +10,7 @@
 #include "terminalCommands.h"
 #include "miscFunctions.h"
 #include "configInfo.h"
+#include "liveSearch.h"
 
 #define  WIN32_LEAN_AND_MEAN
 #define VC_EXTRALEAN
@@ -95,6 +96,7 @@ int main() {//IF I REDID DRAW WAY I COULD MAKE A RELLY COOL SCREENSHOT TAKER
         if(key == keyPressCodes.up || key == -38) {(fileSelectionPointer > 0) ? (fileSelectionPointer -= 1) : true; updateCursorandPointerSync(fileInformation); }
 
         if(key == ':') {cmdMain();}
+        if(key == 'g') {liveSearch(fileInformation); maintainStateRefresh(fileInformation);}
     }
 
     return 0;

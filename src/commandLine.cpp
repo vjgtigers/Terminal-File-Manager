@@ -82,6 +82,7 @@ void commandCalls(std::string& currCommand) {
     else if (command == "initConfig") {createUserConfig(currCommand); }
     else if (command == "debug") {debug(currCommand);}
     else if (command == "del") {deleteFile(currCommand);}
+    else if (command == "rm") {deleteDir(currCommand);}
 
     else {displayError("Command does not exist");}
 }

@@ -50,6 +50,7 @@ You will then be able to start typing at the bottom of the screen
 | initConfig             | create config file with defaults. to override pass --override           |
 | debug                  | read debug help page for this commands functionality                    |
 | del                    | delete file - read help page for detailed functionality                 |
+| rm                     | delete empty folder                                                     |
 
 
 

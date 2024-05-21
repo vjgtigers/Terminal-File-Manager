@@ -55,4 +55,7 @@ void debug(std::string& command);
 
 //deletes specified file - read help
 void deleteFile(std::string& command);
+
+//delete an empty directory
+void deleteDir(std::string& command);
 #endif //COMMANDS_H

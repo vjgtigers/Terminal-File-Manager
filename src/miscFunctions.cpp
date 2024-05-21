@@ -219,7 +219,7 @@ std::vector<std::string> tokenizeInput(std::string init) {
     int currentPos = 0;
     std::vector<std::string> tokens;
     int end;
-    if (init.ends_with(' ') == false or init.ends_with('"') == false) { //TODO: i think this should be and
+    if (init.ends_with(' ') == false && init.ends_with('"') == false) {
         init += " ";
     }
     while (true) {

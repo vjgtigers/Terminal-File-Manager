@@ -1,0 +1,2 @@
+deletes dir with provided name
+currently only works on empty directory

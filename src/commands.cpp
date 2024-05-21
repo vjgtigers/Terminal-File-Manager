@@ -200,3 +200,14 @@ void deleteFile(std::string& command) {
     researchDir();
     return;
 }
+
+void deleteDir(std::string& command) { //TODO: currently only deletes empty dirs
+    //https://learn.microsoft.com/en-us/windows/win32/api/shellapi/nf-shellapi-shfileoperationa
+    std::vector<std::string> tokens = tokenizeInput(command);
+    std::string fName = tokens[1];
+    std::string fNameFull = path_dir + '\\'  +fName;
+    RemoveDirectoryA(fNameFull.c_str());
+
+    researchDir();
+    return;
+}

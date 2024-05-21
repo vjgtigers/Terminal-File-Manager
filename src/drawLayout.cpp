@@ -287,7 +287,17 @@ void sendData(const char& out, const xy& pos) {
 
 void onQuit() {
     if(advancedCodes.debugMode != true) {return;}
-    std::ofstream file("debugData.txt"); //TODO: change this and command line arg to debugData+time
+    auto t1 = std::chrono::system_clock::now();
+    std::time_t t2 = std::chrono::system_clock::to_time_t(t1);
+    char* o = ctime(&t2);
+    std::string s((LPCTSTR)o); //contvert from c string to std::string
+    for (int i = 0; i < s.length(); i++) {
+        if (s.at(i) == ':' || s.at(i) == ' ' || s.at(i) == '\n') {
+            s.at(i) = '-';
+        }
+    }
+    std::string fname = "debugData_" + s + ".txt";
+    std::ofstream file(fname);
     for(auto t : saveOutData) {
         //std::cout << t << std::endl;
         file << t << std::endl;

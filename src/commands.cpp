@@ -11,7 +11,7 @@
 #include <direct.h>
 #include <stdlib.h>
 #include <stdio.h>
-
+#include <chrono>
 #include <fstream>
 
 #include "keyTracker.h"
@@ -152,7 +152,19 @@ void debug(std::string& command) {
         saveOutData.clear();
     }
     else if (tokens[1] == "writeBuffer") {
-        std::ofstream file("debugData.txt");
+
+        auto t1 = std::chrono::system_clock::now();
+        std::time_t t2 = std::chrono::system_clock::to_time_t(t1);
+        char* o = ctime(&t2);
+        std::string s((LPCTSTR)o); //contvert from c string to std::string
+        for (int i = 0; i < s.length(); i++) {
+            if (s.at(i) == ':' || s.at(i) == ' ' || s.at(i) == '\n') {
+                s.at(i) = '-';
+            }
+        }
+        std::string fname = "debugData_" + s + ".txt";
+
+        std::ofstream file(fname);
         for(auto t : saveOutData) {
             file << t << std::endl;
         }

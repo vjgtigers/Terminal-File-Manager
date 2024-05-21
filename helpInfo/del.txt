@@ -1,0 +1,3 @@
+deletes file
+use "del -c" to delete the file the pointer is currently on
+use "del -n filename" to delete that file name from directory

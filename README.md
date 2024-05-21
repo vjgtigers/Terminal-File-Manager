@@ -9,6 +9,9 @@ This project aims to be a fast, customizable, and lightweight file browser for y
 ## After the basic file browsing functionality is fully implemented
 * ~~customize key press bindings~~
 * file management ability's (**Top Priority**)
+    * copy
+    * paste
+    * delete folder
 * view file permissions
 * "onboarding process"
 * Colors
@@ -45,8 +48,8 @@ You will then be able to start typing at the bottom of the screen
 | testConfigOption (tco) | modify config without saving.<br> settings will be lost on program exit |
 | mkf                    | create file                                                             |
 | initConfig             | create config file with defaults. to override pass --override           |
-| debug                  | read debug help page for this commands functionality                    | 
-
+| debug                  | read debug help page for this commands functionality                    |
+| del                    | delete file - read help page for detailed functionality                 |
 
 
 

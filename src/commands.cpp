@@ -175,3 +175,28 @@ void debug(std::string& command) {
         saveOutData.push_back(tokens[2] + "\n");
     }
 }
+
+void deleteFile(std::string& command) {
+    std::vector<std::string> tokens = tokenizeInput(command);
+    std::string fName;
+    std::string fNameFull;
+    if (tokens.size() == 1) {
+        displayError("Add Arugment - read help page");
+        return;
+    }
+    if (tokens[1] == "-c") {
+        fName = fileInformation[fileSelectionPointer].name;
+        fNameFull = path_dir + '\\' + fName;
+    }
+    else if (tokens[1] == "-n") {
+        fName = tokens[2];
+        fNameFull = path_dir + '\\' + fName;
+    }
+    else {
+        displayError("Wrong argument");
+        return;
+    }
+    DeleteFile(fNameFull.c_str());
+    researchDir();
+    return;
+}

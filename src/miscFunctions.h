@@ -84,5 +84,5 @@ void researchDir();
 
 //return a vector of tokens for user input
 //take into accout quotes
-std::vector<std::string> tokenizeInput(std::string& init);
+std::vector<std::string> tokenizeInput(std::string init);
 #endif //MISCFUNCTIONS_H

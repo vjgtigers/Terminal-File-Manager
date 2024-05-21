@@ -215,10 +215,13 @@ void researchDir() {
 }
 
 
-std::vector<std::string> tokenizeInput(std::string& init) {
+std::vector<std::string> tokenizeInput(std::string init) {
     int currentPos = 0;
     std::vector<std::string> tokens;
     int end;
+    if (init.ends_with(' ') == false or init.ends_with('"') == false) { //TODO: i think this should be and
+        init += " ";
+    }
     while (true) {
         if (init.find('"',currentPos) == std::string::npos && init.find(' ', currentPos) == std::string::npos) {
             break;

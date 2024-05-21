@@ -48,4 +48,8 @@ void createDir(std::string& command);
 
 //creates new file - doesnt work if file already exists but no error message
 void createFile(std::string& command);
+
+//use debug clearBuffer to clear and writeBuffer to write to file
+// addToBuffer to add text to buffer
+void debug(std::string& command);
 #endif //COMMANDS_H

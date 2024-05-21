@@ -142,3 +142,24 @@ void createFile(std::string& command) {
     researchDir();
     return;
 }
+
+extern std::vector<std::string> saveOutData;
+
+void debug(std::string& command) {
+    std::vector<std::string> tokens = tokenizeInput(command);
+
+    if (tokens[1] == "clearBuffer") {
+        saveOutData.clear();
+    }
+    else if (tokens[1] == "writeBuffer") {
+        std::ofstream file("debugData.txt");
+        for(auto t : saveOutData) {
+            file << t << std::endl;
+        }
+        file.close();
+    }
+
+    else if (tokens[1] == "addToBuffer") {
+        saveOutData.push_back(tokens[2] + "\n");
+    }
+}

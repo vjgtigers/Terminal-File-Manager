@@ -287,7 +287,7 @@ void sendData(const char& out, const xy& pos) {
 
 void onQuit() {
     if(advancedCodes.debugMode != true) {return;}
-    std::ofstream file("data.txt");
+    std::ofstream file("debugData.txt"); //TODO: change this and command line arg to debugData+time
     for(auto t : saveOutData) {
         //std::cout << t << std::endl;
         file << t << std::endl;

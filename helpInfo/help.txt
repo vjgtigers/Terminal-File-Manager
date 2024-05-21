@@ -1,0 +1,3 @@
+display help info about command
+ie help help will display this page
+help mkf will display help info about make file command

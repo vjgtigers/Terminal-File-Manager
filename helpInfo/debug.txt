@@ -1,0 +1,3 @@
+add writeBuffer after command to write the current debug buffer to output file, ie "debug writeBuffer"
+add clearBuffer after command to clear the current debug buffer, ie "debug clearBuffer"
+add addToBuffer after command to add text to the buffer use quotes to add text with spaces, ie "addToBuffer "hello world""

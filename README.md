@@ -1,4 +1,4 @@
-# Terminal File Browser for Windows
+# Terminal File Manager for Windows
 THIS PROGRAM IS NOT READY FOR GENERAL USE
 
 Navigate your computer faster than the basic "dir" and "cd" <br>
@@ -57,11 +57,11 @@ You will then be able to start typing at the bottom of the screen
 2. No error message on fail and also fails if dir already present
 # Config
 allows the ability to customize aspects of the program <br>
-see CONFIG.MD for more in depth and TFV_config_template.txt for an example config
+see [CONFIG.MD](CONFIG.md) for more in depth and TFV_config_template.txt for an example config
 
 # Other
 ## Contributing
-View CONTRIBUTING.md <br>
+View [CONTRIBUTING.md](CONTRIBUTING.md) <br>
 This is a cmake project, so it can be built that way
 If you use CLion drop the src and CMakeLists.txt into the main dir
 and drop the helpInfo into the debug folder or where the project is built

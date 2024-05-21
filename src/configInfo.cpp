@@ -40,7 +40,8 @@ void setUserConfig(std::string setting, std::string data) {
         {"rc-cl", 19},
         {"rc-cr", 20},
         {"ac-debug", 21},
-        {"ac-config", 22}
+        {"ac-config", 22},
+        {"ac-sdd", 23}
     };
 
 
@@ -129,6 +130,8 @@ void setUserConfig(std::string setting, std::string data) {
         case 22:
             advancedCodes.disableConfigLoad = std::stoi(data);
             break;
+        case 23:
+            advancedCodes.debugModeScreenDisplay = std::stoi(data);
         //end advanced codes
         default:
             break;
@@ -244,7 +247,8 @@ void createUserConfig(const std::string& command) {
     {"3[kc-enterPar]", "97"},
 
     {"4[ac-debug]", "0"},
-    {"*[ac-config]", "0"}
+    {"*[ac-config]", "0"},
+    {"4[ac-sdd]", "0"}
     };
 
     std::ofstream file;

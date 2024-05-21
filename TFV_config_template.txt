@@ -41,6 +41,7 @@
 #these should not be changed unless you know what you are doing
 4[ac-debug](0)    #debug mode
 *[ac-config](0)   #disable config file - must be placed at where you want config to end (to disable place at top of file)
+4[ac-sdd](0) 	  #display debug info on screen(might break prod builds)
 #
 #With the way that config settings are read
 #you can add any settings below this line that you want

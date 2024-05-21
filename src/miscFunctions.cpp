@@ -30,11 +30,12 @@ xy detectSize() {
 }
 
 void debugOutput(const std::string& s, const int offset) {
-    xy wd = detectSize();
-    sendData(std::string(30, ' '), {wd.x-30,wd.y-(wd.y-20)+offset});
-    sendData(s.substr(0,30), {wd.x-30,wd.y-(wd.y-20)+offset});
+    if(advancedCodes.debugModeScreenDisplay == true) {
+        xy wd = detectSize();
+        sendData(std::string(30, ' '), {wd.x-30,wd.y-(wd.y-20)+offset});
+        sendData(s.substr(0,30), {wd.x-30,wd.y-(wd.y-20)+offset});
+    }
 }
-
 
 void cursorToggle(bool enable) {
     if (enable == true) {

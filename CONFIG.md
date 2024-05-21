@@ -38,7 +38,8 @@
 * advanced commands
 * these generally should be avoided
 
-| Name | Function                                           |
-| ------- |----------------------------------------------------|
-| ac-debug | debug mode                                         |
-| ac-config | ON to disable config (read template for more info) |
+| Name      | Function                                              |
+|-----------|-------------------------------------------------------|
+| ac-debug  | debug mode                                            |
+| ac-config | ON to disable config (read template for more info)    |
+| ac-sdd    | display debug info on screen(might break prod builds) |

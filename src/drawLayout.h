@@ -99,14 +99,8 @@ void dirBackRefresh(const std::vector<fileInfoStruct>& fileNames);
 //erases file info ON THE SCREEN so shorter dir can be displayed
 void clearFileInfo(const int& size);
 
-//set of functions for printing data to screen
-void sendData(const std::string& out, const xy& pos);
-//set of functions for printing data to screen
-void sendData(const std::string& out);
-//set of functions for printing data to screen
-void sendData(const char& out);
-//set of functions for printing data to screen
-void sendData(const char& out, const xy& pos);
+//templated function for printing data to screen
+template <typename T> void sendData(const T out, const xy& pos= {1000,1000});
 
 //can be used to preform actions before the program exits
 void onQuit();

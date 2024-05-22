@@ -73,7 +73,7 @@ void displayHelp(const std::string &command) {
             fileData = openFile.get();
             sendData(fileData);
         }
-        sendData("Press 'q' to quit");
+        sendData<std::string>("Press 'q' to quit");
     } else {
         displayError("Command does not exist or no help file");
         return;

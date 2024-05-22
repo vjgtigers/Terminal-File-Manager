@@ -257,33 +257,19 @@ void maintainStateRefresh(const std::vector<fileInfoStruct>& fileNames) {
 
 extern std::vector<std::string> saveOutData;
 
-void sendData(const std::string& out, const xy& pos) {
-    setCursorPosition(pos.x, pos.y);
+template <typename T> void sendData(const T out, const xy& pos) {
+    if (pos.x != 1000) {
+        setCursorPosition(pos.x, pos.y);
+    }
     std::cout << out;
     if (advancedCodes.debugMode == true) {
-        saveOutData.push_back("<" + std::to_string(pos.x) +',' +  std::to_string(pos.y) + ">" +out + '.');
+        if (pos.x == 1000) {
+            saveOutData.push_back("<-,->" + out + '.');
+        } else {
+            saveOutData.push_back("<" + std::to_string(pos.x) +',' +  std::to_string(pos.y) + ">" +out + '.');
+        }
     }
 }
-void sendData(const std::string& out) {
-    std::cout << out;
-    if (advancedCodes.debugMode == true) {
-        saveOutData.push_back("<-,->" +out + '.');
-    }
-}
-void sendData(const char& out) {
-    std::cout << out;
-    if (advancedCodes.debugMode == true) {
-        saveOutData.push_back("<-,->"+ out + '.');
-    }
-}
-void sendData(const char& out, const xy& pos) {
-    setCursorPosition(pos.x, pos.y);
-    std::cout << out;
-    if (advancedCodes.debugMode == true) {
-        saveOutData.push_back("<" + std::to_string(pos.x) + ','+ std::to_string(pos.y) + ">" +out + '.');
-    }
-}
-
 
 void onQuit() {
     if(advancedCodes.debugMode != true) {return;}

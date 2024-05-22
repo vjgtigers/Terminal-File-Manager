@@ -39,9 +39,9 @@ void debugOutput(const std::string& s, const int offset) {
 
 void cursorToggle(bool enable) {
     if (enable == true) {
-        sendData(CSI "?25h");
+        sendData<std::string>(CSI "?25h");
     } else {
-        sendData(CSI "?25l");
+        sendData<std::string>(CSI "?25l");
     }
 }
 

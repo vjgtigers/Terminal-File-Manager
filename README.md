@@ -1,11 +1,16 @@
 # Terminal File Manager for Windows
-
+**More features comming soon**
 
 Navigate your computer faster than the basic "dir" and "cd" <br>
 With this fast, customizable, and lightweight file browser for your terminal
 
-![display image](https://i.ibb.co/nmW1qQk/test2.gif) <br>
-example on how to move through folders and open neovim directly from within the program
+[![SfrQW.gif](https://s12.gifyu.com/images/SfrQW.gif)](https://gifyu.com/image/SfrQW) <br>
+example on how to move through folders and open neovim directly from within the program!
+<br>
+# Config
+check out the customizable options! <br>
+see [CONFIG.MD](CONFIG.md) for more in depth and TFV_config_template.txt for an example config
+
 
 # Road Map
 ## Short Term
@@ -58,9 +63,6 @@ You will then be able to start typing at the bottom of the screen
 
 1. For the most part functions like windows cd except for some edge cases
 2. No error message on fail and also fails if dir already present
-# Config
-allows the ability to customize aspects of the program <br>
-see [CONFIG.MD](CONFIG.md) for more in depth and TFV_config_template.txt for an example config
 
 # Other
 ## Contributing

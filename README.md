@@ -1,10 +1,12 @@
 # Terminal File Manager for Windows
-THIS PROGRAM IS NOT READY FOR GENERAL USE
+
 
 Navigate your computer faster than the basic "dir" and "cd" <br>
-This project aims to be a fast, customizable, and lightweight file browser for your terminal
+With this fast, customizable, and lightweight file browser for your terminal
 
-![display image](https://i.ibb.co/mvprMVj/Screenshot-2024-05-21-185134-screen.png)
+![display image](https://i.ibb.co/nmW1qQk/test2.gif) <br>
+example on how to move through folders and open neovim directly from within the program
+
 # Road Map
 ## Short Term
 * file management ability's (**Top Priority**)

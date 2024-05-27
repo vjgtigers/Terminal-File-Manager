@@ -4,9 +4,12 @@
 
 #include "liveSearch.h"
 
+#include <ranges>
 #include <string>
 #include <vector>
 
+#include "commands.h"
+#include "keyTracker.h"
 #include "terminalCommands.h"
 
 //clear screen
@@ -18,15 +21,29 @@
 //amount of files returned
 //recursive search?
 
-void liveSearch(std::vector<fileInfoStruct> files, std::string command) {
-    clearScreen();
+void lsBaseLayout() {
     xy wd = detectSize();
     displayTime();
     displayDirBar(path_dir);
-
+    sendData(std::string(wd.x/2, renderCodes.divHori), {wd.x/3, 4});
+    sendData(std::string(wd.x/2, renderCodes.divHori), {wd.x/3, 2});
+    sendData(renderCodes.divVert, {wd.x/3-1, 3});
+    sendData(renderCodes.divVert, {wd.x/3 + wd.x/2, 3});
     sendData(std::string(wd.x, renderCodes.divHori), {0,1});
+
+
+
+}
+
+
+void liveSearch(std::vector<fileInfoStruct> files, std::string command) {
+    clearScreen();
+    lsBaseLayout();
+
     std::string searchPattern = "regular";
     std::string searchString = "";
+
+
     if (!command.empty()) {
         std::vector<std::string> tokens = tokenizeInput(command);
         for(int i = 0; i < tokens.size(); ++i) {
@@ -38,5 +55,10 @@ void liveSearch(std::vector<fileInfoStruct> files, std::string command) {
             }
         }
     }
-    return;
+    while(true) {
+        const int key = key_press();
+        if (key == keyPressCodes.quit) {
+            return;
+        }
+    }
 }

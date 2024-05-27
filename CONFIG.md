@@ -1,6 +1,6 @@
 # Creating a config
 
-1. Download the TFV_config_template.txt
+1. Download the TFV_config_template.txt or use the initConfig command in the program to generate a config file
 2. Rename to TFV_config.txt and put in same folder as executable
 3. Use this [AsciiTable](https://www.asciitable.com/) to help find the ascii codes you want to use
 4. replace the ascii codes in the text file with your own

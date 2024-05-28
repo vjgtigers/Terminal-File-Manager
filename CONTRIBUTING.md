@@ -37,3 +37,27 @@ In general, we follow the ["fork-and-pull" Git workflow](https://github.com/susa
 5. Following any formatting and testing guidelines specific to this repo
 6. Push changes to your fork
 7. Open a PR in our repository and follow the PR template so that we can efficiently review the changes.
+
+
+# Contributing checklist
+
+## Adding config option
+1. Add the option to the setUserConfig function in configInfo.cpp
+   * unordered map
+   * switch statement
+2. Add to createUserConfig function in configInfo.cpp
+3. Add the option to the appropriate template
+   * advancedCodes_template | advancedCodes
+   * renderCodesTemplate | renderCodes
+   * keyPressCodes_temp | keyPressCodes
+4. Add the default to the struct (probably in main.cpp)
+5. Add the config option to CONFIG.md table
+6. Add the config option to the TFV_config_template.txt in the appropriate place.
+
+
+## Adding Command Line Command
+1. Create the command function in the commands.cpp file
+2. Add to commands.h file
+3. Add the command name to the commandCalls function in the commandLine.cpp with the function call
+4. Add a help page to the helpInfo folder, use the function name + .txt
+5. Add the command to the README.md page table

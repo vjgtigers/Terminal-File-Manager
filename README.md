@@ -9,8 +9,8 @@ example on how to move through folders and open neovim directly from within the 
 <br>
 # Config
 check out the customizable options! <br>
-see [CONFIG.MD](CONFIG.md) for more in depth and TFV_config_template.txt for an example config
-
+see [CONFIG.MD](CONFIG.md) for more in depth and TFV_config_template.txt for an example config <br>
+Scroll to the bottom of [CONFIG.MD](CONFIG.md) to see a contributing checklist to see if it applies to you
 
 # Road Map
 ## Short Term

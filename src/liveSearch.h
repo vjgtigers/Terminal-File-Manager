@@ -19,5 +19,8 @@ void lsSearch(std::string& sString);
 void lsDrawCommand(std::string currCommand, xy wd);
 
 //if enter is pressed open file that is at the top - not implemented yet
-void lsCall(std::string& sString);
+void lsCall(std::string& sString, std::vector<fileInfoStruct>& files);
+
+//main running loop in the liveSearch function
+void lsCmdMain(std::vector<fileInfoStruct>& files);
 #endif //LIVESEARCH_H

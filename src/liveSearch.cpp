@@ -12,9 +12,9 @@
 #include "keyTracker.h"
 #include "terminalCommands.h"
 
-//clear screen
-//while true loop
-//section to display what type of search is working. ie regular regex etc
+//clear screen - done
+//while true loop - done
+//section to display what type of search is working. ie regular regex etc -done
 //search
 //list of valid files
     //can i scroll through these?
@@ -61,7 +61,7 @@ void lsDrawCommand(std::string currCommand, xy wd) {
     sendData(currCommand, {displayStart, 7});
 }
 
-void lsCmdMain() {
+void lsCmdMain(std::vector<fileInfoStruct>& files) {
     std::string currCommand = "";
     int currPos = 1;
     xy wd = detectSize();
@@ -76,7 +76,7 @@ void lsCmdMain() {
         }
         if (key == 10) { //enter
             sendData(std::string(7, ' '), {displayStart, 7});
-            lsCall(currCommand);
+            lsCall(currCommand, files);
             return;
         }
 
@@ -107,7 +107,12 @@ void lsCmdMain() {
 void lsSearch(std::string& sString) {
     return;
 }
-void lsCall(std::string& sString) {
+//TODO: the file list that will be used will be different becauge the lsSearch will change it
+void lsCall(std::string& sString, std::vector<fileInfoStruct>& files) {
+    system(("nvim " +path_dir+ '\\'+  files[0].name).c_str());
+    ShowScrollBar(GetConsoleWindow(), SB_VERT, 0);
+    toggleVT(true);
+
     return;
 }
 
@@ -129,5 +134,5 @@ void liveSearch(std::vector<fileInfoStruct> files, std::string command) {
             }
         }
     }
-    lsCmdMain();
+    lsCmdMain(files);
 }

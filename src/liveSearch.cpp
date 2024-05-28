@@ -38,7 +38,7 @@ void lsBaseLayout(std::string& searchPattern) {
 
 
     sendData(std::string(displayLength, renderCodes.divHori), {displayStart, 6});
-    sendData(std::string(displayLength, renderCodes.divHori), {displayStart, 8});
+
     sendData(renderCodes.divVert, {displayStart -1, 7});
     sendData(renderCodes.divVert, {displayStart + displayLength, 7});
     sendData(std::string(wd.x, renderCodes.divHori), {0,1});
@@ -53,6 +53,63 @@ void lsBaseLayout(std::string& searchPattern) {
     }
 }
 
+
+void lsDrawCommand(std::string currCommand, xy wd) {
+    int displayLength = wd.x/2;
+    int displayStart = 3;
+    sendData(std::string(displayLength, ' '), {displayStart, 7});
+    sendData(currCommand, {displayStart, 7});
+}
+
+void lsCmdMain() {
+    std::string currCommand = "";
+    int currPos = 1;
+    xy wd = detectSize();
+    int displayLength = wd.x/2;
+    int displayStart = 3;
+    sendData(std::string(displayLength, ' '), {displayStart, 6});
+    while(true) {
+        const int key = key_press(); // blocks until a key is pressed
+
+        if (key == 27) {
+            return;
+        }
+        if (key == 10) { //enter
+            sendData(std::string(7, ' '), {displayStart, 7});
+            lsCall(currCommand);
+            return;
+        }
+
+        if (key == 8) {//backspace
+            if (currCommand.length() != 0) {
+                currCommand.pop_back();
+                lsDrawCommand(currCommand, wd);
+                currPos -= 1;
+                sendData(std::string(wd.x-1, ' '), {0,8});
+                sendData(renderCodes.cmdLcursor, {currPos-1 + 2, 8});
+                sendData(renderCodes.cmdRcursor);
+            }
+        }
+
+        else {
+            currCommand += key;
+            lsDrawCommand(currCommand, wd);
+            sendData(std::string(wd.x-1, ' '), {0, 8});
+            sendData(renderCodes.cmdLcursor, {currPos + 2, 8});
+            sendData(renderCodes.cmdRcursor);
+            currPos += 1;
+        }
+        debugOutput(currCommand, -7);
+    }
+}
+
+
+void lsSearch(std::string& sString) {
+    return;
+}
+void lsCall(std::string& sString) {
+    return;
+}
 
 void liveSearch(std::vector<fileInfoStruct> files, std::string command) {
     std::string searchPattern = advancedCodes.defaultSearchPattern;
@@ -72,10 +129,5 @@ void liveSearch(std::vector<fileInfoStruct> files, std::string command) {
             }
         }
     }
-    while(true) {
-        const int key = key_press();
-        if (key == keyPressCodes.quit) {
-            return;
-        }
-    }
+    lsCmdMain();
 }

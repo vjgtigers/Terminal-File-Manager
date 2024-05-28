@@ -8,4 +8,9 @@
 
 //something
 void liveSearch(std::vector<fileInfoStruct> files, std::string command = "");
+
+//draw backgroud for searchpage
+void lsBaseLayout(std::string& searchPattern);
+
+
 #endif //LIVESEARCH_H

@@ -21,27 +21,44 @@
 //amount of files returned
 //recursive search?
 
-void lsBaseLayout() {
+void lsBaseLayout(std::string& searchPattern) {
     xy wd = detectSize();
     displayTime();
     displayDirBar(path_dir);
-    sendData(std::string(wd.x/2, renderCodes.divHori), {wd.x/3, 4});
-    sendData(std::string(wd.x/2, renderCodes.divHori), {wd.x/3, 2});
-    sendData(renderCodes.divVert, {wd.x/3-1, 3});
-    sendData(renderCodes.divVert, {wd.x/3 + wd.x/2, 3});
+    int displayLength = wd.x/2;
+    int displayStart = 3;
+    if(searchPattern.length() < displayLength) {
+        sendData(searchPattern, {displayStart, 3});
+    }
+    sendData(std::string(displayLength, renderCodes.divHori), {displayStart, 4});
+    sendData(std::string(displayLength, renderCodes.divHori), {displayStart, 2});
+    sendData(renderCodes.divVert, {displayStart -1, 3});
+    sendData(renderCodes.divVert, {displayStart + displayLength, 3});
     sendData(std::string(wd.x, renderCodes.divHori), {0,1});
 
 
+    sendData(std::string(displayLength, renderCodes.divHori), {displayStart, 6});
+    sendData(std::string(displayLength, renderCodes.divHori), {displayStart, 8});
+    sendData(renderCodes.divVert, {displayStart -1, 7});
+    sendData(renderCodes.divVert, {displayStart + displayLength, 7});
+    sendData(std::string(wd.x, renderCodes.divHori), {0,1});
 
+
+    sendData(std::string(displayLength, renderCodes.divHori), {displayStart, wd.y-2});
+    sendData(std::string(displayLength, renderCodes.divHori), {displayStart, 9});
+
+    for(int i = 10; i < wd.y-2; ++i) {
+        sendData(renderCodes.divVert, {displayStart -1, i});
+        sendData(renderCodes.divVert, {displayStart + displayLength, i});
+    }
 }
 
 
 void liveSearch(std::vector<fileInfoStruct> files, std::string command) {
-    clearScreen();
-    lsBaseLayout();
-
-    std::string searchPattern = "regular";
+    std::string searchPattern = advancedCodes.defaultSearchPattern;
     std::string searchString = "";
+    clearScreen();
+    lsBaseLayout(searchPattern);
 
 
     if (!command.empty()) {

@@ -1,10 +1,10 @@
 # Terminal File Manager for Windows
-**More features comming soon**
+**More features coming soon**
 
 Navigate your computer faster than the basic "dir" and "cd" <br>
 With this fast, customizable, and lightweight file browser for your terminal
 
-[![SfrQW.gif](https://s12.gifyu.com/images/SfrQW.gif)](https://gifyu.com/image/SfrQW) <br>
+![SfrQW.gif](https://s12.gifyu.com/images/SfrQW.gif) <br>
 example on how to move through folders and open neovim directly from within the program!
 <br>
 # Config
@@ -23,7 +23,7 @@ see [CONFIG.MD](CONFIG.md) for more in depth and TFV_config_template.txt for an 
 * Colors
 * Git explorer (tentative)
 * encryption symmetrical/asymmetrical 
-* Live Search
+* Live Search  - Work In Progress
 * file compression
 ## Longer term
 * Linux Support

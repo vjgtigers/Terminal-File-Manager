@@ -41,7 +41,8 @@ void setUserConfig(std::string setting, std::string data) {
         {"rc-cr", 20},
         {"ac-debug", 21},
         {"ac-config", 22},
-        {"ac-sdd", 23}
+        {"ac-sdd", 23},
+        {"ac-dss", 24}
     };
 
 
@@ -132,6 +133,10 @@ void setUserConfig(std::string setting, std::string data) {
             break;
         case 23:
             advancedCodes.debugModeScreenDisplay = std::stoi(data);
+            break;
+        case 24:
+            advancedCodes.defaultSearchPattern = data;
+            break;
         //end advanced codes
         default:
             break;
@@ -248,7 +253,8 @@ void createUserConfig(const std::string& command) {
 
     {"4[ac-debug]", "0"},
     {"*[ac-config]", "0"},
-    {"4[ac-sdd]", "0"}
+    {"4[ac-sdd]", "0"},
+    {"4[ac-dss]", "regular"}
     };
 
     std::ofstream file;

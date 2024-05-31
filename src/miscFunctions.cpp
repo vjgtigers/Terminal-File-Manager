@@ -12,6 +12,7 @@
 
 #include "miscFunctions.h"
 #include "drawLayout.h"
+#include "keyTracker.h"
 #include "terminalCommands.h"
 
 #define CSI "\x1b["
@@ -249,5 +250,17 @@ std::vector<std::string> tokenizeInput(std::string init) {
 //TODO: function to open github and bug etc
 
 void openGithub() {
-
+    clearScreen();
+    sendData<std::string>("To open github page press 1 \n", {0,0});
+    sendData<std::string>("To report a bug press 2 \n");
+    sendData<std::string>("To request a feature press 3 \n");
+    sendData<std::string>("To open website press 4 (not very good) \n");
+    sendData<std::string>("To return to program press 'q' \n");
+    while(true) {
+        const int key = key_press();
+        if (char(key) == 'q') {
+            maintainStateRefresh(fileInformation);
+            return;
+        }
+    }
 }

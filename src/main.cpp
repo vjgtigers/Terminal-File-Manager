@@ -97,6 +97,7 @@ int main() {//IF I REDID DRAW WAY I COULD MAKE A RELLY COOL SCREENSHOT TAKER
 
         if(key == ':') {cmdMain();}
         if(key == 'g') {liveSearch(fileInformation); maintainStateRefresh(fileInformation);}
+        if(key == 'f') {openGithub();}
     }
 
     return 0;

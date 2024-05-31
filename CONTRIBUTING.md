@@ -48,8 +48,8 @@ In general, we follow the ["fork-and-pull" Git workflow](https://github.com/susa
 2. Add to createUserConfig function in configInfo.cpp
 3. Add the option to the appropriate template
    * advancedCodes_template | advancedCodes
-   * renderCodesTemplate | renderCodes
-   * keyPressCodes_temp | keyPressCodes
+   * renderCodes_template | renderCodes
+   * keyPressCodes_template | keyPressCodes
 4. Add the default to the struct (probably in main.cpp)
 5. Add the config option to CONFIG.md table
 6. Add the config option to the TFV_config_template.txt in the appropriate place.

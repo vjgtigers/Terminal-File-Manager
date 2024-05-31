@@ -28,7 +28,7 @@ fd_display_data sizeView {false, 8}; //recommended size is 6 or 7 --probably 8
 fd_display_data modifiedView {true, 14}; //recommended size is 14
 fd_display_data createdView {true, 14}; //recommended size is 14
 
-topBarSettings_tmp topBarSettings = {
+topBarSettings_template topBarSettings = {
     48, //when changing this there should be ample space for time and some area between
     17 //15 is the recommended amount
 };
@@ -42,8 +42,8 @@ xy currentPointerLocation {0,2};
 vector<fileInfoStruct> fileInformation;
 
 advancedCodes_template advancedCodes = {false, false, false, "regular"};
-renderCodesTemplate renderCodes = {char(62), char(179), char(196), char(194), char(193), char(197), char(217), char(192)};
-keyPressCodes_temp keyPressCodes ={'q', 'r', 'R', 'c', 's', 'a', 'h', 't'};
+renderCodes_template renderCodes = {char(62), char(179), char(196), char(194), char(193), char(197), char(217), char(192)};
+keyPressCodes_template keyPressCodes ={'q', 'r', 'R', 'c', 's', 'a', 'h', 't'};
 
 string currTime = "";
 string path_dir;

@@ -22,7 +22,7 @@ extern struct fd_display_data createdView;
 
 extern int fileSelectionPointer;
 
-struct renderCodesTemplate {
+struct renderCodes_template {
     char pointer;
     char divVert;
     char divHori;
@@ -40,7 +40,7 @@ struct advancedCodes_template {
 };
 extern advancedCodes_template advancedCodes;
 
-extern renderCodesTemplate renderCodes;
+extern renderCodes_template renderCodes;
 
 extern std::string path_dir;
 
@@ -77,11 +77,11 @@ struct fileInfoStruct {
 extern std::vector<fileInfoStruct> fileInformation;
 
 
-struct topBarSettings_tmp {
+struct topBarSettings_template {
     int dirMaxLen;
     int timeMaxLen;
 };
-extern topBarSettings_tmp topBarSettings;
+extern topBarSettings_template topBarSettings;
 
 
 //display the filenames in the first colum

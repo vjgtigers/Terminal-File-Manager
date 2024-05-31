@@ -7,7 +7,7 @@
 #include <string>
 
 
-struct keyPressCodes_temp {
+struct keyPressCodes_template {
     char quit;
     char refresh;
     char maintainStateRefresh;
@@ -18,7 +18,7 @@ struct keyPressCodes_temp {
     char up;
 
 };
-extern keyPressCodes_temp keyPressCodes ;
+extern keyPressCodes_template keyPressCodes ;
 
 //update dir on user input through :cd <dir>
 //works with absolute path. mostly works with rel path

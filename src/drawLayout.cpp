@@ -131,7 +131,7 @@ void extendedFileInfoDisplay(const fileInfoStruct& fileInfo, const xy& wd) {
 
 void displayFileInfo(const std::vector<fileInfoStruct>& fileNames) {
     xy wd = detectSize();
-    tmb_tem tmb = tmbDeterminator();
+    tmb_template tmb = tmbDeterminator();
     debugOutput(std::to_string(tmb.top_length) + ' ' + std::to_string(tmb.middle_pos) + ' '+ std::to_string(tmb.bottom_length), 3);
     debugOutput(std::to_string(currentPointerLocation.x + ' ') + std::to_string(currentPointerLocation.y), 2);
     debugOutput("SIZE: " + std::to_string(fileNames.size()), -3);

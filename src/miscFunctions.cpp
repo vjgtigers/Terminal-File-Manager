@@ -46,7 +46,7 @@ void cursorToggle(bool enable) {
 }
 
 
-tmb_tem tmbDeterminator() {
+tmb_template tmbDeterminator() {
     xy wd = detectSize();
     int usableY = wd.y - 5;
     if (usableY % 2 == 0) {
@@ -64,7 +64,7 @@ int globalState;
 
 void updateCursorandPointerSync(const std::vector<fileInfoStruct>& fileNames) {
     xy wd = detectSize();
-    tmb_tem tmb = tmbDeterminator();
+    tmb_template tmb = tmbDeterminator();
     debugOutput("file:" + fileNames[fileSelectionPointer].name, 4);
     debugOutput(std::to_string(fileSelectionPointer), 1);
 
@@ -100,7 +100,7 @@ displayFileInfo(fileNames);
 
 void globalStateCalculator() {
     globalState = 0;
-    tmb_tem tmb = tmbDeterminator();
+    tmb_template tmb = tmbDeterminator();
     if (tmb.bottom_length + tmb.top_length + 1 >= fileInformation.size()) {
         globalState = 3;
     }
@@ -246,3 +246,8 @@ std::vector<std::string> tokenizeInput(std::string init) {
     return tokens;
 }
 
+//TODO: function to open github and bug etc
+
+void openGithub() {
+
+}

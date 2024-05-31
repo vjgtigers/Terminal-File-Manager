@@ -20,7 +20,7 @@ struct xy {
 };
 
 //struct used for tmbDeterminator()
-struct tmb_tem {
+struct tmb_template {
     int top_length;
     int middle_pos;
     int bottom_length;
@@ -35,7 +35,7 @@ extern std::vector<fileInfoStruct> fileNames;
 void updateCursorandPointerSync(const std::vector<fileInfoStruct>& fileNames);
 
 //calculates the centerpoint of file drawing and the amount of files that can be displayed above and below
-tmb_tem tmbDeterminator();
+tmb_template tmbDeterminator();
 
 //detect the amout of "rows/coulums" that are avalible
 //doeset work if you scroll in/out to make text larger or smaller
@@ -85,4 +85,7 @@ void researchDir();
 //return a vector of tokens for user input
 //take into accout quotes  | purposly doesnt use a refrence
 std::vector<std::string> tokenizeInput(std::string init);
+
+//options to open github/report bug etc
+void openGithub();
 #endif //MISCFUNCTIONS_H

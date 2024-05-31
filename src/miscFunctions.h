@@ -88,4 +88,5 @@ std::vector<std::string> tokenizeInput(std::string init);
 
 //options to open github/report bug etc
 void openGithub();
+void openGithubDraw();
 #endif //MISCFUNCTIONS_H

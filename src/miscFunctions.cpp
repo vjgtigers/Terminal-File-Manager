@@ -247,20 +247,40 @@ std::vector<std::string> tokenizeInput(std::string init) {
     return tokens;
 }
 
-//TODO: function to open github and bug etc
 
-void openGithub() {
+void openGithubDraw() {
     clearScreen();
     sendData<std::string>("To open github page press 1 \n", {0,0});
     sendData<std::string>("To report a bug press 2 \n");
     sendData<std::string>("To request a feature press 3 \n");
     sendData<std::string>("To open website press 4 (not very good) \n");
     sendData<std::string>("To return to program press 'q' \n");
+}
+
+void openGithub() {
+    openGithubDraw();
+
     while(true) {
         const int key = key_press();
         if (char(key) == 'q') {
             maintainStateRefresh(fileInformation);
             return;
+        }
+        else if (char(key) == '1') {
+            system("start https://github.com/vjgtigers/Terminal-File-Manager");
+            openGithubDraw();
+        }
+        else if (char(key) == '2') {
+            system("start https://github.com/vjgtigers/Terminal-File-Manager/issues/new?assignees=&labels=&projects=&template=bug_report.md&title=");
+            openGithubDraw();
+        }
+        else if (char(key) == '3') {
+            system("start https://github.com/vjgtigers/Terminal-File-Manager/issues/new?assignees=&labels=&projects=&template=feature_request.md&title=");
+            openGithubDraw();
+        }
+        else if (char(key) == '4') {
+            system("start https://tfv.xerwai.com");
+            openGithubDraw();
         }
     }
 }

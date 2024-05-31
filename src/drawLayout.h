@@ -101,7 +101,9 @@ void dirBackRefresh(const std::vector<fileInfoStruct>& fileNames);
 void clearFileInfo(const int& size);
 
 //templated function for printing data to screen
-template <typename T> void sendData(const T out, const xy& pos= {1000,1000});
+template <typename T> void sendData(const T out, const xy& pos= {1000,1000}, const std::string& function = "0");
+//function 0 - regular | cs - clearScreen
+
 
 //can be used to preform actions before the program exits
 void onQuit();

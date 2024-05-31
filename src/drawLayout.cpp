@@ -257,16 +257,16 @@ void maintainStateRefresh(const std::vector<fileInfoStruct>& fileNames) {
 
 extern std::vector<std::string> saveOutData;
 
-template <typename T> void sendData(const T out, const xy& pos) {
+template <typename T> void sendData(const T out, const xy& pos, const std::string& function) {
     if (pos.x != 1000) {
         setCursorPosition(pos.x, pos.y);
     }
     std::cout << out;
     if (advancedCodes.debugMode == true) {
         if (pos.x == 1000) {
-            saveOutData.push_back("<-,->" + out + '.');
+            saveOutData.push_back("<-,-><" + function + ">" + out + '.');
         } else {
-            saveOutData.push_back("<" + std::to_string(pos.x) +',' +  std::to_string(pos.y) + ">" +out + '.');
+            saveOutData.push_back("<" + std::to_string(pos.x) +',' +  std::to_string(pos.y) + "><" + function + ">" +out + '.');
         }
     }
 }

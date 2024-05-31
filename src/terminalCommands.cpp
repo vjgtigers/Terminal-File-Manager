@@ -62,6 +62,7 @@ int engineInit() {
     return 1;
 }
 
+//TODO : make sure this is shown in the debug data
 void clearScreen()
 {
     HANDLE                     hStdOut;
@@ -76,7 +77,7 @@ void clearScreen()
     /* Get the number of cells in the current buffer */
     if (!GetConsoleScreenBufferInfo( hStdOut, &csbi )) return;
     cellCount = csbi.dwSize.X *csbi.dwSize.Y;
-
+    sendData<std::string>("", {1000,1000}, "cs");
     /* Fill the entire buffer with spaces */
     if (!FillConsoleOutputCharacter(
       hStdOut, (TCHAR) ' ', cellCount, homeCoords, &count))

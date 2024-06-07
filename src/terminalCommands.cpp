@@ -54,12 +54,17 @@ void toggleVT(bool toggle) {
 int engineInit() {
     if (!EnableVTMode()) {printf("Unable to enter VT processing mode. Quitting.\n");return -1;}
     toggleVT(true);
+    sendData<std::string>("Virtual terminal active\n");
     ShowScrollBar(GetConsoleWindow(), SB_VERT, 0);
+    sendData<std::string>("Disabled right scroll bar\n");
     cursorToggle(false);
+    sendData<std::string>("Disabled Cursor Blink\n");
     globalStateCalculator(); //not strictly nessessary because no files are in the system yet
     fileSelectionPointer = 0;
     sendData<std::string>("\033]0; TFV - DEVELOPMENT \007");
+    sendData<std::string>("Set Window Name\n");
     return 1;
+    sendData<std::string>("Finished engineInit\n");
 }
 
 //TODO : make sure this is shown in the debug data

@@ -50,21 +50,29 @@ string path_dir;
 
 //TODO: crashes if you try to open folder that you dont have perms too
 int main() {//IF I REDID DRAW WAY I COULD MAKE A RELLY COOL SCREENSHOT TAKER
-    char full[_MAX_PATH];
-    path_dir = _fullpath(full, ".", 260);
-    path_dir = full;
-    //path will be SAVED ON COMMIT
-
 
     //YOU CAN NOT PUT THINGS THAT DEPEND ON TERMINAL SIZE UP HERE
     //initilization settings
     if (engineInit() == -1) {return -1;}
+
+    char full[_MAX_PATH];
+    path_dir = _fullpath(full, ".", 260);
+    sendData<string>("path: " + path_dir+'\n');
+    path_dir = full;
+    //path will be SAVED ON COMMIT
+
     //end init settings
     xy wd = detectSize();
+    sendData<string>("Terminal Size: <" + to_string(wd.x) + "," + to_string(wd.y) + ">\n");
     topBarSettings.dirMaxLen = wd.x/2;
     readUserConfig();
+    sendData<string>("User Config Read if Avalible\n");
     //draw inital screen
     fileInput(fileInformation, path_dir);
+    sendData<string>("Number of items detected: " + fileInformation.size() + '\n');
+    if(advancedCodes.debugModeScreenDisplay == true & advancedCodes.debugMode == true) {
+        system("PAUSE >nul");
+    }
     refreshScreen(fileInformation); //could be faster i guess but for simplicity sake just did this (May 2 11 PM)
     //end draw inital screen
     while(true) {

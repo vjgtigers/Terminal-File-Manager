@@ -58,7 +58,7 @@ void changeDir(const std::string &command) {
 
     changeDir(fileInformation, path_dir);
 }
-
+//TODO: displayHelp fails and ends program if no subcommand is passed in
 void displayHelp(const std::string &command) {
     std::string subCommand = command.substr(command.find(' ') + 1);
     debugOutput(subCommand + " aouthn", -14);

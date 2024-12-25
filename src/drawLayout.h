@@ -47,6 +47,7 @@ extern std::string path_dir;
 // ReSharper disable once CppDeclarationSpecifierWithoutDeclarators
 typedef struct fileInfoStruct;
 // ReSharper disable once CppDeclarationSpecifierWithoutDeclarators
+//TODO: can i just remove the typedef from all of the warnings to solve them
 typedef struct xy;
 
 //used to draw the base outline of the main file view screen

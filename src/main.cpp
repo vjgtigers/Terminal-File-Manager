@@ -70,6 +70,8 @@ int main() {//IF I REDID DRAW WAY I COULD MAKE A RELLY COOL SCREENSHOT TAKER
     //draw inital screen
     fileInput(fileInformation, path_dir);
     sendData<string>("Number of items detected: " + fileInformation.size() + '\n');
+
+    //pause opening debug screen if both options are enabled
     if(advancedCodes.debugModeScreenDisplay == true & advancedCodes.debugMode == true) {
         system("PAUSE >nul");
     }

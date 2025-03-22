@@ -21,7 +21,10 @@ add_executable(TFV ./src/main.cpp
         ./src/configInfo.cpp
         ./src/configInfo.h
         ./src/liveSearch.cpp
-        ./src/liveSearch.h)
+        ./src/liveSearch.h
+        src/simulation.cpp
+        src/simulation.h
+        src/simulation.h)
 
 set(GCC_COVERAGE_COMPILE_FLAGS "-static")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${GCC_COVERAGE_COMPILE_FLAGS}" )

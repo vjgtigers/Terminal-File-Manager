@@ -16,7 +16,8 @@ using namespace std;
 //class can have something like a current item counter for how many timse its been called so know when it hits amount
 //what command in the vector its currently on
 //etc
-
+//potentially add ability to give options in command line to run sim files
+//possibly command file that can run sim files
 
 
 struct commandItems {
@@ -36,7 +37,7 @@ public:
     vector<string> readSimulationFile(string filepath);
     vector<commandItems> convertToCommand(vector<string>);
     void goToNextCommand();
-    char returnCurrentCommand();
+    char returnCurrentCommand(bool delay=true);
     //continue if anything else more can be thought of
 
 };

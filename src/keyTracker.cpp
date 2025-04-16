@@ -4,10 +4,21 @@
 
 #include "keyTracker.h"
 
+#include "miscFunctions.h"
+
+
+bool simulationModeTemp = false;
+
 int key_press() { // not working: F11 (-122, toggles fullscreen)
     KEY_EVENT_RECORD keyevent;
     INPUT_RECORD irec;
     DWORD events;
+
+
+    //if(simulationModeTemp == true) {
+
+    //}
+
     while(true) {
         ReadConsoleInput(GetStdHandle(STD_INPUT_HANDLE), &irec, 1, &events);
         if(irec.EventType==KEY_EVENT&&((KEY_EVENT_RECORD&)irec.Event).bKeyDown) {

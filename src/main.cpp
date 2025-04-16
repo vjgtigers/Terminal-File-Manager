@@ -11,6 +11,7 @@
 #include "miscFunctions.h"
 #include "configInfo.h"
 #include "liveSearch.h"
+#include "simulation.h"
 
 #define  WIN32_LEAN_AND_MEAN
 #define VC_EXTRALEAN
@@ -33,8 +34,7 @@ topBarSettings_template topBarSettings = {
     17 //15 is the recommended amount
 };
 
-
-
+simulation simTest;
 std::vector<std::string> saveOutData; //used to save all screen prints if debug mode is on
 
 int fileSelectionPointer;

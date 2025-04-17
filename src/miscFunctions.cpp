@@ -11,6 +11,8 @@
 #include <cmath>
 
 #include "miscFunctions.h"
+
+#include "configInfo.h"
 #include "drawLayout.h"
 #include "keyTracker.h"
 #include "terminalCommands.h"
@@ -284,3 +286,24 @@ void openGithub() {
         }
     }
 }
+
+
+
+bool checkLicenseKey(std::string key) {
+    if(key.length() != 12) {return false;}
+    if(key[0] != 'a' or key[11] != 'z') {return false;}
+    int first = key[1]-'0', second = key[10]-'0';
+    if(first+second != 14) {return false;}
+    return true;
+}
+
+
+bool licenseValidationRequest() {
+    configData drmKey = getConfigLine("LicenseKey");
+    if(drmKey.name.starts_with("ERROR") == true){return false;}
+    return checkLicenseKey(drmKey.value);
+}
+
+
+
+

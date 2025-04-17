@@ -89,4 +89,11 @@ std::vector<std::string> tokenizeInput(std::string init);
 //options to open github/report bug etc
 void openGithub();
 void openGithubDraw();
+
+//drm
+
+//check a specific licese key to see if it is valid
+bool checkLicenseKey(std::string key);
+//request to check if license key is valid
+bool licenseValidationRequest();
 #endif //MISCFUNCTIONS_H

@@ -23,6 +23,8 @@
 
 using namespace std;
 
+bool requireLicense = true;
+
 fd_display_data nameView {true, 20}; //no particularly recommended size - must remain active
 fd_display_data extentionView {true, 5};//if file then display type, if folder then fldr
 fd_display_data sizeView {false, 8}; //recommended size is 6 or 7 --probably 8
@@ -64,6 +66,10 @@ int main() {//IF I REDID DRAW WAY I COULD MAKE A RELLY COOL SCREENSHOT TAKER
     //end init settings
     xy wd = detectSize();
     sendData<string>("Terminal Size: <" + to_string(wd.x) + "," + to_string(wd.y) + ">\n");
+
+    //check if licensekey is valid if program is compiled with requireLicense
+    if(requireLicense == true and licenseValidationRequest() == false) {toggleVT(false); sendData<string>("Invalid License Key"); return -2;}
+
     topBarSettings.dirMaxLen = wd.x/2;
     readUserConfig();
     sendData<string>("User Config Read if Avalible\n");

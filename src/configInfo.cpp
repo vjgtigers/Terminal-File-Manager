@@ -145,10 +145,13 @@ void setUserConfig(std::string setting, std::string data) {
         //TODO: probably should be put with the keypress codes, but that would require redoing the numbers and i dont want to break anything right now
         case 25:
             keyPressCodes.search = char(stoi(data));
+            break;
         case 26:
             keyPressCodes.github = char(stoi(data));
+            break;
         case 27:
             advancedCodes.licenseKey = data;
+            break;
         //end advanced codes
         default:
             break;

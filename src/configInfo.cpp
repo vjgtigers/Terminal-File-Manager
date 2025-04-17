@@ -42,7 +42,11 @@ void setUserConfig(std::string setting, std::string data) {
         {"ac-debug", 21},
         {"ac-config", 22},
         {"ac-sdd", 23},
-        {"ac-dss", 24}
+        {"ac-dss", 24},
+
+        {"kc-search", 25},
+        {"kc-github", 26},
+        {"LicenseKey", 27}
     };
 
 
@@ -137,6 +141,14 @@ void setUserConfig(std::string setting, std::string data) {
         case 24:
             advancedCodes.defaultSearchPattern = data;
             break;
+
+        //TODO: probably should be put with the keypress codes, but that would require redoing the numbers and i dont want to break anything right now
+        case 25:
+            keyPressCodes.search = char(stoi(data));
+        case 26:
+            keyPressCodes.github = char(stoi(data));
+        case 27:
+            advancedCodes.licenseKey = data;
         //end advanced codes
         default:
             break;
@@ -250,11 +262,15 @@ void createUserConfig(const std::string& command) {
     {"3[kc-clear]", "99"},
     {"3[kc-enterFolder]", "115"},
     {"3[kc-enterPar]", "97"},
+    {"3[kc-search]", "103"},
+    {"3[kc-search]", "102"},
 
     {"4[ac-debug]", "0"},
     {"*[ac-config]", "0"},
     {"4[ac-sdd]", "0"},
-    {"4[ac-dss]", "regular"}
+    {"4[ac-dss]", "regular"},
+
+    {"![LicenseKey]", "_____"}
     };
 
     std::ofstream file;
@@ -269,7 +285,7 @@ void createUserConfig(const std::string& command) {
 
 configData getConfigLine(std::string str) {
     configData config_data = {"","",""};
-    config_data.name = "ERROR_DRM_NOT_VALID_FILE_LOAD_DISABLED";
+    config_data.name = "ERROR_NOT_VALID_FILE_LOAD_DISABLED";
     if (advancedCodes.disableConfigLoad == true) {return config_data;}
     std::fstream configFile;
     configFile.open("TFV_config.txt");

@@ -16,6 +16,8 @@ struct keyPressCodes_template {
     char enterParFolder;
     char down;
     char up;
+    char search;
+    char github;
 
 };
 extern keyPressCodes_template keyPressCodes ;

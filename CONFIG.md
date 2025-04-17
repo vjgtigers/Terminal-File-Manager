@@ -30,7 +30,9 @@
 | kc-clear           | clear                                                                   |
 | kc-enterFolder     | enter folder on current cursor                                          |
 | kc-enterPar        | enter parent folder                                                     |
-
+| kc-search          | key to open search menu                                                 |
+| kc-github          | key to open github selection menu                                       |
+| LicenseKey         | drm validation (mostly for fun) valid key: a7aoeuaoeu7z                 |
 5. save and restart app
 
 

@@ -43,9 +43,9 @@ int fileSelectionPointer;
 xy currentPointerLocation {0,2};
 vector<fileInfoStruct> fileInformation;
 
-advancedCodes_template advancedCodes = {false, false, false, "regular"};
+advancedCodes_template advancedCodes = {false, false, false, "regular", ""};
 renderCodes_template renderCodes = {char(62), char(179), char(196), char(194), char(193), char(197), char(217), char(192)};
-keyPressCodes_template keyPressCodes ={'q', 'r', 'R', 'c', 's', 'a', 'h', 't'};
+keyPressCodes_template keyPressCodes ={'q', 'r', 'R', 'c', 's', 'a', 'h', 't', 'g', 'f'};
 
 string currTime = "";
 string path_dir;
@@ -111,8 +111,8 @@ int main() {//IF I REDID DRAW WAY I COULD MAKE A RELLY COOL SCREENSHOT TAKER
         if(key == keyPressCodes.up || key == -38) {(fileSelectionPointer > 0) ? (fileSelectionPointer -= 1) : true; updateCursorandPointerSync(fileInformation); }
 
         if(key == ':') {cmdMain();}
-        if(key == 'g') {liveSearch(fileInformation); maintainStateRefresh(fileInformation);}
-        if(key == 'f') {openGithub();}
+        if(key == keyPressCodes.search) {liveSearch(fileInformation); maintainStateRefresh(fileInformation);}
+        if(key == keyPressCodes.github) {openGithub();}
     }
 
     return 0;

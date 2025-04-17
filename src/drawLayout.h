@@ -37,6 +37,7 @@ struct advancedCodes_template {
     bool disableConfigLoad;
     bool debugModeScreenDisplay;
     std::string defaultSearchPattern;
+    std::string licenseKey;
 };
 extern advancedCodes_template advancedCodes;
 

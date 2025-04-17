@@ -6,6 +6,12 @@
 #define CONFIGINFO_H
 
 
+struct configData {
+    std::string name;
+    std::string subClass;
+    std::string value;
+};
+
 //reads in config options from TFV_config.txt
 void readUserConfig();
 
@@ -22,4 +28,7 @@ void tempUserConfig(std::string& command);
 
 //write config file with default config options
 void createUserConfig(const std::string& command);
+
+//gets specific config line subclass, name(redundant since passed in), and value
+configData getConfigLine(std::string str);
 #endif //READCONFIG_H

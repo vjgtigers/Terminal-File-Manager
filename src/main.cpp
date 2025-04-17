@@ -69,8 +69,7 @@ int main() {//IF I REDID DRAW WAY I COULD MAKE A RELLY COOL SCREENSHOT TAKER
     sendData<string>("User Config Read if Avalible\n");
     //draw inital screen
     fileInput(fileInformation, path_dir);
-    sendData<string>("Number of items detected: " + fileInformation.size() + '\n');
-
+    sendData<string>("Number of items detected: " + to_string(fileInformation.size()) + '\n'); //ERROR HERE BC ADDING WITHOUT THE TO_STRING CUTS IT OFF
     //pause opening debug screen if both options are enabled
     if(advancedCodes.debugModeScreenDisplay == true & advancedCodes.debugMode == true) {
         system("PAUSE >nul");

@@ -267,6 +267,29 @@ void createUserConfig(const std::string& command) {
 }
 
 
-
+configData getConfigLine(std::string str) {
+    configData config_data = {"","",""};
+    config_data.name = "ERROR_DRM_NOT_VALID_FILE_LOAD_DISABLED";
+    if (advancedCodes.disableConfigLoad == true) {return config_data;}
+    std::fstream configFile;
+    configFile.open("TFV_config.txt");
+    if (configFile.is_open() == true) {
+        std::string lineData;
+        while(std::getline(configFile, lineData)) {
+            //debugOutput("user data: " + lineData.substr(2, lineData.find(']')-2) + " " + lineData.substr(lineData.find('(')+1, lineData.find(')')-1), -16);
+            //system("PAUSE");
+            if(lineData.substr(2, lineData.find(']')-2) == str) {
+                config_data.subClass = lineData[0];
+                config_data.name = lineData.substr(2, lineData.find(']')-2);
+                config_data.value = lineData.substr(lineData.find('(')+1, lineData.find(')')-lineData.find('(')-1);
+                return config_data;
+            }
+        }
+        config_data.name = "ERROR_NOT_FOUND_IN_FILE";
+        return config_data;
+    }
+    config_data.name = "ERROR_FILE_OPEN_FAILED";
+    return config_data;
+}
 
 
